@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow Rare · professional home (expanded)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/jpeg" href="images/growwpark_logo.jpg">
+  <style>
+    /* ----- ORIGINAL STYLES (KEPT INTACT) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --deep-teal: #1F3B4B;
+      --warm-brown: #AF6E4B;
+      --light-bg: #FFFFFF;
+      --soft-border: #E5E5E5;
+      --accent-brown: #B8916E;
+      --transition: all 0.3s ease;
+      --brown-light: #F8F8F8;
+      --brown-medium: #F0F0F0;
+      --brown-dark: #E5E5E5;
+    }
+    .dark-mode {
+      --deep-teal: #ffffff;
+      --warm-brown: #ffffff;
+      --light-bg: #000000;
+      --soft-border: #333333;
+      --accent-brown: #cccccc;
+      --brown-light: #111111;
+      --brown-medium: #222222;
+      --brown-dark: #444444;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--deep-teal);
+      line-height: 1.5;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    h1, h2, h3, h4, .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== HEADER ===== */
+   header {
+  background: #ffffff; /* pure white */
+  border-bottom: 3px solid var(--warm-brown);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+    .navbar {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo i {
+      font-size: 30px;
+      color: var(--warm-brown);
+    }
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links li {
+      position: relative;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--deep-teal);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .nav-links a:hover {
+      border-bottom-color: var(--warm-brown);
+      color: var(--warm-brown);
+    }
+    .nav-links a.active {
+      border-bottom-color: var(--accent-brown);
+      color: var(--deep-teal);
+      font-weight: 600;
+    }
+    /* dropdown menus (desktop) */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--light-bg);
+      min-width: 220px;
+      border-radius: 20px;
+      padding: 12px 0;
+      border: 1px solid var(--soft-border);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .dropdown-menu a {
+      padding: 10px 22px;
+      border-bottom: none !important;
+      color: var(--deep-teal);
+      font-weight: 400;
+      display: block;
+      border: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      padding-left: 28px;
+      border: none;
+    }
+    .nav-links li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+    /* desktop nav buttons & toggles */
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .nav-btn {
+      padding: 8px 24px !important;
+      border-radius: 40px !important;
+      font-weight: 600;
+      border: 2px solid var(--warm-brown) !important;
+      background: transparent;
+      color: var(--deep-teal) !important;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+    .nav-btn:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+    }
+    .signup-btn {
+      background: var(--deep-teal) !important;
+      color: var(--light-bg) !important;
+      border: 2px solid var(--deep-teal) !important;
+    }
+    .signup-btn:hover {
+      background: var(--accent-brown) !important;
+      border-color: var(--accent-brown) !important;
+    }
+    .toggle-btn {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+    }
+    .toggle-btn:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+
+    /* ===== MOBILE MENU (exact alignment as requested) ===== */
+    .hamburger {
+      display: none;
+      background: none;
+      border: 2px solid var(--soft-border);
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px 12px;
+      color: var(--deep-teal);
+    }
+    .mobile-nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      height: 100vh;
+      background: var(--brown-light);
+      z-index: 999;
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem;
+      border-left: 3px solid var(--warm-brown);
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { right: 0; }
+    .mobile-nav-menu .nav-links {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.25rem !important;
+      padding-bottom: 30px !important;
+      list-style: none !important;
+    }
+    .mobile-nav-menu .nav-links > li {
+      list-style: none;
+      width: 100%;
+    }
+    .mobile-nav-menu .nav-links > li > a {
+      display: block !important;
+      padding: 15px 20px !important;
+      border: 2px solid var(--soft-border) !important;
+      border-radius: 8px !important;
+      background: var(--light-bg) !important;
+      text-decoration: none !important;
+      color: var(--deep-teal) !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+      margin-bottom: 5px;
+    }
+    .mobile-nav-menu .nav-links > li > a:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    /* sub-items (indented) */
+    .mobile-nav-menu .nav-links .home-sub-item,
+    .mobile-nav-menu .nav-links .dashboard-sub-item {
+      display: block !important;
+      padding: 12px 20px 12px 50px !important;
+      border: 2px solid var(--soft-border) !important;
+      border-radius: 8px !important;
+      background: var(--brown-light) !important;
+      text-decoration: none !important;
+      color: var(--deep-teal) !important;
+      font-weight: 500 !important;
+      width: 100% !important;
+      margin-top: -3px !important;
+      margin-bottom: 5px !important;
+      font-size: 0.95rem !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item:hover,
+    .mobile-nav-menu .nav-links .dashboard-sub-item:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    /* mobile-specific login/signup */
+    .mobile-nav-btn {
+      display: block !important;
+      padding: 15px 20px !important;
+      border: 2px solid var(--warm-brown) !important;
+      border-radius: 40px !important;
+      background: transparent !important;
+      color: var(--deep-teal) !important;
+      font-weight: 600 !important;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .mobile-nav-btn.signup-btn {
+      background: var(--deep-teal) !important;
+      color: var(--light-bg) !important;
+      border: 2px solid var(--deep-teal) !important;
+    }
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 998;
+      display: none;
+    }
+    .mobile-overlay.active { display: block; }
+    .mobile-controls {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 2px solid var(--soft-border);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--light-bg);
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--deep-teal);
+    }
+    .mobile-controls .control-btn:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+
+    /* Desktop / Mobile visibility */
+    @media (min-width: 1101px) {
+      .nav-links { display: flex !important; }
+      .nav-buttons { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links { display: none !important; }
+      .nav-buttons { display: none !important; }
+      .hamburger { display: block !important; }
+      .toggle-btn { display: none !important; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.45) sepia(0.1);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 35, 40, 0.35);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      padding: 0 20px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .hero-tag {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #f0dbc4;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #faf3e9;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 span {
+      font-style: italic;
+      color: #d4b28c;
+      border-bottom: 2px solid var(--warm-brown);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #f2e2d2;
+      font-weight: 300;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 42px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      border: 2px solid var(--warm-brown);
+    }
+    .btn-primary:hover {
+      background: #9a5e3d;
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      border: 2px solid #eed6be;
+      color: #eed6be;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #eed6be;
+      color: #1f2e36;
+    }
+
+    /* ===== FOOTER (always black) ===== */
+    footer {
+      background: #000000;
+      color: #ffffff;
+      padding: 70px 5% 40px;
+      border-top: 5px solid var(--warm-brown);
+    }
+    .dark-mode footer {
+      background: #000000;
+      border-top-color: #ffffff;
+    }
+    .footer-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+    }
+    .footer-col h4 {
+      color: #e2c9aa;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--warm-brown);
+      padding-bottom: 10px;
+    }
+    .footer-col a, .footer-col p {
+      color: #ddcebc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .footer-col a:hover {
+      color: #b58b5b;
+      transform: translateX(5px);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .footer-logo i {
+      font-size: 30px;
+      color: var(--warm-brown);
+    }
+    .footer-logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      background: #AF6E4B;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .footer-logo i { color: #f5c9a6; }
+    .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .copyright {
+      text-align: center;
+      padding-top: 50px;
+      color: #f7f7f7;
+    }
+    .dark-mode .copyright { color: #ffffff; }
+
+    /* RTL support */
+    [dir="rtl"] .navbar { flex-direction: row-reverse; }
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-col a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
+
+    /* responsive footer */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.1rem; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+    }
+
+    /* ----- NEW PROFESSIONAL HOME SECTIONS ----- */
+    .section-padding {
+      padding: 5rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--deep-teal);
+      font-weight: 400;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--accent-brown);
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      font-weight: 300;
+    }
+
+    /* features grid - Desktop: 2x2, Mobile: 1 column */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+    .feature-card {
+      background: var(--brown-light);
+      padding: 2.5rem 2rem;
+      border-radius: 32px;
+      border: 1px solid var(--soft-border);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .dark-mode .feature-card { background: #1a1a1a; }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+    }
+    .feature-icon {
+      font-size: 2.8rem;
+      color: var(--warm-brown);
+      margin-bottom: 1.5rem;
+    }
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .feature-card p {
+      color: var(--deep-teal);
+      opacity: 0.8;
+    }
+
+    /* catalog highlights (3 items) - Desktop: 3 columns, Mobile: 1 column */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .catalog-item {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--brown-light);
+      border: 1px solid var(--soft-border);
+      transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    }
+    .catalog-item:hover { transform: scale(1.02); }
+    .catalog-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .catalog-info {
+      padding: 1.5rem;
+    }
+    .catalog-info h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .catalog-info .author {
+      color: var(--warm-brown);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .catalog-info .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--deep-teal);
+    }
+
+    /* testimonials - Desktop: 2 columns, Mobile: 1 column */
+    .testimonials {
+      background: var(--brown-light);
+      border-radius: 60px;
+      padding: 4rem 5%;
+    }
+    .dark-mode .testimonials { background: #111111; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--light-bg);
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      border: 1px solid var(--soft-border);
+    }
+    .testimonial-card i {
+      color: var(--warm-brown);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--deep-teal);
+    }
+    .testimonial-author span {
+      font-weight: 400;
+      color: var(--accent-brown);
+      font-size: 0.9rem;
+    }
+
+    /* product section (with even spacing) - Desktop: 4 columns, Tablet: 2 columns, Mobile: 1 column */
+    .product-section {
+      background: #FFFFFF;
+      color: var(--deep-teal);
+      padding: 5rem 5%;
+      text-align: center;
+      margin: 5rem 0;
+    }
+    .dark-mode .product-section { background: #111111; color: #ffffff; }
+
+    .product-header .small-title {
+      color: var(--warm-brown);
+      letter-spacing: 3px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .product-header h2 {
+      font-size: 42px;
+      font-weight: 400;
+      margin: 10px 0;
+      color: var(--deep-teal);
+    }
+    .product-header h2 span { color: var(--warm-brown); }
+    .product-header p {
+      color: var(--deep-teal);
+      opacity: 0.7;
+      margin-bottom: 60px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .product-card { text-align: center; }
+    .product-img {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--soft-border);
+      padding: 12px;
+      background: var(--brown-light);
+      transition: 0.4s;
+      height: 200px;
+    }
+    .product-img img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+    .product-card:hover .product-img {
+      border-color: var(--warm-brown);
+      transform: translateY(-6px);
+    }
+    .product-card h3 {
+      margin-top: 18px;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--deep-teal);
+    }
+    .price {
+      color: var(--warm-brown);
+      font-size: 16px;
+      display: block;
+      margin-top: 6px;
+    }
+    .dark-mode .product-header h2,
+    .dark-mode .product-card h3 { color: #ffffff; }
+    .dark-mode .product-header p { color: #cccccc; }
+    .dark-mode .product-img { background: #1a1a1a; border-color: #333333; }
+    .dark-mode .price { color: #ffffff; }
+
+    /* ===== NEW SECTION: 5 IMAGES ON RIGHT, CONTENT ON LEFT ===== */
+    .gallery-section {
+      padding: 5rem 5%;
+      background: var(--light-bg);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .gallery-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--deep-teal);
+      font-weight: 400;
+    }
+    .gallery-content .subhead {
+      color: var(--warm-brown);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .gallery-content p {
+      font-size: 1.1rem;
+      color: var(--deep-teal);
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .gallery-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat-item {
+      text-align: left;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--warm-brown);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 1rem;
+      color: var(--deep-teal);
+      opacity: 0.8;
+    }
+    .image-collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .collage-item {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--warm-brown);
+      transition: transform 0.3s;
+    }
+    .collage-item:hover {
+      transform: scale(1.02);
+    }
+    .collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* specific spans for a 5-image layout */
+    .collage-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 1;
+      aspect-ratio: 2 / 1;
+    }
+    .collage-item:nth-child(2) {
+      grid-column: span 1;
+      grid-row: span 1;
+      aspect-ratio: 1 / 1;
+    }
+    .collage-item:nth-child(3) {
+      grid-column: span 1;
+      grid-row: span 1;
+      aspect-ratio: 1 / 1;
+    }
+    .collage-item:nth-child(4) {
+      grid-column: span 2;
+      grid-row: span 1;
+      aspect-ratio: 2 / 1;
+    }
+    .collage-item:nth-child(5) {
+      grid-column: span 1;
+      grid-row: span 1;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Dark mode for gallery */
+    .dark-mode .gallery-section {
+      background: #000000;
+    }
+    .dark-mode .gallery-content h2,
+    .dark-mode .gallery-content p,
+    .dark-mode .stat-label {
+      color: #ffffff;
+    }
+
+    /* Responsive - Standard breakpoints */
+    @media (max-width: 1100px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 1000px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    /* Tablet breakpoints - 2 columns for some sections */
+  @media (max-width: 820px) {
+  .catalog-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+}
+    
+    @media (max-width: 800px) {
+      .catalog-grid {
+        grid-template-columns: repeat( 1fr) !important;
+        gap: 1.5rem;
+      }
+    }
+    
+    /* Mobile breakpoint - ALL CARDS ONE BY ONE */
+    @media (max-width: 768px) {
+      /* Curated for collectors - 1 column */
+      .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+      
+      /* Recently acquired - 1 column */
+      .catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+      
+      /* Product section - 1 column */
+      .product-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+      
+      /* Testimonials - 1 column */
+      .testimonial-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+      
+      /* Gallery section - stack vertically */
+      .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+      }
+      
+      /* Image collage adjustments for mobile */
+      .image-collage {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .collage-item:nth-child(1),
+      .collage-item:nth-child(4) {
+        grid-column: span 2 !important;
+      }
+      
+      /* Feature card adjustments */
+      .feature-card {
+        padding: 2rem 1.5rem !important;
+      }
+      
+      .feature-card h3 {
+        font-size: 1.4rem !important;
+      }
+      
+      /* Catalog item adjustments */
+      .catalog-item img {
+        height: 250px !important;
+      }
+      
+      /* Hero adjustments */
+      .hero h1 {
+        font-size: 3rem !important;
+      }
+      
+      .hero p {
+        font-size: 1.1rem !important;
+      }
+      
+      .hero-tag {
+        font-size: 0.9rem !important;
+        letter-spacing: 2px;
+      }
+      
+      /* Section titles */
+      .section-title {
+        font-size: 2.2rem !important;
+      }
+      
+      /* Gallery stats */
+      .gallery-stats {
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+    }
+    
+    /* Small mobile */
+    @media (max-width: 480px) {
+      .feature-card {
+        padding: 1.5rem 1rem !important;
+      }
+      
+      .catalog-item img {
+        height: 200px !important;
+      }
+      
+      .product-img {
+        height: 180px !important;
+      }
+      
+      .image-collage {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .collage-item:nth-child(1),
+      .collage-item:nth-child(4) {
+        grid-column: span 1 !important;
+        aspect-ratio: 1 / 1 !important;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      :root { --section-gap: 3rem; }
+    }
+    
+    .dark-mode .logo-text {
+      background: #f5c9a6; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .logo{
+      background: #f5c9a6; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Navbar color in dark mode */
+    .dark-mode header{
+      background:#000000;
+    }
+    /* ===== Mobile active nav link ===== */
+    .mobile-nav-menu .nav-links a.active{
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    /* ===== RTL NAVBAR FIX ===== */
+    [dir="rtl"] .navbar{
+      flex-direction: row-reverse;
+    }
+
+    /* logo on right */
+    [dir="rtl"] .logo{
+      order: 3;
+    }
+
+    /* nav menu center */
+    [dir="rtl"] .nav-links{
+      order: 2;
+    }
+
+    /* login signup buttons left */
+    [dir="rtl"] .nav-buttons{
+      order: 1;
+    }
+
+    /* hamburger icon left on mobile */
+    [dir="rtl"] .hamburger{
+      order: 1;
+    }
+
+    /* mobile menu open from left */
+    [dir="rtl"] .mobile-nav-menu{
+      left: -100%;
+      right: auto;
+    }
+
+    [dir="rtl"] .mobile-nav-menu.active{
+      left: 0;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
+            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="rarefinds.html">Rare Finds</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
+            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="nav-buttons">
+        <a href="login.html" class="nav-btn">Login</a>
+        <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
+        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+      </div>
+      
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Service</a></li>
+      <li><a href="rarefinds.html">Rare Finds</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
+      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
+      <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+      <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
+      <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
+    </ul>
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+  <!-- HERO (unchanged) -->
+  <section class="hero">
+    <img src="images\pexels-suzyhazelwood-1438044.jpg" alt="Vintage books" class="hero-bg-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
+      <h1>Rare <span>editions</span>  <br> forgotten <span>Grows</span></h1>
+      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">Explore catalog</a>
+        <a href="#" class="btn btn-outline">Collector’s blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- features / expertise - 2x2 grid on desktop, 1 column on mobile -->
+  <div class="section-padding">
+    <h2 class="section-title">Curated for collectors</h2>
+    <div class="section-subtitle">Every volume authenticated, every binding appreciated.</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-feather"></i></div>
+        <h3>First editions</h3>
+        <p>Signed, limited, and true firsts — with provenance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Fine bindings</h3>
+        <p>Morocco, vellum, cloth — restored & preserved.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-scroll"></i></div>
+        <h3>Manuscripts</h3>
+        <p>Hand‑illuminated leaves, letters, archival pieces.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-crown"></i></div>
+        <h3>Collector access</h3>
+        <p>Early viewings, private sales & dashboard picks.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- catalog highlights (three items) -->
+  <div class="section-padding" style="padding-top:0; padding-bottom:5rem;">
+    <h2 class="section-title">Recently acquired</h2>
+    <div class="section-subtitle">Fresh arrivals for the discerning shelf.</div>
+    <div class="catalog-grid">
+      <div class="catalog-item">
+        <img src="images\pexels-talhariaz-2409566.jpg" alt="The Hobbit">
+        <div class="catalog-info">
+          <h4>The Hobbit</h4>
+          <div class="author">J.R.R. Tolkien · 1937</div>
+          <div class="price">£8,500</div>
+        </div>
+      </div>
+      <div class="catalog-item">
+        <img src="images\pexels-suzyhazelwood-1438044.jpg" alt="Leaves of Grass">
+        <div class="catalog-info">
+          <h4>Leaves of Grass</h4>
+          <div class="author">Whitman · 1855</div>
+          <div class="price">£12,200</div>
+        </div>
+      </div>
+      <div class="catalog-item">
+        <img src="images\pexels-salih-sk-1755180460-28103669.jpg" alt="Rubáiyát">
+        <div class="catalog-info">
+          <h4>Rubáiyát</h4>
+          <div class="author">Khayyám · c.1900</div>
+          <div class="price">£4,750</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- product section -->
+  <section class="product-section">
+    <div class="product-header">
+      <span class="small-title">THE RARE COLLECTION</span>
+      <h2>Timeless books, preserved for collectors.</h2>
+      <p>Carefully curated rare editions from historic libraries and private archives.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.pexels.com/photos/2409566/pexels-photo-2409566.jpeg?auto=compress&cs=tinysrgb&w=600" alt="First Edition Classic">
+        </div>
+        <h3>First Edition Classic</h3>
+        <span class="price">$245</span>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.pexels.com/photos/3765180/pexels-photo-3765180.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vintage Manuscript">
+        </div>
+        <h3>Vintage Manuscript</h3>
+        <span class="price">$180</span>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Signed Author Copy">
+        </div>
+        <h3>Signed Author Copy</h3>
+        <span class="price">$155</span>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.pexels.com/photos/1172018/pexels-photo-1172018.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Collector’s Edition">
+        </div>
+        <h3>Collector’s Edition</h3>
+        <span class="price">$420</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonials -->
+  <div class="testimonials section-padding" style="margin: 0 5% 5rem; width: auto;">
+    <h2 class="section-title" style="margin-bottom:2rem;">Collectors’ voices</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <i class="fas fa-quote-right"></i>
+        <p>“The dashboard gives me first dibs on newly acquired manuscripts. Worth every penny.”</p>
+        <div class="testimonial-author">Eleanor W. <span>· collector for 20 years</span></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-right"></i>
+        <p>“The dashboard gives me first dibs on newly acquired manuscripts. Worth every penny.”</p>
+        <div class="testimonial-author">Dr. Marcus V. <span>· manuscript specialist</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW SECTION: 5 IMAGES ON RIGHT, CONTENT ON LEFT -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      <!-- Left content -->
+      <div class="gallery-content">
+        <h2>A Glimpse Inside Our Vault</h2>
+        <div class="subhead">Rare editions · Manuscripts · Fine bindings</div>
+        <p>Step into our private reading rooms where history meets craftsmanship. Each volume is hand‑selected, authenticated, and preserved for the discerning collector.</p>
+        <div class="gallery-stats">
+          <div class="stat-item">
+            <div class="stat-number">1,200+</div>
+            <div class="stat-label">rare volumes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">47</div>
+            <div class="stat-label">first editions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">32</div>
+            <div class="stat-label">manuscripts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right image collage (5 images) -->
+      <div class="image-collage">
+        <div class="collage-item">
+          <img src="images\pexels-mikhail-nilov-8653444.jpg" alt="Library interior">
+        </div>
+        <div class="collage-item">
+          <img src="images\pexels-olly-3768122.jpg" alt="Stack of books">
+        </div>
+        <div class="collage-item">
+          <img src="images\pexels-cottonbro-6214934.jpg" alt="Old books">
+        </div>
+        <div class="collage-item">
+          <img src="images\pexels-fotios-photos-3806168.jpg" alt="Vintage books">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#" class="footer-logo">
+          <i class="fas fa-feather-alt"></i>
+          <span class="footer-logo-text">Grow Rare</span>
+        </a>
+        <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
+        <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
+      </div>
+      <div class="footer-col">
+        <h4>QuickLinks</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html"> About</a>
+        <a href="contact.html">Contact</a>
+        <a href="service.html">Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>collector</h4>
+        <a href="#">wishlist</a>
+        <a href="#">first dibs</a>
+        <a href="#">order tracking</a>
+        <a href="#">newsletter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social Links</h4>
+        <a href="#">instagram</a>
+        <a href="#">pinterest</a>
+        <a href="#">facebook</a>
+        <a href="#">whatsapp</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 Grow Rare Books – for collectors, by collectors.
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const overlay = document.getElementById('mobileOverlay');
+      const mobileMenu = document.getElementById('mobileNavMenu');
+      const body = document.body;
+
+      if (hamburger && overlay && mobileMenu) {
+        function toggleMobileMenu() {
+          const isActive = mobileMenu.classList.contains('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          body.style.overflow = isActive ? '' : 'hidden';
+          hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        }
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
+          });
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+      }
+
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+      }
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = 'fas fa-sun';
+        });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'LTR';
+      }
+    })();
+    /* ===== Active link for mobile menu ===== */
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if(linkPage === currentPage){
+    link.classList.add("active");
+  }
+});
+  </script>
+</body>
+</html>

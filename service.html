@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow Rare · core (header/hero/footer)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --deep-teal: #1F3B4B;
+      --warm-brown: #AF6E4B;
+      --light-bg: #FDF6E9;
+      --soft-border: #DCD2C0;
+      --accent-brown: #B8916E;
+      --transition: all 0.3s ease;
+      --brown-light: #e7dacb;
+      --brown-medium: #cbb59b;
+      --brown-dark: #a88f76;
+    }
+    .dark-mode {
+      --deep-teal: #ffffff;
+      --warm-brown: #ffffff;
+      --light-bg: #000000;
+      --soft-border: #333333;
+      --accent-brown: #cccccc;
+      --brown-light: #000000;
+      --brown-medium: #111111;
+      --brown-dark: #222222;
+      
+      /* Ensure body background is black */
+      background-color: #000000 !important;
+    }
+    
+    /* Ensure all major containers have black background in dark mode */
+    .dark-mode body,
+    .dark-mode header,
+    .dark-mode .cards-section,
+    .dark-mode .mobile-nav-menu,
+    .dark-mode .dropdown-menu {
+      background-color: #000000 !important;
+    }
+    
+    .dark-mode .project-card .project-overlay {
+      background: rgba(0, 0, 0, 0.9) !important;
+      /* text inside overlay should be white in dark mode */
+      color: #ffffff !important;
+    }
+    /* ensure all overlay text becomes white */
+    .dark-mode .project-overlay,
+    .dark-mode .project-overlay h3,
+    .dark-mode .project-overlay p,
+    .dark-mode .project-overlay a {
+      color: #ffffff !important;
+    }
+    /* overlay link button style for dark mode */
+    .dark-mode .project-overlay a {
+      background: #ffffff;
+      color: #000000 !important;
+      border: 2px solid #ffffff;
+    }
+    .dark-mode .project-overlay a:hover {
+      background: transparent;
+      color: #ffffff !important;
+      border-color: #ffffff;
+    }
+    
+    .dark-mode .cards-header h2,
+    .dark-mode .cards-header p {
+      color: #ffffff;
+    }
+    
+    .dark-mode .btn-outline {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+    
+    .dark-mode .btn-outline:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: var(--deep-teal);
+      line-height: 1.5;
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+    h1, h2, h3, h4, .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== HEADER ===== */
+   header {
+  background: #ffffff; /* pure white */
+  border-bottom: 3px solid var(--warm-brown);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+    .navbar {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo i {
+      font-size: 30px;
+      color: var(--warm-brown);
+    }
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links li {
+      position: relative;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--deep-teal);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .nav-links a:hover {
+      border-bottom-color: var(--warm-brown);
+      color: var(--warm-brown);
+    }
+    .nav-links a.active {
+      border-bottom-color: var(--accent-brown);
+      color: var(--deep-teal);
+      font-weight: 600;
+    }
+    /* dropdown menus (desktop) */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--light-bg);
+      min-width: 220px;
+      border-radius: 20px;
+      padding: 12px 0;
+      border: 1px solid var(--soft-border);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .dropdown-menu a {
+      padding: 10px 22px;
+      border-bottom: none !important;
+      color: var(--deep-teal);
+      font-weight: 400;
+      display: block;
+      border: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      padding-left: 28px;
+      border: none;
+    }
+    .nav-links li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+    /* desktop nav buttons & toggles */
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .nav-btn {
+      padding: 8px 24px !important;
+      border-radius: 40px !important;
+      font-weight: 600;
+      border: 2px solid var(--warm-brown) !important;
+      background: transparent;
+      color: var(--deep-teal) !important;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+    .nav-btn:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+    }
+    .signup-btn {
+      background: var(--deep-teal) !important;
+      color: var(--light-bg) !important;
+      border: 2px solid var(--deep-teal) !important;
+    }
+    .signup-btn:hover {
+      background: var(--accent-brown) !important;
+      border-color: var(--accent-brown) !important;
+    }
+    .toggle-btn {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+    }
+    .toggle-btn:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+
+    /* ===== MOBILE MENU (exact alignment as requested) ===== */
+    .hamburger {
+      display: none;
+      background: none;
+      border: 2px solid var(--soft-border);
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px 12px;
+      color: var(--deep-teal);
+    }
+    .mobile-nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      height: 100vh;
+      background: var(--brown-light);
+      z-index: 999;
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem;
+      border-left: 3px solid var(--warm-brown);
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { right: 0; }
+    .mobile-nav-menu .nav-links {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.25rem !important;
+      padding-bottom: 30px !important;
+      list-style: none !important;
+    }
+    .mobile-nav-menu .nav-links > li {
+      list-style: none;
+      width: 100%;
+    }
+    .mobile-nav-menu .nav-links > li > a {
+      display: block !important;
+      padding: 15px 20px !important;
+      border: 2px solid var(--soft-border) !important;
+      border-radius: 8px !important;
+      background: var(--light-bg) !important;
+      text-decoration: none !important;
+      color: var(--deep-teal) !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+      margin-bottom: 5px;
+    }
+    .mobile-nav-menu .nav-links > li > a:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    /* sub-items (indented) */
+    .mobile-nav-menu .nav-links .home-sub-item,
+    .mobile-nav-menu .nav-links .dashboard-sub-item {
+      display: block !important;
+      padding: 12px 20px 12px 50px !important;
+      border: 2px solid var(--soft-border) !important;
+      border-radius: 8px !important;
+      background: var(--brown-light) !important;
+      text-decoration: none !important;
+      color: var(--deep-teal) !important;
+      font-weight: 500 !important;
+      width: 100% !important;
+      margin-top: -3px !important;
+      margin-bottom: 5px !important;
+      font-size: 0.95rem !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item:hover,
+    .mobile-nav-menu .nav-links .dashboard-sub-item:hover {
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    /* mobile-specific login/signup */
+    .mobile-nav-btn {
+      display: block !important;
+      padding: 15px 20px !important;
+      border: 2px solid var(--warm-brown) !important;
+      border-radius: 40px !important;
+      background: transparent !important;
+      color: var(--deep-teal) !important;
+      font-weight: 600 !important;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .mobile-nav-btn.signup-btn {
+      background: var(--deep-teal) !important;
+      color: var(--light-bg) !important;
+      border: 2px solid var(--deep-teal) !important;
+    }
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 998;
+      display: none;
+    }
+    .mobile-overlay.active { display: block; }
+    .mobile-controls {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 2px solid var(--soft-border);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--light-bg);
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--deep-teal);
+    }
+    .mobile-controls .control-btn:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+
+    /* Desktop / Mobile visibility */
+    @media (min-width: 1101px) {
+      .nav-links { display: flex !important; }
+      .nav-buttons { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links { display: none !important; }
+      .nav-buttons { display: none !important; }
+      .hamburger { display: block !important; }
+      .toggle-btn { display: none !important; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.45) sepia(0.1);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 35, 40, 0.35);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      padding: 0 20px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .hero-tag {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #f0dbc4;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #faf3e9;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 span {
+      font-style: italic;
+      color: #d4b28c;
+      border-bottom: 2px solid var(--warm-brown);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #f2e2d2;
+      font-weight: 300;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 42px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      border: 2px solid var(--warm-brown);
+    }
+  .btn-primary:hover {
+  background: linear-gradient(135deg, #cfa58a, #a28b7e);
+  transform: translateY(-3px);
+}
+    .btn-outline {
+      border: 2px solid #eed6be;
+      color: #eed6be;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #eed6be;
+      color: #1f2e36;
+    }
+
+    /* ===== PROJECT CARDS SECTION (6 cards in 2x2 grid) ===== */
+    .cards-section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .cards-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .cards-header h2 {
+      font-size: 2rem;
+      color: var(--deep-teal);
+      margin-bottom: 15px;
+      font-weight: 550;
+    }
+    
+    .cards-header p {
+      font-size: 1.2rem;
+      color: var(--deep-teal);
+      opacity: 0.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-content: center;
+    }
+    
+    .project-card {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* overlay hidden initially */
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(238, 203, 184, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      color: rgb(5, 5, 5);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.4s ease;
+    }
+    
+    /* hover effect */
+    .project-card:hover .project-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .project-overlay h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .project-overlay p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .project-overlay a {
+      background: white;
+      color: var(--warm-brown);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .project-overlay a:hover {
+      background: transparent;
+      color: rgb(8, 8, 8);
+      border-color: white;
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      
+      .cards-header h2 {
+        font-size: 2rem;
+      }
+      
+      .project-card img {
+        height: 350px;
+      }
+    }
+
+    /* ===== FOOTER (always black) ===== */
+    footer {
+      background: #000000;
+      color: #ffffff;
+      padding: 70px 5% 40px;
+      border-top: 5px solid var(--warm-brown);
+    }
+    .dark-mode footer {
+      background: #000000;
+      border-top-color: #ffffff;
+    }
+    .footer-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+    }
+    .footer-col h4 {
+      color: #e2c9aa;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--warm-brown);
+      padding-bottom: 10px;
+    }
+    .footer-col a, .footer-col p {
+      color: #ddcebc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .footer-col a:hover {
+      color: #b58b5b;
+      transform: translateX(5px);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .footer-logo i {
+      font-size: 30px;
+      color: var(--warm-brown);
+    }
+    .footer-logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      background: #AF6E4B;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .footer-logo i { color:#f5c9a6; }
+    .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .copyright {
+      text-align: center;
+      padding-top: 50px;
+      color: #ffffff;
+    }
+    .dark-mode .copyright { color: #ffffff; }
+
+    /* RTL support */
+    [dir="rtl"] .navbar { flex-direction: row-reverse; }
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-col a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
+    [dir="rtl"] .project-overlay { transform: translateY(40px); }
+    [dir="rtl"] .project-card:hover .project-overlay { transform: translateY(0); }
+
+    /* responsive footer */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.1rem; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+    }
+     .dark-mode .logo-text {
+      background: #f5c9a6; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+     .dark-mode .logo{
+       background: #f5c9a6; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+     }
+     /* Navbar color in dark mode */
+.dark-mode header{
+  background:#000000;
+}
+/* ===== Mobile active nav link ===== */
+.mobile-nav-menu .nav-links a.active{
+  background: var(--warm-brown) !important;
+  color: var(--light-bg) !important;
+  border-color: var(--warm-brown) !important;
+}
+/* ===== RTL NAVBAR FIX ===== */
+[dir="rtl"] .navbar{
+  flex-direction: row-reverse;
+}
+
+/* logo on right */
+[dir="rtl"] .logo{
+  order: 3;
+}
+
+/* nav menu center */
+[dir="rtl"] .nav-links{
+  order: 2;
+}
+
+/* login signup buttons left */
+[dir="rtl"] .nav-buttons{
+  order: 1;
+}
+
+/* hamburger icon left on mobile */
+[dir="rtl"] .hamburger{
+  order: 1;
+}
+
+/* mobile menu open from left */
+[dir="rtl"] .mobile-nav-menu{
+  left: -100%;
+  right: auto;
+}
+
+[dir="rtl"] .mobile-nav-menu.active{
+  left: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- HEADER (only logo + hamburger on mobile) -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      
+      <!-- desktop navigation (hidden on mobile) -->
+      <ul class="nav-links">
+        <li>
+          <a href="#">Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
+            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html" class="active">Service</a></li>
+        <li><a href="rarefinds.html">Rare Finds</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
+            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <!-- desktop buttons & toggles -->
+      <div class="nav-buttons">
+        <a href="login.html" class="nav-btn">Login</a>
+        <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
+        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+      </div>
+      
+      <!-- hamburger (only visible on mobile) -->
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU (exact structure as requested) -->
+  <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <!-- Home with its sub-items -->
+      <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      
+       <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="rarefinds.html">Rare Finds</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      
+      <!-- Dashboard with sub-items -->
+      <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
+      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
+            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+      
+      <!-- mobile login/signup buttons -->
+      <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
+      <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
+    </ul>
+    
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+
+  <!-- HERO (unchanged) -->
+  <section class="hero">
+    <img src="images\pexels-valentin_21-808934417-32290329.jpg" alt="Vintage books" class="hero-bg-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
+      <h1>Rare <span>books </span> <br> timeless literary  <span>treasures</span></h1>
+      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">Explore catalog</a>
+        <a href="#" class="btn btn-outline">Collector’s blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT CARDS SECTION - 6 cards in 2x2 grid with overlay hover effect -->
+  <section class="cards-section">
+    <div class="cards-header">
+      <h2>RARE COLLECTIONS</h2>
+      <p>Discover our curated selection of first editions and manuscripts</p>
+    </div>
+    
+    <div class="projects">
+      <!-- Card 1 -->
+      <div class="project-card">
+        <img src="images\Sapiens2.webp" alt="Rare Book">
+        <div class="project-overlay">
+          <h3>First Folio</h3>
+          <p>Shakespeare's First Folio - 1623 edition. Complete and restored with original binding.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+      
+      <!-- Card 2 -->
+      <div class="project-card">
+        <img src="images\pexels-salih-sk-1755180460-28103669.jpg" alt="Medieval Manuscript">
+        <div class="project-overlay">
+          <h3>Medieval Manuscript</h3>
+          <p>Illuminated Latin psalter, circa 1480. Original leather binding with gold leaf details.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+      
+      <!-- Card 3 -->
+      <div class="project-card">
+        <img src="images\pexels-leticia-alvares-1805702-33359342.jpg" alt="Poems Collection">
+        <div class="project-overlay">
+          <h3>Poems Collection</h3>
+          <p>William Wordsworth - Lyrical Ballads, first edition 1798. Includes handwritten notes.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+      
+      <!-- Card 4 -->
+      <div class="project-card">
+        <img src="images\pexels-suzyhazelwood-1172018.jpg" alt="The Canterbury Tales">
+        <div class="project-overlay">
+          <h3>The Canterbury Tales</h3>
+          <p>Geoffrey Chaucer - 15th century manuscript facsimile with original illustrations.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+      
+      <!-- Card 5 -->
+      <div class="project-card">
+        <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Leather Bound Classics">
+        <div class="project-overlay">
+          <h3>Leather Bound Classics</h3>
+          <p>19th century leather binding collection, 12 volumes of literary masterpieces.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+      
+      <!-- Card 6 -->
+      <div class="project-card">
+        <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Author's Manuscript">
+        <div class="project-overlay">
+          <h3>Author's Manuscript</h3>
+          <p>Handwritten draft by Charles Dickens, signed and dated. Includes personal letters.</p>
+          <a href="serviceDetail.html">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (as extracted) -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#" class="footer-logo">
+          <i class="fas fa-feather-alt"></i>
+          <span class="footer-logo-text">Grow Rare</span>
+        </a>
+        <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
+        <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
+      </div>
+     <div class="footer-col">
+        <h4>QuickLinks</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html"> About</a>
+        <a href="contact.html">Contact</a>
+        <a href="service.html">Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>collector</h4>
+        <a href="#">wishlist</a>
+        <a href="#">first dibs</a>
+        <a href="#">order tracking</a>
+        <a href="#">newsletter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social Links</h4>
+        <a href="#">instagram</a>
+        <a href="#">pinterest</a>
+        <a href="#">facebook</a>
+         <a href="#">whatsapp</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 Grow Rare Books – for collectors, by collectors.
+    </div>
+  </footer>
+
+  <!-- SCRIPT: only hamburger, theme, rtl functionality -->
+  <script>
+    (function() {
+      // Mobile menu elements
+      const hamburger = document.getElementById('hamburger');
+      const overlay = document.getElementById('mobileOverlay');
+      const mobileMenu = document.getElementById('mobileNavMenu');
+      const body = document.body;
+
+      if (hamburger && overlay && mobileMenu) {
+        function toggleMobileMenu() {
+          const isActive = mobileMenu.classList.contains('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          body.style.overflow = isActive ? '' : 'hidden';
+          hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+
+        // close menu when clicking a link that doesn't contain caret (i.e. not a dropdown header)
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!this.querySelector('.fa-caret-down')) {
+              toggleMobileMenu();
+            }
+          });
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+          }
+        });
+      }
+
+      // Theme toggle
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+
+      // RTL toggle
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+      }
+
+      // Attach listeners
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+
+      // Load saved preferences
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = 'fas fa-sun';
+        });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'LTR';
+      }
+    })();
+    /* ===== Active link for mobile menu ===== */
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if(linkPage === currentPage){
+    link.classList.add("active");
+  }
+});
+  </script>
+</body>
+</html>
