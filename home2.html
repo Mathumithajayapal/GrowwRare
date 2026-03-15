@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Rare · professional home (expanded)</title>
+  <title>Vintage Volumes · professional home (expanded)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -46,15 +46,14 @@
       letter-spacing: -0.01em;
     }
 
-    /* ===== HEADER ===== */
-   header {
-  background: #ffffff; /* pure white */
-  border-bottom: 3px solid var(--warm-brown);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
+    /* ===== HEADER - border line removed ===== */
+    header {
+      background: #ffffff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
     .navbar {
       max-width: 1400px;
       margin: 0 auto;
@@ -75,9 +74,15 @@
       color: var(--warm-brown);
     }
     .logo-text {
-      font-size: 28px;
-      font-weight: 700;
+     font-size: 25px;
+      font-weight: 500;
       background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .logo-text {
+      background: #f5c9a6; 
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -113,7 +118,6 @@
       color: var(--deep-teal);
       font-weight: 600;
     }
-    /* dropdown menus (desktop) */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -149,7 +153,6 @@
       visibility: visible;
       transform: translateY(4px);
     }
-    /* desktop nav buttons & toggles */
     .nav-buttons {
       display: flex;
       gap: 12px;
@@ -202,7 +205,7 @@
       color: var(--light-bg);
     }
 
-    /* ===== MOBILE MENU (exact alignment as requested) ===== */
+    /* ===== MOBILE MENU ===== */
     .hamburger {
       display: none;
       background: none;
@@ -222,11 +225,40 @@
       background: var(--brown-light);
       z-index: 999;
       transition: right 0.4s;
-      padding: 90px 2rem 2rem;
+      padding: 20px 2rem 2rem;
       border-left: 3px solid var(--warm-brown);
       overflow-y: auto;
     }
     .mobile-nav-menu.active { right: 0; }
+    
+    /* Close button inside mobile menu */
+    .mobile-close-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    
+    .close-menu {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+      margin-left: auto;
+    }
+    
+    .close-menu:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+    
     .mobile-nav-menu .nav-links {
       display: flex !important;
       flex-direction: column !important;
@@ -255,7 +287,6 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* sub-items (indented) */
     .mobile-nav-menu .nav-links .home-sub-item,
     .mobile-nav-menu .nav-links .dashboard-sub-item {
       display: block !important;
@@ -277,7 +308,6 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* mobile-specific login/signup */
     .mobile-nav-btn {
       display: block !important;
       padding: 15px 20px !important;
@@ -332,7 +362,6 @@
       color: var(--light-bg);
     }
 
-    /* Desktop / Mobile visibility */
     @media (min-width: 1101px) {
       .nav-links { display: flex !important; }
       .nav-buttons { display: flex !important; }
@@ -439,16 +468,15 @@
       color: #1f2e36;
     }
 
-    /* ===== FOOTER (always black) ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      border-top: 5px solid var(--warm-brown);
+      margin-top: 0;
     }
     .dark-mode footer {
       background: #000000;
-      border-top-color: #ffffff;
     }
     .footer-grid {
       max-width: 1300px;
@@ -510,8 +538,12 @@
     [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
     [dir="rtl"] .mobile-nav-menu.active { left: 0; }
     [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
+    [dir="rtl"] .close-menu { margin-left: 0; margin-right: auto; }
+    [dir="rtl"] .logo { order: 3; }
+    [dir="rtl"] .nav-links { order: 2; }
+    [dir="rtl"] .nav-buttons { order: 1; }
+    [dir="rtl"] .hamburger { order: 1; }
 
-    /* responsive footer */
     @media (max-width: 900px) {
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -523,7 +555,7 @@
       .btn { width: 100%; max-width: 300px; }
     }
 
-    /* ----- NEW PROFESSIONAL HOME SECTIONS ----- */
+    /* ----- NEW SECTIONS ----- */
     .section-padding {
       padding: 5rem 5%;
       max-width: 1400px;
@@ -545,7 +577,6 @@
       font-weight: 300;
     }
 
-    /* features grid - Desktop: 2x2, Mobile: 1 column */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -578,7 +609,6 @@
       opacity: 0.8;
     }
 
-    /* catalog highlights (3 items) - Desktop: 3 columns, Mobile: 1 column */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -618,7 +648,6 @@
       color: var(--deep-teal);
     }
 
-    /* testimonials - Desktop: 2 columns, Mobile: 1 column */
     .testimonials {
       background: var(--brown-light);
       border-radius: 60px;
@@ -657,7 +686,6 @@
       font-size: 0.9rem;
     }
 
-    /* product section (with even spacing) - Desktop: 4 columns, Tablet: 2 columns, Mobile: 1 column */
     .product-section {
       background: #FFFFFF;
       color: var(--deep-teal);
@@ -666,7 +694,6 @@
       margin: 5rem 0;
     }
     .dark-mode .product-section { background: #111111; color: #ffffff; }
-
     .product-header .small-title {
       color: var(--warm-brown);
       letter-spacing: 3px;
@@ -729,7 +756,6 @@
     .dark-mode .product-img { background: #1a1a1a; border-color: #333333; }
     .dark-mode .price { color: #ffffff; }
 
-    /* ===== NEW SECTION: 5 IMAGES ON RIGHT, CONTENT ON LEFT ===== */
     .gallery-section {
       padding: 5rem 5%;
       background: var(--light-bg);
@@ -800,7 +826,6 @@
       object-fit: cover;
       display: block;
     }
-    /* specific spans for a 5-image layout */
     .collage-item:nth-child(1) {
       grid-column: span 2;
       grid-row: span 1;
@@ -821,13 +846,7 @@
       grid-row: span 1;
       aspect-ratio: 2 / 1;
     }
-    .collage-item:nth-child(5) {
-      grid-column: span 1;
-      grid-row: span 1;
-      aspect-ratio: 1 / 1;
-    }
 
-    /* Dark mode for gallery */
     .dark-mode .gallery-section {
       background: #000000;
     }
@@ -837,144 +856,47 @@
       color: #ffffff;
     }
 
-    /* Responsive - Standard breakpoints */
     @media (max-width: 1100px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    
     @media (max-width: 1000px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+      .gallery-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
-    
     @media (max-width: 900px) {
       .catalog-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    
-    /* Tablet breakpoints - 2 columns for some sections */
-  @media (max-width: 820px) {
-  .catalog-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem;
-  }
-}
-    
+    @media (max-width: 820px) {
+      .catalog-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+    }
     @media (max-width: 800px) {
-      .catalog-grid {
-        grid-template-columns: repeat( 1fr) !important;
-        gap: 1.5rem;
-      }
+      .catalog-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
     }
-    
-    /* Mobile breakpoint - ALL CARDS ONE BY ONE */
     @media (max-width: 768px) {
-      /* Curated for collectors - 1 column */
-      .features-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-      }
-      
-      /* Recently acquired - 1 column */
-      .catalog-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-      }
-      
-      /* Product section - 1 column */
-      .product-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-      }
-      
-      /* Testimonials - 1 column */
-      .testimonial-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-      }
-      
-      /* Gallery section - stack vertically */
-      .gallery-grid {
-        grid-template-columns: 1fr !important;
-        gap: 2rem;
-      }
-      
-      /* Image collage adjustments for mobile */
-      .image-collage {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-      
+      .features-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+      .catalog-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+      .product-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+      .testimonial-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+      .gallery-grid { grid-template-columns: 1fr !important; gap: 2rem; }
+      .image-collage { grid-template-columns: repeat(2, 1fr) !important; }
       .collage-item:nth-child(1),
-      .collage-item:nth-child(4) {
-        grid-column: span 2 !important;
-      }
-      
-      /* Feature card adjustments */
-      .feature-card {
-        padding: 2rem 1.5rem !important;
-      }
-      
-      .feature-card h3 {
-        font-size: 1.4rem !important;
-      }
-      
-      /* Catalog item adjustments */
-      .catalog-item img {
-        height: 250px !important;
-      }
-      
-      /* Hero adjustments */
-      .hero h1 {
-        font-size: 3rem !important;
-      }
-      
-      .hero p {
-        font-size: 1.1rem !important;
-      }
-      
-      .hero-tag {
-        font-size: 0.9rem !important;
-        letter-spacing: 2px;
-      }
-      
-      /* Section titles */
-      .section-title {
-        font-size: 2.2rem !important;
-      }
-      
-      /* Gallery stats */
-      .gallery-stats {
-        flex-direction: column !important;
-        gap: 1rem !important;
-      }
+      .collage-item:nth-child(4) { grid-column: span 2 !important; }
+      .feature-card { padding: 2rem 1.5rem !important; }
+      .feature-card h3 { font-size: 1.4rem !important; }
+      .catalog-item img { height: 250px !important; }
+      .hero h1 { font-size: 3rem !important; }
+      .hero p { font-size: 1.1rem !important; }
+      .hero-tag { font-size: 0.9rem !important; letter-spacing: 2px; }
+      .section-title { font-size: 2.2rem !important; }
+      .gallery-stats { flex-direction: column !important; gap: 1rem !important; }
     }
-    
-    /* Small mobile */
     @media (max-width: 480px) {
-      .feature-card {
-        padding: 1.5rem 1rem !important;
-      }
-      
-      .catalog-item img {
-        height: 200px !important;
-      }
-      
-      .product-img {
-        height: 180px !important;
-      }
-      
-      .image-collage {
-        grid-template-columns: 1fr !important;
-      }
-      
+      .feature-card { padding: 1.5rem 1rem !important; }
+      .catalog-item img { height: 200px !important; }
+      .product-img { height: 180px !important; }
+      .image-collage { grid-template-columns: 1fr !important; }
       .collage-item:nth-child(1),
-      .collage-item:nth-child(4) {
-        grid-column: span 1 !important;
-        aspect-ratio: 1 / 1 !important;
-      }
+      .collage-item:nth-child(4) { grid-column: span 1 !important; aspect-ratio: 1 / 1 !important; }
     }
-    
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
       :root { --section-gap: 3rem; }
@@ -992,51 +914,14 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    /* Navbar color in dark mode */
     .dark-mode header{
       background:#000000;
     }
-    /* ===== Mobile active nav link ===== */
     .mobile-nav-menu .nav-links a.active{
       background: var(--warm-brown) !important;
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* ===== RTL NAVBAR FIX ===== */
-    [dir="rtl"] .navbar{
-      flex-direction: row-reverse;
-    }
-
-    /* logo on right */
-    [dir="rtl"] .logo{
-      order: 3;
-    }
-
-    /* nav menu center */
-    [dir="rtl"] .nav-links{
-      order: 2;
-    }
-
-    /* login signup buttons left */
-    [dir="rtl"] .nav-buttons{
-      order: 1;
-    }
-
-    /* hamburger icon left on mobile */
-    [dir="rtl"] .hamburger{
-      order: 1;
-    }
-
-    /* mobile menu open from left */
-    [dir="rtl"] .mobile-nav-menu{
-      left: -100%;
-      right: auto;
-    }
-
-    [dir="rtl"] .mobile-nav-menu.active{
-      left: 0;
-    }
-    
   </style>
 </head>
 <body>
@@ -1045,7 +930,7 @@
   <!-- HEADER -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Vintage Volumes</span></a>
       
       <ul class="nav-links">
         <li>
@@ -1080,8 +965,13 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE MENU with CLOSE BUTTON (X) inside - FIXED: Removed duplicate div -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
+    <!-- Close button (X) at the top of the mobile panel -->
+    <div class="mobile-close-btn">
+      <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+    </div>
+    
     <ul class="nav-links">
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
@@ -1103,7 +993,7 @@
     </div>
   </div>
 
-  <!-- HERO (unchanged) -->
+  <!-- HERO -->
   <section class="hero">
     <img src="images\pexels-suzyhazelwood-1438044.jpg" alt="Vintage books" class="hero-bg-image">
     <div class="hero-overlay"></div>
@@ -1118,7 +1008,7 @@
     </div>
   </section>
 
-  <!-- features / expertise - 2x2 grid on desktop, 1 column on mobile -->
+  <!-- features / expertise -->
   <div class="section-padding">
     <h2 class="section-title">Curated for collectors</h2>
     <div class="section-subtitle">Every volume authenticated, every binding appreciated.</div>
@@ -1146,7 +1036,7 @@
     </div>
   </div>
 
-  <!-- catalog highlights (three items) -->
+  <!-- catalog highlights -->
   <div class="section-padding" style="padding-top:0; padding-bottom:5rem;">
     <h2 class="section-title">Recently acquired</h2>
     <div class="section-subtitle">Fresh arrivals for the discerning shelf.</div>
@@ -1234,10 +1124,9 @@
     </div>
   </div>
 
-  <!-- NEW SECTION: 5 IMAGES ON RIGHT, CONTENT ON LEFT -->
+  <!-- GALLERY SECTION -->
   <section class="gallery-section">
     <div class="gallery-grid">
-      <!-- Left content -->
       <div class="gallery-content">
         <h2>A Glimpse Inside Our Vault</h2>
         <div class="subhead">Rare editions · Manuscripts · Fine bindings</div>
@@ -1258,7 +1147,6 @@
         </div>
       </div>
 
-      <!-- Right image collage (5 images) -->
       <div class="image-collage">
         <div class="collage-item">
           <img src="images\pexels-mikhail-nilov-8653444.jpg" alt="Library interior">
@@ -1282,7 +1170,7 @@
       <div class="footer-col">
         <a href="#" class="footer-logo">
           <i class="fas fa-feather-alt"></i>
-          <span class="footer-logo-text">Grow Rare</span>
+          <span class="footer-logo-text">Vintage Volumes</span>
         </a>
         <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
@@ -1310,7 +1198,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2026 Grow Rare Books – for collectors, by collectors.
+      © 2026 Vintage Volumes Books – for collectors, by collectors.
     </div>
   </footer>
 
@@ -1320,9 +1208,10 @@
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const body = document.body;
 
-      if (hamburger && overlay && mobileMenu) {
+      if (hamburger && overlay && mobileMenu && mobileCloseBtn) {
         function toggleMobileMenu() {
           const isActive = mobileMenu.classList.contains('active');
           mobileMenu.classList.toggle('active');
@@ -1330,16 +1219,21 @@
           body.style.overflow = isActive ? '' : 'hidden';
           hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
         }
+        
         hamburger.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
+        
         document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
           link.addEventListener('click', function(e) {
             if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
           });
         });
+        
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
+        
         window.addEventListener('resize', () => {
           if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
@@ -1355,6 +1249,7 @@
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
+      
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
@@ -1363,6 +1258,7 @@
         if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
+      
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
@@ -1376,22 +1272,22 @@
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
+      
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
         const mobileSpan = document.querySelector('#mobileRtlToggle span');
         if (mobileSpan) mobileSpan.textContent = 'LTR';
       }
     })();
-    /* ===== Active link for mobile menu ===== */
-const currentPage = window.location.pathname.split("/").pop();
 
-document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if(linkPage === currentPage){
-    link.classList.add("active");
-  }
-});
+    /* Active link for mobile menu */
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if(linkPage === currentPage){
+        link.classList.add("active");
+      }
+    });
   </script>
 </body>
 </html>

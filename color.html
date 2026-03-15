@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Rare · core (header/hero/footer)</title>
+  <title>Vintage Volumes · core (header/hero/footer)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -75,9 +75,15 @@
       color: var(--warm-brown);
     }
     .logo-text {
-      font-size: 28px;
-      font-weight: 700;
+     font-size: 25px;
+      font-weight: 500;
       background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .logo-text {
+      background: #f5c9a6; 
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -530,7 +536,7 @@
   <!-- HEADER (only logo + hamburger on mobile) -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Vintage Volumes</span></a>
       
       <!-- desktop navigation (hidden on mobile) -->
       <ul class="nav-links">
@@ -619,7 +625,7 @@
       <div class="footer-col">
         <a href="#" class="footer-logo">
           <i class="fas fa-feather-alt"></i>
-          <span class="footer-logo-text">Grow Rare</span>
+          <span class="footer-logo-text">Vintage Volumes</span>
         </a>
         <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
@@ -646,7 +652,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2026 Grow Rare Books – for collectors, by collectors.
+      © 2026 Vintage Volumes Books – for collectors, by collectors.
     </div>
   </footer>
 

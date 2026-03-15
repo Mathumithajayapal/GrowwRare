@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Rare · Poems Collection Details</title>
+  <title>Vintage Volumes · Poems Collection Details</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -49,15 +49,15 @@
       letter-spacing: -0.01em;
     }
 
-    /* ===== HEADER ===== */
-  header {
-  background: #ffffff; /* pure white */
-  border-bottom: 3px solid var(--warm-brown);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
+    /* ===== HEADER - border line removed ===== */
+    header {
+      background: #ffffff; /* pure white */
+      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
     .navbar {
       max-width: 1400px;
       margin: 0 auto;
@@ -67,7 +67,7 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .logo {
+     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -78,8 +78,8 @@
       color: var(--warm-brown);
     }
     .logo-text {
-      font-size: 28px;
-      font-weight: 700;
+     font-size: 25px;
+      font-weight: 500;
       background: #AF6E4B; 
       -webkit-background-clip: text;
       background-clip: text;
@@ -231,11 +231,40 @@
       background: var(--brown-light);
       z-index: 999;
       transition: right 0.4s;
-      padding: 90px 2rem 2rem;
+      padding: 20px 2rem 2rem;
       border-left: 3px solid var(--warm-brown);
       overflow-y: auto;
     }
     .mobile-nav-menu.active { right: 0; }
+    
+    /* Close button inside mobile menu */
+    .mobile-close-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    
+    .close-menu {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+      margin-left: auto;
+    }
+    
+    .close-menu:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+    
     .mobile-nav-menu .nav-links {
       display: flex !important;
       flex-direction: column !important;
@@ -852,16 +881,18 @@
       font-style: italic;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== FOOTER - border line removed, only 2px gap above ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      border-top: 5px solid var(--warm-brown);
+      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
+      margin-top: 2px; /* exactly 2px gap above footer */
     }
     .dark-mode footer {
       background: #000000;
-      border-top-color: #ffffff;
+      /* border-top-color: #ffffff;  ← REMOVED */
+      margin-top: 2px;
     }
     .footer-grid {
       max-width: 1300px;
@@ -925,6 +956,11 @@
     [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
     [dir="rtl"] .features-list li i { margin-left: 10px; margin-right: 0; }
     [dir="rtl"] .poet-card { text-align: right; }
+    [dir="rtl"] .close-menu { margin-left: 0; margin-right: auto; }
+    [dir="rtl"] .logo { order: 3; }
+    [dir="rtl"] .nav-links { order: 2; }
+    [dir="rtl"] .nav-buttons { order: 1; }
+    [dir="rtl"] .hamburger { order: 1; }
 
     /* ===== EVEN SPACING + CARD STACK FOR SPECIFIC RESOLUTIONS ===== */
     /* All sections get consistent bottom margin */
@@ -992,40 +1028,6 @@
 .dark-mode header{
   background:#000000;
 }
-/* ===== RTL NAVBAR FIX ===== */
-[dir="rtl"] .navbar{
-  flex-direction: row-reverse;
-}
-
-/* logo on right */
-[dir="rtl"] .logo{
-  order: 3;
-}
-
-/* nav menu center */
-[dir="rtl"] .nav-links{
-  order: 2;
-}
-
-/* login signup buttons left */
-[dir="rtl"] .nav-buttons{
-  order: 1;
-}
-
-/* hamburger icon left on mobile */
-[dir="rtl"] .hamburger{
-  order: 1;
-}
-
-/* mobile menu open from left */
-[dir="rtl"] .mobile-nav-menu{
-  left: -100%;
-  right: auto;
-}
-
-[dir="rtl"] .mobile-nav-menu.active{
-  left: 0;
-}
 @media (max-width: 820px){
   .poet-grid{
     grid-template-columns: 1fr !important;
@@ -1047,7 +1049,7 @@
   <!-- HEADER -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Vintage Volumes</span></a>
       
       <ul class="nav-links">
         <li>
@@ -1082,8 +1084,13 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
+    <!-- Close button (X) at the top of the mobile panel -->
+    <div class="mobile-close-btn">
+      <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+    </div>
+    
     <ul class="nav-links">
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
@@ -1250,13 +1257,13 @@ modern poetry, and timeless classics written to inspire the soul.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (now with only 2px gap above) -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
         <a href="#" class="footer-logo">
           <i class="fas fa-feather-alt"></i>
-          <span class="footer-logo-text">Grow Rare</span>
+          <span class="footer-logo-text">Vintage Volumes</span>
         </a>
         <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
@@ -1284,7 +1291,7 @@ modern poetry, and timeless classics written to inspire the soul.</p>
       </div>
     </div>
     <div class="copyright">
-      © 2026 Grow Rare Books – for collectors, by collectors.
+      © 2026 Vintage Volumes Books – for collectors, by collectors.
     </div>
   </footer>
 
@@ -1294,9 +1301,10 @@ modern poetry, and timeless classics written to inspire the soul.</p>
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const body = document.body;
 
-      if (hamburger && overlay && mobileMenu) {
+      if (hamburger && overlay && mobileMenu && mobileCloseBtn) {
         function toggleMobileMenu() {
           const isActive = mobileMenu.classList.contains('active');
           mobileMenu.classList.toggle('active');
@@ -1306,6 +1314,7 @@ modern poetry, and timeless classics written to inspire the soul.</p>
         }
 
         hamburger.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
 
         document.querySelectorAll('.mobile-nav-menu a').forEach(link => {

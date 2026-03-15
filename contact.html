@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Rare · Contact & Locations</title>
+  <title>Vintage Volumes · Contact & Locations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -47,15 +47,15 @@
       letter-spacing: -0.01em;
     }
 
-    /* ===== HEADER (exact copy from reference) ===== */
+    /* ===== HEADER - border line removed ===== */
     header {
-  background: #ffffff; /* pure white */
-  border-bottom: 3px solid var(--warm-brown);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
+      background: #ffffff; /* pure white */
+      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
     .navbar {
       max-width: 1400px;
       margin: 0 auto;
@@ -76,8 +76,8 @@
       color: var(--warm-brown);
     }
     .logo-text {
-      font-size: 28px;
-      font-weight: 700;
+     font-size: 25px;
+      font-weight: 500;
       background: #AF6E4B; 
       -webkit-background-clip: text;
       background-clip: text;
@@ -229,11 +229,40 @@
       background: var(--brown-light);
       z-index: 999;
       transition: right 0.4s;
-      padding: 90px 2rem 2rem;
+      padding: 20px 2rem 2rem;
       border-left: 3px solid var(--warm-brown);
       overflow-y: auto;
     }
     .mobile-nav-menu.active { right: 0; }
+    
+    /* Close button inside mobile menu */
+    .mobile-close-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    
+    .close-menu {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+      margin-left: auto;
+    }
+    
+    .close-menu:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+    
     .mobile-nav-menu .nav-links {
       display: flex !important;
       flex-direction: column !important;
@@ -447,16 +476,16 @@
       color: #1f2e36;
     }
 
-    /* ===== FOOTER (exact copy from reference – always black) ===== */
+    /* ===== FOOTER - border line removed ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      border-top: 5px solid var(--warm-brown);
+      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
     }
     .dark-mode footer {
       background: #000000;
-      border-top-color: #ffffff;
+      /* border-top-color: #ffffff;  ← REMOVED */
     }
     .footer-grid {
       max-width: 1300px;
@@ -518,6 +547,11 @@
     [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
     [dir="rtl"] .mobile-nav-menu.active { left: 0; }
     [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
+    [dir="rtl"] .close-menu { margin-left: 0; margin-right: auto; }
+    [dir="rtl"] .logo { order: 3; }
+    [dir="rtl"] .nav-links { order: 2; }
+    [dir="rtl"] .nav-buttons { order: 1; }
+    [dir="rtl"] .hamburger { order: 1; }
 
     /* ===== CONTACT PAGE SPECIFIC STYLES ===== */
     .locations-section,
@@ -849,58 +883,25 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* ===== RTL NAVBAR FIX ===== */
-    [dir="rtl"] .navbar{
-      flex-direction: row-reverse;
-    }
-
-    /* logo on right */
-    [dir="rtl"] .logo{
-      order: 3;
-    }
-
-    /* nav menu center */
-    [dir="rtl"] .nav-links{
-      order: 2;
-    }
-
-    /* login signup buttons left */
-    [dir="rtl"] .nav-buttons{
-      order: 1;
-    }
-
-    /* hamburger icon left on mobile */
-    [dir="rtl"] .hamburger{
-      order: 1;
-    }
-
-    /* mobile menu open from left */
-    [dir="rtl"] .mobile-nav-menu{
-      left: -100%;
-      right: auto;
-    }
-
-    [dir="rtl"] .mobile-nav-menu.active{
-      left: 0;
-    }
+    
     /* ===== Tablet footer 2x2 grid ===== */
-@media (min-width: 600px) and (max-width: 1024px) {
-  .footer-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 40px;
-  }
-}
-@media (max-width: 820px){
-  .locations-grid{
-    grid-template-columns: 1fr !important;
-  }
-}
-/* 1024 screens - show location cards one by one */
-@media (max-width: 1024px){
-  .locations-grid{
-    grid-template-columns: 1fr !important;
-  }
-}
+    @media (min-width: 600px) and (max-width: 1024px) {
+      .footer-grid{
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px;
+      }
+    }
+    @media (max-width: 820px){
+      .locations-grid{
+        grid-template-columns: 1fr !important;
+      }
+    }
+    /* 1024 screens - show location cards one by one */
+    @media (max-width: 1024px){
+      .locations-grid{
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -909,7 +910,7 @@
   <!-- HEADER -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+      <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Vintage Volumes</span></a>
       
       <ul class="nav-links">
         <li>
@@ -944,8 +945,13 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
+    <!-- Close button (X) at the top of the mobile panel -->
+    <div class="mobile-close-btn">
+      <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+    </div>
+    
     <ul class="nav-links">
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
@@ -968,27 +974,27 @@
   </div>
 
   <!-- HERO -->
-<section class="hero">
-  <img src="images/pexels-cottonbro-6333858.jpg" class="hero-bg-image">
-  <div class="hero-overlay"></div>
+  <section class="hero">
+    <img src="images/pexels-cottonbro-6333858.jpg" class="hero-bg-image">
+    <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <div class="hero-tag">GET IN TOUCH · WE'D LOVE TO HEAR FROM YOU</div>
+    <div class="hero-content">
+      <div class="hero-tag">GET IN TOUCH · WE'D LOVE TO HEAR FROM YOU</div>
 
-    <h1>Contact <span>Grow Rare</span> <br> Rare Book <span>Store</span></h1>
+      <h1>Contact <span>Vintage Volumes</span> <br> Rare Book <span>Store</span></h1>
 
-    <p>
-      Have questions about rare books, first editions, or special collections?
-      Our team is here to help collectors and book lovers find the perfect literary treasure.
-      Reach out to us anytime.
-    </p>
+      <p>
+        Have questions about rare books, first editions, or special collections?
+        Our team is here to help collectors and book lovers find the perfect literary treasure.
+        Reach out to us anytime.
+      </p>
 
-    <div class="btn-group">
-      <a href="#contact-form" class="btn btn-primary">Send a Message</a>
-      <a href="mailto:info@growrare.com" class="btn btn-outline">Email Us</a>
+      <div class="btn-group">
+        <a href="#contact-form" class="btn btn-primary">Send a Message</a>
+        <a href="mailto:info@growrare.com" class="btn btn-outline">Email Us</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- SECTION 1: BOOKSTORE LOCATIONS -->
   <section class="locations-section">
@@ -1115,7 +1121,7 @@
       <div class="footer-col">
         <a href="#" class="footer-logo">
           <i class="fas fa-feather-alt"></i>
-          <span class="footer-logo-text">Grow Rare</span>
+          <span class="footer-logo-text">Vintage Volumes</span>
         </a>
         <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
@@ -1143,7 +1149,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2026 Grow Rare Books – for collectors, by collectors.
+      © 2026 Vintage Volumes Books – for collectors, by collectors.
     </div>
   </footer>
 
@@ -1153,9 +1159,10 @@
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const body = document.body;
 
-      if (hamburger && overlay && mobileMenu) {
+      if (hamburger && overlay && mobileMenu && mobileCloseBtn) {
         function toggleMobileMenu() {
           const isActive = mobileMenu.classList.contains('active');
           mobileMenu.classList.toggle('active');
@@ -1163,16 +1170,21 @@
           body.style.overflow = isActive ? '' : 'hidden';
           hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
         }
+        
         hamburger.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
+        
         document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
           link.addEventListener('click', function(e) {
             if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
           });
         });
+        
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
+        
         window.addEventListener('resize', () => {
           if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
@@ -1188,6 +1200,7 @@
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
+      
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
@@ -1196,6 +1209,7 @@
         if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
+      
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
@@ -1209,12 +1223,14 @@
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
+      
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
         const mobileSpan = document.querySelector('#mobileRtlToggle span');
         if (mobileSpan) mobileSpan.textContent = 'LTR';
       }
     })();
+    
     /* ===== Active link for mobile menu ===== */
     const currentPage = window.location.pathname.split("/").pop();
     

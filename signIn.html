@@ -2,335 +2,467 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Rare · Join the Society</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vintage Volumes · Join the Reading Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Playfair Display for headings, Inter for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Playfair Display for headings, Poppins for body (bookstore vibe) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images/growwpark_logo.jpg">
+  <link rel="icon" type="image/jpeg" href="images/bookhaven_logo.jpg">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --ink: #1F3B4B;          /* deep teal-blue – mysterious, like aged leather ink */
-      --copper: #AF6E4B;       /* antique copper – warm, rare patina */
-      --parchment: #FDF6E9;    /* soft chalk with warmth – background */
-      --dust: #DCD2C0;         /* neutral stone – borders, cards */
-      --gold-leaf: #B8916E;    /* muted gold – highlights, buttons */
-      --shadow: 0 20px 35px -8px rgba(31, 59, 75, 0.2);
-      --transition: all 0.4s ease;
+      --ink: #2C1810;          /* rich dark brown – like old leather bindings */
+      --paper: #F5E6D3;        /* warm antique paper – background */
+      --gold: #B68B5C;         /* aged gold – highlights, buttons */
+      --dust: #DBC9B8;         /* soft neutral – borders, cards */
+      --shadow: 0 4px 12px rgba(44,24,16,0.15);
+      --shadow-lg: 0 15px 30px rgba(44,24,16,0.2);
+      --transition: all 0.3s ease;
     }
     .dark-mode {
-      --ink: #FDF6E9;
-      --copper: #B8916E;
-      --parchment: #000000;
-      --dust: #333333;
-      --gold-leaf: #AF6E4B;
-      --text-light: #DDDDDD;
-      --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5);
+      --ink: #F5E6D3;
+      --paper: #000000;        /* changed from #1A0F0A to pure black */
+      --gold: #C9A77D;
+      --dust: #4A3A2F;
+      --bg: #000000;           /* ensure background is black */
+      --text: #F5E6D3;
+      --text-light: #DBC9B8;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--parchment);
-      color: var(--ink);
-      min-height: 100vh; transition: 0.3s;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      font-family: 'Poppins', sans-serif; 
+      color: var(--ink); 
+      background: var(--paper);
+      min-height: 100vh; 
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      padding: 15px;
+      position: relative;
+      overflow: hidden; /* Prevents scrolling */
     }
     h1, h2, h3, h4, h5, h6, .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-family: 'Playfair Display', serif; 
+      font-weight: 700;
+    }
+
+    /* Theme and RTL controls - fixed at top right */
+    .theme-controls {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+      z-index: 9999;
+    }
+    .theme-controls .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .theme-controls .control-btn:hover {
+      transform: scale(1.1);
+      background: var(--gold);
+      color: var(--paper);
     }
 
     .register-container {
-      width: 100%; display: flex; align-items: center; justify-content: center; padding: 20px;
-    }
-    .register-wrapper {
-      max-width: 1000px; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr;
-      background: var(--parchment);
-      border-radius: 25px; overflow: hidden;
-      box-shadow: var(--shadow); border: 1px solid var(--dust);
-    }
-
-    /* Left Side – Rare Books theme */
-    .register-brand {
-      background: var(--ink);
-      padding: 40px 30px; color: #f0e7da;
-      display: flex; flex-direction: column; justify-content: space-between;
-      position: relative; overflow: hidden;
-    }
-    .dark-mode .register-brand {
-      background: #0a0a0a;
-      border-right: 1px solid var(--dust);
-    }
-    .brand-content { position: relative; z-index: 2; }
-    .brand-icon { font-size: 48px; color: var(--copper); margin-bottom: 20px; }
-    .brand-title { 
-      font-size: 2.2rem; 
-      margin-bottom: 15px; 
-      line-height: 1.2; 
-      color: #f0e7da;          /* fixed warm light – stays light in dark mode */
-      font-weight: 700;
-    }
-    .dark-mode .brand-title {
-      color: #f0e7da;
-    }
-    .brand-title span { 
-      color: var(--copper); 
-      font-style: italic;
-      border-bottom: 2px solid var(--copper);
-    }
-    .brand-features { margin: 25px 0; }
-    .brand-feature {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 15px;
-    }
-    .brand-feature i {
-      width: 32px; height: 32px; background: rgba(175, 110, 75, 0.2); 
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--copper); font-size: 16px;
-    }
-    .brand-feature span { 
-      font-size: 0.95rem; 
-      color: #dccbb6;
-      font-weight: 300;
-    }
-    .dark-mode .brand-feature span {
-      color: #cccccc;
-    }
-    .brand-stats { 
+      width: 100%; 
       display: flex; 
-      gap: 25px; 
-      margin-top: 30px; 
-      border-top: 1px dashed var(--copper);
+      align-items: center; 
+      justify-content: center;
       padding-top: 25px;
     }
-    .stat-item h3 { 
-      font-size: 1.8rem; 
-      color: var(--copper); 
-      margin-bottom: 2px; 
-      font-weight: 700;
-    }
-    .stat-item p { 
-      font-size: 0.75rem; 
-      color: #cbb59e;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .dark-mode .stat-item p {
-      color: #aaaaaa;
-    }
-    .brand-bg-pattern {
-      position: absolute; top: 0; right: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 100% 0%, rgba(175,110,75,0.15) 0%, transparent 50%);
-      z-index: 1;
+    .register-wrapper {
+      max-width: 400px;        /* increased from 360px to 400px */
+      width: 100%;
+      background: var(--paper); 
+      border-radius: 28px;      /* slightly larger radius */
+      overflow: hidden;
+      box-shadow: var(--shadow-lg); 
+      border: 1px solid var(--dust);
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
     }
 
-    /* Right Side – Sign Up Form */
+    /* Register Form */
     .register-form {
-      padding: 35px 35px 25px; 
-      background: var(--parchment);
-      position: relative; display: flex; flex-direction: column;
+      padding: 24px 24px 22px;  /* increased padding */
+      background: var(--paper);
+      display: flex; 
+      flex-direction: column;
+      transition: background-color 0.3s ease;
     }
-    /* Logo exactly as in login page: copper icon & text, no gradient */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      margin-bottom: 15px;
+    .logo { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      text-decoration: none; 
+      margin-bottom: 10px;
     }
-    .logo i {
-      font-size: 30px;
-      color: var(--copper);
+    .logo i { 
+      color: var(--gold); 
+      font-size: 38px;          /* larger icon to match vintage feel */
+      transition: color 0.3s ease;
     }
     .logo-text {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--copper);        /* solid copper, matching login page */
+    font-size: 25px;
+      font-weight: 500;
+      background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .dark-mode .logo-text,
-    .dark-mode .logo i {
-      color: var(--copper);         /* maintains copper in dark mode */
+    .dark-mode .logo-text {
+      background: linear-gradient(45deg, #D4AF37, #B68B5C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    .form-header { margin-bottom: 20px; }
+    .form-header { 
+      margin-bottom: 16px;
+      text-align: center;
+    }
     .form-header h2 { 
-      font-size: 1.8rem; 
+      font-size: 1.8rem;        /* increased */
       color: var(--ink); 
-      margin-bottom: 5px; 
-      font-weight: 700;
+      margin-bottom: 6px;
+      transition: color 0.3s ease;
     }
     .form-header p { 
-      color: #4b5f6b; 
-      font-size: 0.9rem; 
-      font-weight: 300;
-    }
-    .dark-mode .form-header p {
-      color: #aaaaaa;
+      color: var(--ink); 
+      font-size: 0.9rem;        /* slightly larger */
+      opacity: 0.8;
+      transition: color 0.3s ease;
     }
     .form-header p a { 
-      color: var(--copper); 
+      color: var(--gold); 
       text-decoration: none; 
       font-weight: 600; 
-      transition: var(--transition); 
+      transition: color 0.3s ease; 
     }
-    .form-header p a:hover { text-decoration: underline; }
+    .form-header p a:hover { 
+      text-decoration: underline; 
+    }
 
     .social-register {
-      display: flex; gap: 10px; margin-bottom: 20px;
+      display: flex; 
+      gap: 8px; 
+      margin-bottom: 16px;
     }
     .social-btn {
-      flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
-      padding: 10px; border: 1px solid var(--dust); border-radius: 50px;
-      background: transparent; color: var(--ink); font-weight: 500; font-size: 0.85rem;
-      cursor: pointer; transition: var(--transition);
-    }
-    .dark-mode .social-btn {
-      color: var(--ink);
-      border-color: var(--dust);
+      flex: 1; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 6px;
+      padding: 10px 6px;        /* more padding */
+      border: 1px solid var(--dust); 
+      border-radius: 12px;      /* slightly larger radius */
+      background: var(--paper); 
+      color: var(--ink); 
+      font-weight: 500; 
+      font-size: 0.8rem;        /* slightly larger */
+      cursor: pointer; 
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
     .social-btn:hover { 
-      border-color: var(--copper); 
+      border-color: var(--gold); 
       transform: translateY(-2px); 
-      box-shadow: 0 8px 18px -6px rgba(175,110,75,0.2);
-      background: rgba(175,110,75,0.04);
+      box-shadow: var(--shadow); 
     }
-    .social-btn i { font-size: 16px; color: var(--copper); }
+    .social-btn i { 
+      font-size: 16px;          /* larger icon */
+      color: var(--gold); 
+      transition: color 0.3s ease;
+    }
 
     .divider {
-      display: flex; align-items: center; gap: 10px; margin: 10px 0 15px;
-      color: var(--ink); font-size: 0.8rem; opacity: 0.7;
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      margin: 10px 0 16px;      /* increased margin */
+      color: var(--ink); 
+      font-size: 0.8rem;
+      opacity: 0.7;
+      transition: color 0.3s ease;
     }
-    .divider-line { flex: 1; height: 1px; background: var(--dust); }
+    .divider-line { 
+      flex: 1; 
+      height: 1px; 
+      background: var(--dust); 
+      transition: background-color 0.3s ease;
+    }
 
     .input-group {
-      margin-bottom: 16px; position: relative;
+      margin-bottom: 14px;      /* increased spacing */
+      position: relative;
     }
     .input-icon {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      color: var(--copper); font-size: 15px; z-index: 2;
+      position: absolute; 
+      left: 14px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      color: var(--gold); 
+      font-size: 16px;          /* larger */
+      z-index: 2;
+      transition: color 0.3s ease;
     }
     .input-field {
-      width: 100%; padding: 12px 12px 12px 44px;
-      border: 1px solid var(--dust); border-radius: 50px;
-      font-size: 0.9rem; background: rgba(255,255,255,0.7); color: var(--ink);
-      transition: var(--transition);
-      font-family: 'Inter', sans-serif;
-    }
-    .dark-mode .input-field {
-      background: #222222;
-      color: #FDF6E9;
-      border-color: #444444;
+      width: 100%; 
+      padding: 12px 12px 12px 44px; /* more padding */
+      border: 1px solid var(--dust); 
+      border-radius: 14px;      /* more rounded */
+      font-size: 0.9rem;        /* larger */
+      background: var(--paper); 
+      color: var(--ink);
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+      font-family: 'Poppins', sans-serif;
     }
     .input-field:focus { 
-      border-color: var(--copper); 
+      border-color: var(--gold); 
       outline: none; 
-      box-shadow: 0 0 0 3px rgba(175,110,75,0.15);
+      box-shadow: 0 0 0 3px rgba(182, 139, 92, 0.2); 
     }
 
-    .password-field { position: relative; }
-    .password-toggle {
-      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; color: var(--copper);
-      cursor: pointer; font-size: 15px; z-index: 2;
+    .password-field { 
+      position: relative; 
     }
-    .password-toggle:hover { color: var(--gold-leaf); }
+    .password-toggle {
+      position: absolute; 
+      right: 14px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      background: none; 
+      border: none; 
+      color: var(--ink);
+      cursor: pointer; 
+      font-size: 17px;         /* larger */
+      z-index: 2;
+      transition: color 0.3s ease;
+    }
+    .password-toggle:hover { 
+      color: var(--gold); 
+    }
 
     .terms {
-      display: flex; align-items: center; gap: 8px; margin: 12px 0 18px; cursor: pointer;
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      margin: 12px 0 16px;      /* increased */
+      cursor: pointer;
     }
     .terms input[type="checkbox"] { 
-      width: 16px; height: 16px; 
-      accent-color: var(--copper); 
+      width: 18px;              /* slightly larger */
+      height: 18px; 
+      accent-color: var(--gold); 
       cursor: pointer; 
+      transition: accent-color 0.3s ease;
+      flex-shrink: 0;
     }
     .terms span { 
       color: var(--ink); 
-      font-size: 0.85rem; 
-      opacity: 0.9;
-    }
-    .dark-mode .terms span {
-      color: #cccccc;
+      font-size: 0.85rem;       /* larger */
+      line-height: 1.4;
+      transition: color 0.3s ease;
     }
     .terms a { 
-      color: var(--copper); 
+      color: var(--gold); 
       text-decoration: none; 
       font-weight: 600; 
+      transition: color 0.3s ease;
     }
-    .terms a:hover { text-decoration: underline; }
+    .terms a:hover { 
+      text-decoration: underline; 
+    }
 
     .register-submit {
-      width: 100%; padding: 14px; background: var(--copper); border: none; border-radius: 60px;
-      color: #1f2e36; font-weight: 700; font-size: 1rem; cursor: pointer;
-      transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-bottom: 15px;
-      border: 2px solid transparent;
-    }
-    .dark-mode .register-submit {
-      color: #ffffff;
+      width: 100%; 
+      padding: 14px;            /* more padding */
+      background: var(--gold); 
+      border: none; 
+      border-radius: 14px;      /* larger radius */
+      color: #2C1810; 
+      font-weight: 700; 
+      font-size: 1rem;          /* larger */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px;
+      margin-bottom: 12px;
     }
     .register-submit:hover {
-      background: #9a5e3d; transform: translateY(-3px);
-      box-shadow: var(--shadow);
+      background: #9F7E5A; 
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(182, 139, 92, 0.3);
     }
-    .register-submit i { transition: transform 0.3s; font-size: 16px; }
-    .register-submit:hover i { transform: translateX(6px); }
+    .register-submit i { 
+      transition: transform 0.3s; 
+      font-size: 16px;
+    }
+    .register-submit:hover i { 
+      transform: translateX(5px); 
+    }
 
     .login-prompt {
-      text-align: center; color: #4b5f6b; font-size: 0.9rem; margin-top: 5px;
-    }
-    .dark-mode .login-prompt {
-      color: #aaaaaa;
+      text-align: center; 
+      color: var(--ink); 
+      font-size: 0.85rem;       /* larger */
+      margin-top: 4px;
+      transition: color 0.3s ease;
     }
     .login-prompt a { 
-      color: var(--copper); 
+      color: var(--gold); 
       text-decoration: none; 
       font-weight: 600; 
-      margin-left: 5px; 
+      margin-left: 4px;
+      transition: color 0.3s ease;
     }
-    .login-prompt a:hover { text-decoration: underline; }
-
-    .form-footer-controls {
-      display: flex; gap: 12px; justify-content: center; margin-top: 20px;
-      padding-top: 15px; border-top: 1px solid var(--dust);
-    }
-    .control-btn {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: transparent; border: 1px solid var(--dust);
-      color: var(--ink); font-size: 18px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--transition);
-    }
-    .dark-mode .control-btn {
-      color: var(--ink);
-      border-color: #444444;
-    }
-    .control-btn:hover { 
-      border-color: var(--copper); 
-      color: var(--copper); 
-      transform: scale(1.1);
-      background: rgba(175,110,75,0.05);
+    .login-prompt a:hover { 
+      text-decoration: underline; 
     }
 
     /* RTL adjustments */
-    [dir="rtl"] .input-icon { left: auto; right: 14px; }
-    [dir="rtl"] .input-field { padding: 12px 44px 12px 12px; }
-    [dir="rtl"] .password-toggle { right: auto; left: 14px; }
-    [dir="rtl"] .register-submit i { transform: rotate(180deg); }
-    [dir="rtl"] .register-submit:hover i { transform: rotate(180deg) translateX(6px); }
-
-    @media (max-width: 900px) {
-      .register-wrapper { grid-template-columns: 1fr; max-width: 420px; }
-      .register-brand { display: none; }
-      .register-form { padding: 30px 25px 20px; }
+    [dir="rtl"] .input-icon { 
+      left: auto; 
+      right: 14px; 
     }
-    @media (max-width: 480px) {
-      .social-register { flex-direction: column; }
-      .register-form { padding: 20px 20px 15px; }
+    [dir="rtl"] .input-field { 
+      padding: 12px 44px 12px 12px; 
+    }
+    [dir="rtl"] .password-toggle { 
+      right: auto; 
+      left: 14px; 
+    }
+    [dir="rtl"] .register-submit i { 
+      transform: rotate(180deg); 
+    }
+    [dir="rtl"] .register-submit:hover i { 
+      transform: rotate(180deg) translateX(5px); 
+    }
+    [dir="rtl"] .theme-controls {
+      right: auto;
+      left: 12px;
+    }
+
+    /* Desktop - No scrolling */
+    @media (min-width: 1024px) {
+      body {
+        overflow: hidden;
+        height: 100vh;
+      }
+      .register-wrapper {
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+    }
+
+    /* Specific optimization for 360x740 and similar - keep card size but adjust padding if needed */
+    @media (max-width: 420px) {
+      body {
+        padding: 8px;
+      }
+      .register-wrapper {
+        max-width: 360px;        /* slightly smaller on very small screens */
+      }
+      .register-form {
+        padding: 20px 20px 18px;
+      }
+      .logo i {
+        font-size: 34px;
+      }
+      .logo-text {
+        font-size: 28px;
+      }
+      .form-header h2 {
+        font-size: 1.6rem;
+      }
+      .social-btn {
+        font-size: 0.75rem;
+        padding: 8px 4px;
+      }
+      .social-btn i {
+        font-size: 15px;
+      }
+      .input-field {
+        padding: 10px 10px 10px 42px;
+        font-size: 0.8rem;
+      }
+      .input-icon {
+        font-size: 15px;
+        left: 12px;
+      }
+      .password-toggle {
+        font-size: 16px;
+        right: 12px;
+      }
+      [dir="rtl"] .input-field {
+        padding: 10px 42px 10px 10px;
+      }
+      .terms span {
+        font-size: 0.8rem;
+      }
+      .register-submit {
+        padding: 12px;
+        font-size: 0.9rem;
+      }
+      .login-prompt {
+        font-size: 0.8rem;
+      }
+      .theme-controls {
+        top: 8px;
+        right: 8px;
+        gap: 6px;
+      }
+      .theme-controls .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      [dir="rtl"] .theme-controls {
+        right: auto;
+        left: 8px;
+      }
+    }
+
+    /* For very small heights */
+    @media (max-height: 700px) {
+      .register-form {
+        padding: 18px 18px 14px;
+      }
+      .logo {
+        margin-bottom: 6px;
+      }
+      .form-header {
+        margin-bottom: 10px;
+      }
+      .social-register {
+        margin-bottom: 10px;
+      }
+      .input-group {
+        margin-bottom: 10px;
+      }
+      .terms {
+        margin: 8px 0 12px;
+      }
     }
      .dark-mode .logo-text {
       background: #f5c9a6; 
@@ -338,43 +470,30 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-     .dark-mode .logo{
-       background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-     }
   </style>
 </head>
 <body>
+  <!-- Theme and RTL controls - fixed top right -->
+  <div class="theme-controls">
+    <button class="control-btn" id="themeToggle" title="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="control-btn" id="rtlToggle" title="Toggle RTL">
+      <i class="fas fa-exchange-alt"></i>
+    </button>
+  </div>
+
   <div class="register-container">
     <div class="register-wrapper">
-      <!-- Left Side: Rare Books theme (adapted from login page) -->
-      <div class="register-brand">
-        <div class="brand-content">
-          <div class="brand-icon"><i class="fas fa-feather-alt"></i></div>
-          <h2 class="brand-title">Join the <span>Grow Rare</span> Society</h2>
-          <div class="brand-features">
-            <div class="brand-feature"><i class="fas fa-crown"></i><span>First editions & manuscripts from the 18th century</span></div>
-            <div class="brand-feature"><i class="fas fa-tree"></i><span>Expert bibliographies & provenance research</span></div>
-            <div class="brand-feature"><i class="fas fa-globe-americas"></i><span>Collectors in 30+ countries</span></div>
-          </div>
-          <div class="brand-stats">
-            <div class="stat-item"><h3>12K+</h3><p>Rare Volumes</p></div>
-            <div class="stat-item"><h3>4.9★</h3><p>Member rating</p></div>
-            <div class="stat-item"><h3>1642</h3><p>First editions</p></div>
-          </div>
-        </div>
-        <div class="brand-bg-pattern"></div>
-      </div>
-
-      <!-- Right Side: Sign Up Form with EXACT same logo as login page -->
       <div class="register-form">
-        <!-- Logo identical to login page: feather icon + "Grow Rare" in copper -->
-        <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Grow Rare</span></a>
+        <!-- EXACT logo from Vintage Volumes: feather icon + "Vintage Volumes" with gradient -->
+        <a href="index.html" class="logo">
+          <i class="fas fa-feather-alt"></i>   <!-- feather icon to match contact page -->
+          <span class="logo-text">Vintage Volumes</span>
+        </a>
 
         <div class="form-header">
-          <h2>Create your account</h2>
+          <h2>Join the Reading Club</h2>
           <p>Already a member? <a href="login.html">Sign in</a></p>
         </div>
 
@@ -384,30 +503,52 @@
           <button class="social-btn"><i class="fab fa-apple"></i><span>Apple</span></button>
         </div>
 
-        <div class="divider"><span class="divider-line"></span><span>or register with email</span><span class="divider-line"></span></div>
+        <div class="divider">
+          <span class="divider-line"></span>
+          <span>or register with email</span>
+          <span class="divider-line"></span>
+        </div>
 
         <form id="registerForm">
-          <div class="input-group"><i class="fas fa-user input-icon"></i><input type="text" class="input-field" placeholder="Full name" required value="Arthur Penden"></div>
-          <div class="input-group"><i class="fas fa-envelope input-icon"></i><input type="email" class="input-field" placeholder="Email address" required value="a.penden@rarebooks.com"></div>
-          <div class="input-group"><i class="fas fa-phone input-icon"></i><input type="tel" class="input-field" placeholder="Phone (optional)" value="+44 20 7946 0138"></div>
+          <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" class="input-field" placeholder="Full name" required value="Emma Watson">
+          </div>
           
-         
+          <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" class="input-field" placeholder="Email address" required value="emma@vintagevolumes.com">
+          </div>
+          
+          <div class="input-group password-field">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="input-field" id="password" placeholder="Password" required value="reader123">
+            <button type="button" class="password-toggle" id="togglePassword">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+
+          <div class="input-group password-field">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="input-field" id="confirmPassword" placeholder="Confirm password" required value="reader123">
+            <button type="button" class="password-toggle" id="toggleConfirmPassword">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
 
           <label class="terms">
             <input type="checkbox" checked>
-            <span>I agree to the <a href="#">Collector's Terms</a> and <a href="#">Privacy</a></span>
+            <span>I agree to the <a href="#">Membership Terms</a> and <a href="#">Privacy</a></span>
           </label>
 
-          <button type="submit" class="register-submit"><span>Create account</span><i class="fas fa-arrow-right"></i></button>
-
-          <div class="login-prompt">
-            Already have an account?<a href="login.html">Sign in</a>
-          </div>
+          <button type="submit" class="register-submit">
+            <span>Create account</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
         </form>
 
-        <div class="form-footer-controls">
-          <button class="control-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
-          <button class="control-btn" id="rtlToggle"><i class="fas fa-exchange-alt"></i></button>
+        <div class="login-prompt">
+          Already have an account? <a href="login.html">Sign in</a>
         </div>
       </div>
     </div>
@@ -415,20 +556,28 @@
 
   <script>
     (function() {
-      // Password visibility toggles
-      ['togglePassword', 'toggleConfirmPassword'].forEach(id => {
-        const btn = document.getElementById(id);
-        const input = document.getElementById(id === 'togglePassword' ? 'password' : 'confirmPassword');
-        if (btn && input) {
-          btn.addEventListener('click', function() {
-            const type = input.type === 'password' ? 'text' : 'password';
-            input.type = type;
-            this.querySelector('i').classList.toggle('fa-eye-slash');
-          });
-        }
-      });
+      // Password toggles
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', function() {
+          const type = passwordInput.type === 'password' ? 'text' : 'password';
+          passwordInput.type = type;
+          this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+      }
 
-      // Form submission (Grow Rare flavour)
+      const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      if (toggleConfirmPassword && confirmPasswordInput) {
+        toggleConfirmPassword.addEventListener('click', function() {
+          const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+          confirmPasswordInput.type = type;
+          this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+      }
+
+      // Form submission
       document.getElementById('registerForm')?.addEventListener('submit', function(e) {
         e.preventDefault();
         const password = document.getElementById('password').value;
@@ -436,36 +585,42 @@
         const termsChecked = document.querySelector('.terms input').checked;
         
         if (password !== confirm) {
-          alert('Passwords do not match – even manuscripts need consistency.');
+          alert('Passwords do not match — even bookmarks need symmetry.');
         } else if (!termsChecked) {
-          alert('Please agree to our Collector\'s Terms and Privacy Policy.');
+          alert('Please agree to the Membership Terms and Privacy Policy.');
         } else {
-          alert('📚 Welcome to the Grow Rare Society! A verification email has been sent to your inbox.');
+          alert('📚 Welcome to Vintage Volumes! A verification email has been sent to your inbox.');
         }
       });
 
-      // Dark mode toggle
+      // Theme toggle
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelector('#themeToggle i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        const themeIcon = document.querySelector('#themeToggle i');
+        if (themeIcon) {
+          themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
 
       // RTL toggle
       function toggleRTL() {
         const html = document.documentElement;
-        html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
         localStorage.setItem('direction', html.getAttribute('dir'));
       }
 
+      // Attach listeners
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
 
       // Load saved preferences
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelector('#themeToggle i').className = 'fas fa-sun';
+        const themeIcon = document.querySelector('#themeToggle i');
+        if (themeIcon) themeIcon.className = 'fas fa-sun';
       }
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
@@ -473,7 +628,10 @@
 
       // Social buttons placeholder
       document.querySelectorAll('.social-btn').forEach(btn => {
-        btn.addEventListener('click', () => alert('Social registration is not active. Please use the form to join.'));
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Social registration is not active. Please use the form to join.');
+        });
       });
     })();
   </script>
