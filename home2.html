@@ -374,98 +374,130 @@
       .toggle-btn { display: none !important; }
     }
 
-    /* ===== HERO ===== */
-    .hero {
+    /* ===== NEW HERO (SPLIT: LEFT CONTENT / RIGHT IMAGE) ===== */
+    .hero-split {
+      display: flex;
       min-height: 90vh;
+      width: 100%;
+      background: var(--light-bg);
+      transition: background 0.3s;
+    }
+    .hero-left {
+      flex: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      isolation: isolate;
+      justify-content: flex-end; /* push content toward center gap */
+      padding: 4rem 2rem 4rem 5%;
+      background: var(--light-bg);
     }
-    .hero-bg-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.45) sepia(0.1);
+    .hero-left .content {
+      max-width: 580px;
     }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(26, 35, 40, 0.35);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      padding: 0 20px;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    .hero-tag {
-      font-size: 1.1rem;
+    .hero-left .hero-tag {
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: #f0dbc4;
+      color: var(--warm-brown);
       margin-bottom: 1rem;
     }
-    .hero h1 {
-      font-size: 5rem;
+    .hero-left h1 {
+      font-size: 4.2rem;
       font-weight: 700;
-      color: #faf3e9;
+      color: var(--deep-teal);
       line-height: 1.1;
       margin-bottom: 1.2rem;
     }
-    .hero h1 span {
+    .hero-left h1 span {
       font-style: italic;
-      color: #d4b28c;
+      color: var(--warm-brown);
       border-bottom: 2px solid var(--warm-brown);
     }
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      color: #f2e2d2;
+    .hero-left p {
+      font-size: 1.2rem;
+      max-width: 550px;
+      margin: 0 0 2.5rem;
+      color: var(--deep-teal);
+      opacity: 0.85;
       font-weight: 300;
     }
-    .btn-group {
+    .hero-left .btn-group {
       display: flex;
       gap: 20px;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
     }
-    .btn {
-      display: inline-block;
-      padding: 15px 42px;
-      border-radius: 60px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 1rem;
-      border: 2px solid transparent;
-    }
-    .btn-primary {
+    .hero-left .btn-primary {
       background: var(--warm-brown);
       color: var(--light-bg);
       border: 2px solid var(--warm-brown);
     }
-    .btn-primary:hover {
+    .hero-left .btn-primary:hover {
       background: #9a5e3d;
       transform: translateY(-3px);
     }
-    .btn-outline {
-      border: 2px solid #eed6be;
-      color: #eed6be;
+    .hero-left .btn-outline {
+      border: 2px solid var(--warm-brown);
+      color: var(--warm-brown);
       background: transparent;
     }
-    .btn-outline:hover {
-      background: #eed6be;
-      color: #1f2e36;
+    .hero-left .btn-outline:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+    .hero-right {
+      flex: 1;
+      /* background: #f3ede5; fallback warm tint */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; /* push image toward center gap */
+      padding: 2rem 5% 2rem 2rem;
+    }
+    .hero-right .image-wrapper {
+      max-width: 500px;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 30px 10px -20px rgba(0,0,0,0.3);
+      border: 3px solid var(--warm-brown);
+      transition: transform 0.4s;
+    }
+    .hero-right .image-wrapper:hover {
+      transform: scale(1.01);
+    }
+    .hero-right img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+    /* dark mode adjustments */
+    .dark-mode .hero-left,
+    .dark-mode .hero-split {
+      background: #000000;
+    }
+    .dark-mode .hero-left h1,
+    .dark-mode .hero-left p,
+    .dark-mode .hero-left .hero-tag {
+      color: #ffffff;
+    }
+    .dark-mode .hero-left .btn-outline {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+    .dark-mode .hero-left .btn-outline:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+    @media (max-width: 1000px) {
+      .hero-split { flex-direction: column; }
+      .hero-left { justify-content: center; text-align: center; padding: 4rem 5% 2rem; }
+      .hero-left .content { max-width: 700px; }
+      .hero-left .btn-group { justify-content: center; }
+      .hero-left p { margin-left: auto; margin-right: auto; }
+      .hero-right { justify-content: center; padding: 2rem 5% 4rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-left h1 { font-size: 3rem; }
     }
 
     /* ===== FOOTER ===== */
@@ -543,19 +575,18 @@
     [dir="rtl"] .nav-links { order: 2; }
     [dir="rtl"] .nav-buttons { order: 1; }
     [dir="rtl"] .hamburger { order: 1; }
+    [dir="rtl"] .hero-left .btn-group { justify-content: flex-end; }
 
     @media (max-width: 900px) {
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 3rem; }
-      .hero p { font-size: 1.1rem; }
       .btn-group { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 300px; }
     }
 
-    /* ----- NEW SECTIONS ----- */
+    /* ----- NEW SECTIONS (unchanged) ----- */
     .section-padding {
       padding: 5rem 5%;
       max-width: 1400px;
@@ -883,9 +914,9 @@
       .feature-card { padding: 2rem 1.5rem !important; }
       .feature-card h3 { font-size: 1.4rem !important; }
       .catalog-item img { height: 250px !important; }
-      .hero h1 { font-size: 3rem !important; }
-      .hero p { font-size: 1.1rem !important; }
-      .hero-tag { font-size: 0.9rem !important; letter-spacing: 2px; }
+      .hero-left h1 { font-size: 3rem !important; }
+      .hero-left p { font-size: 1.1rem !important; }
+      .hero-left .hero-tag { font-size: 0.9rem !important; letter-spacing: 2px; }
       .section-title { font-size: 2.2rem !important; }
       .gallery-stats { flex-direction: column !important; gap: 1rem !important; }
     }
@@ -922,6 +953,42 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
+    .btn{
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-right: 12px;
+}
+
+/* Primary Button */
+.btn-primary{
+  background: #1fdb1f;
+  color: #000;
+  border: none;
+}
+
+.btn-primary:hover{
+  background: #16b316;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Outline Button */
+.btn-outline{
+  border: 2px solid #1fdb1f;
+  color: #1fdb1f;
+  background: transparent;
+}
+
+.btn-outline:hover{
+  background: #1fdb1f;
+  color: #000;
+  transform: translateY(-2px);
+}
   </style>
 </head>
 <body>
@@ -965,13 +1032,11 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside - FIXED: Removed duplicate div -->
+  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
-    <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
       <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
     </div>
-    
     <ul class="nav-links">
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
@@ -993,17 +1058,23 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="images\pexels-suzyhazelwood-1438044.jpg" alt="Vintage books" class="hero-bg-image">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
-      <h1>Rare <span>editions</span>  <br> forgotten <span>Grows</span></h1>
-      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary">Explore catalog</a>
-        <a href="#" class="btn btn-outline">Collector’s blog</a>
+  <!-- NEW HERO SPLIT: left content / right image -->
+  <section class="hero-split">
+    <div class="hero-left">
+      <div class="content">
+        <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
+        <h1>Rare <span>editions</span>  <br> forgotten <span>Grows</span></h1>
+        <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary">Explore catalog</a>
+          <a href="#" class="btn btn-outline">Collector’s blog</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="image-wrapper">
+        <!-- right side image: changed to a different vintage / bookish atmosphere (pexels) -->
+        <img src="https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Vintage library ambiance">
       </div>
     </div>
   </section>
@@ -1118,7 +1189,7 @@
       </div>
       <div class="testimonial-card">
         <i class="fas fa-quote-right"></i>
-        <p>“The dashboard gives me first dibs on newly acquired manuscripts. Worth every penny.”</p>
+        <p>“The authentication and condition reports are museum‑grade. I trust Vintage Volumes.”</p>
         <div class="testimonial-author">Dr. Marcus V. <span>· manuscript specialist</span></div>
       </div>
     </div>
@@ -1202,7 +1273,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT (same as original) -->
   <script>
     (function() {
       const hamburger = document.getElementById('hamburger');

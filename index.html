@@ -810,6 +810,141 @@
       opacity: 0.8;
     }
 
+    /* ===== TESTIMONIALS SECTION (Customer Reviews) ===== */
+    .testimonial-section {
+      padding: 90px 5%;
+      background: var(--light-bg);
+    }
+
+    .dark-mode .testimonial-section {
+      background: #111111;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--brown-light);
+      border-radius: 30px;
+      padding: 35px 25px;
+      border: 2px solid #c2a387;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--warm-brown);
+    }
+
+    .testimonial-card i {
+      color: var(--warm-brown);
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--deep-teal);
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    .testimonial-card h5 {
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+      margin-top: 10px;
+    }
+
+    .testimonial-card .rating {
+      color: #ffc107;
+      margin-bottom: 15px;
+    }
+
+    /* ===== IMAGE CARDS SECTION ===== */
+    .image-cards-section {
+      padding: 90px 5%;
+      background: var(--light-bg);
+      border-top: 4px solid #cbb59b;
+      border-bottom: 4px solid #cbb59b;
+    }
+
+    .dark-mode .image-cards-section {
+      background: #111111;
+    }
+
+    .image-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .image-card {
+      background: var(--brown-light);
+      border-radius: 50px 20px 50px 20px;
+      overflow: hidden;
+      border: 2px solid #b39276;
+      transition: 0.3s;
+    }
+
+    .image-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--brown-dark);
+    }
+
+    .image-card-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 5px solid #c2a387;
+    }
+
+    .image-card-content {
+      padding: 30px 20px 35px;
+      text-align: center;
+    }
+
+    .image-card-content h3 {
+      font-size: 1.5rem;
+      color: var(--deep-teal);
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    .image-card-content p {
+      font-size: 1rem;
+      color: var(--deep-teal);
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    .image-card-content .btn-brown {
+      background: transparent;
+      border: 3px solid #a88f76;
+      color: var(--deep-teal);
+      padding: 10px 32px;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .image-card-content .btn-brown:hover {
+      background: #a88f76;
+      color: #fbf2e5;
+    }
+
     /* ===== FOOTER - NO BORDER ===== */
     footer {
       background: #000000;
@@ -934,6 +1069,14 @@
         grid-template-columns: repeat(2, 1fr) !important;
       }
 
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      .image-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
       .image-text-grid,
       .image-text-grid.reverse {
         flex-direction: column;
@@ -979,7 +1122,10 @@
     }
 
     @media (max-width: 700px) {
-      .brown-grid {
+
+      .brown-grid,
+      .testimonial-grid,
+      .image-cards-grid {
         grid-template-columns: 1fr !important;
       }
 
@@ -1011,7 +1157,9 @@
         font-size: 2rem;
       }
 
-      .brown-card {
+      .brown-card,
+      .testimonial-card,
+      .image-card {
         padding: 25px 15px;
       }
     }
@@ -1039,6 +1187,47 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
+
+    /* Mobile close button styles */
+    .mobile-close-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .close-menu {
+      background: transparent;
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1.2rem;
+      margin-left: auto;
+    }
+
+    .close-menu:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+
+    [dir="rtl"] .close-menu {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    @media (max-width:900px){
+
+.testimonial-grid{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+}
   </style>
 </head>
 
@@ -1084,7 +1273,7 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside - FIXED: Removed duplicate div -->
+  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
     <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
@@ -1246,8 +1435,103 @@
         </div>
         <div class="brown-card">
           <i class="fas fa-cube"></i>
-          <h3> 3D Models</h3>
-          <p>Design and create  advanced 3D printing technology.</p>
+          <h3>3D Models</h3>
+          <p>Design and create advanced 3D printing technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS SECTION (Customer Reviews) ===== -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Collectors Say</h2>
+        <p>Trusted by book lovers and collectors worldwide</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>"The quality of their rare books is exceptional. I found a first edition I've been searching for years. The authentication process gives me complete confidence."</p>
+          <h5>— James Thornton</h5>
+          <p style="font-size: 0.9rem; margin-top: 5px;">Collector for 20+ years</p>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>"Their binding restoration work is masterful. They treated my 18th-century volume with such care and expertise. It looks better than ever."</p>
+          <h5>— Eleanor Winslow</h5>
+          <p style="font-size: 0.9rem; margin-top: 5px;">Rare Book Conservator</p>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p>"The dashboard access is brilliant. I get first dibs on new arrivals and the condition reports are incredibly detailed. Worth every penny."</p>
+          <h5>— Michael Chen</h5>
+          <p style="font-size: 0.9rem; margin-top: 5px;">Library Curator</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMAGE CARDS SECTION (Featured Editions) ===== -->
+  <section class="image-cards-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured editions</h2>
+        <p>Rare books with provenance and character</p>
+      </div>
+      <div class="image-cards-grid">
+        <div class="image-card">
+          <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Antique leather book" class="image-card-img">
+          <div class="image-card-content">
+            <h3>The Decameron</h3>
+            <p>Venice, 1527 · Illustrated, contemporary vellum.</p>
+            <a href="#" class="btn-brown">View details</a>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="images/pexels-suzyhazelwood-1122865.jpg" alt="Old book spine" class="image-card-img">
+          <div class="image-card-content">
+            <h3>Don Quixote</h3>
+            <p>Madrid, 1738 · Ibarra edition, full calf.</p>
+            <a href="#" class="btn-brown">View details</a>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="images/pexels-salih-sk-1755180460-28103669.jpg" alt="Vintage book pile" class="image-card-img">
+          <div class="image-card-content">
+            <h3>Divine Comedy</h3>
+            <p>Florence, 1555 · Woodcuts, later morocco.</p>
+            <a href="#" class="btn-brown">View details</a>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="images/pexels-polina-zimmerman-3747497.jpg" alt="Vintage book pile" class="image-card-img">
+          <div class="image-card-content">
+            <h3>The Odyssey</h3>
+            <p>Athens, 1702 · Classic translation with engraved illustrations.</p>
+            <a href="#" class="btn-brown">View details</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1265,11 +1549,11 @@
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
       </div>
       <div class="footer-col">
-        <h4>explore</h4>
-        <a href="#">catalog</a>
-        <a href="#">first editions</a>
-        <a href="#">bindings</a>
-        <a href="#">blog</a>
+        <h4>QuickLinks</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html"> About</a>
+        <a href="contact.html">Contact</a>
+        <a href="service.html">Service</a>
       </div>
       <div class="footer-col">
         <h4>collector</h4>
@@ -1297,9 +1581,10 @@
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const body = document.body;
 
-      if (hamburger && overlay && mobileMenu) {
+      if (hamburger && overlay && mobileMenu && mobileCloseBtn) {
         function toggleMobileMenu() {
           const isActive = mobileMenu.classList.contains('active');
           mobileMenu.classList.toggle('active');
@@ -1309,6 +1594,7 @@
         }
 
         hamburger.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
 
         // close menu when clicking a link that doesn't contain caret (i.e. not a dropdown header)
