@@ -22,7 +22,7 @@
       --brown-light: #e7dacb;
       --brown-medium: #cbb59b;
       --brown-dark: #a88f76;
-      --section-gap: 100px;
+      --section-spacing: 70px;
     }
     .dark-mode {
       --deep-teal: #ffffff;
@@ -49,12 +49,14 @@
 
     /* ===== HEADER - border line removed ===== */
     header {
-      background: #ffffff; /* pure white */
-      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
+      background: #ffffff;
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 50;
+    }
+    .dark-mode header {
+      background: #000000;
     }
     .navbar {
       max-width: 1400px;
@@ -120,7 +122,6 @@
       color: var(--deep-teal);
       font-weight: 600;
     }
-    /* dropdown menus (desktop) */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -156,7 +157,6 @@
       visibility: visible;
       transform: translateY(4px);
     }
-    /* desktop nav buttons & toggles */
     .nav-buttons {
       display: flex;
       gap: 12px;
@@ -190,19 +190,18 @@
       background: var(--accent-brown) !important;
       border-color: var(--accent-brown) !important;
     }
+    /* Text-only toggle buttons */
     .toggle-btn {
       background: transparent;
       border: 2px solid var(--warm-brown);
       color: var(--deep-teal);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 40px;
       cursor: pointer;
       transition: 0.2s;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
     .toggle-btn:hover {
       background: var(--warm-brown);
@@ -235,7 +234,6 @@
     }
     .mobile-nav-menu.active { right: 0; }
     
-    /* Close button inside mobile menu */
     .mobile-close-btn {
       display: flex;
       justify-content: flex-end;
@@ -291,7 +289,6 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* sub-items (indented) */
     .mobile-nav-menu .nav-links .home-sub-item,
     .mobile-nav-menu .nav-links .dashboard-sub-item {
       display: block !important;
@@ -313,7 +310,6 @@
       color: var(--light-bg) !important;
       border-color: var(--warm-brown) !important;
     }
-    /* mobile-specific login/signup */
     .mobile-nav-btn {
       display: block !important;
       padding: 15px 20px !important;
@@ -362,13 +358,13 @@
       font-size: 1rem;
       cursor: pointer;
       color: var(--deep-teal);
+      font-weight: 600;
     }
     .mobile-controls .control-btn:hover {
       background: var(--warm-brown);
       color: var(--light-bg);
     }
 
-    /* Desktop / Mobile visibility */
     @media (min-width: 1101px) {
       .nav-links { display: flex !important; }
       .nav-buttons { display: flex !important; }
@@ -378,12 +374,11 @@
       .nav-links { display: none !important; }
       .nav-buttons { display: none !important; }
       .hamburger { display: block !important; }
-      .toggle-btn { display: none !important; }
     }
 
-    /* ===== HERO (unchanged) ===== */
+    /* ===== HERO ===== */
     .hero {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -422,7 +417,7 @@
       margin-bottom: 1rem;
     }
     .hero h1 {
-      font-size: 5rem;
+      font-size: 4.5rem;
       font-weight: 700;
       color: #faf3e9;
       line-height: 1.1;
@@ -434,9 +429,9 @@
       border-bottom: 2px solid var(--warm-brown);
     }
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       max-width: 700px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2rem;
       color: #f2e2d2;
       font-weight: 300;
     }
@@ -448,7 +443,7 @@
     }
     .btn {
       display: inline-block;
-      padding: 15px 42px;
+      padding: 14px 38px;
       border-radius: 60px;
       font-weight: 600;
       text-decoration: none;
@@ -475,16 +470,14 @@
       color: #1f2e36;
     }
 
-    /* ===== FOOTER - border line removed ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
     }
     .dark-mode footer {
       background: #000000;
-      /* border-top-color: #ffffff;  ← REMOVED (no border now) */
     }
     .footer-grid {
       max-width: 1300px;
@@ -516,6 +509,8 @@
       gap: 10px;
       text-decoration: none;
       margin-bottom: 20px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
     .footer-logo i {
       font-size: 30px;
@@ -530,8 +525,8 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .dark-mode .footer-logo i { color:  #f5c9a6; }
-    .dark-mode .footer-logo-text { background:  #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .dark-mode .footer-logo i { color: #f5c9a6; }
+    .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .copyright {
       text-align: center;
       padding-top: 50px;
@@ -552,49 +547,67 @@
     [dir="rtl"] .nav-buttons { order: 1; }
     [dir="rtl"] .hamburger { order: 1; }
 
-    /* responsive footer */
     @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 3rem; }
-      .hero p { font-size: 1.1rem; }
+      .footer-logo-text { font-size: 24px; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 1rem; }
       .btn-group { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
+      .btn { width: 100%; max-width: 280px; padding: 12px 24px; }
     }
 
-    /* ===== ABOUT PAGE SECTIONS ===== */
+    /* ===== ABOUT PAGE SECTIONS - BALANCED SPACING ===== */
     .about-section {
-      padding: 5rem 5%;
+      padding: 0 5%;
       max-width: 1400px;
-      margin: 0 auto var(--section-gap);
+      margin: 0 auto;
     }
-
+    
+    /* Consistent spacing between sections */
+    .about-section:first-of-type {
+      margin-top: 70px;
+    }
+    
+    .about-section:last-of-type {
+      margin-bottom: 70px;
+    }
+    
+    /* Each section gets consistent bottom margin */
+    .story-grid,
+    .values-grid,
+    .team-grid,
+    .milestones,
+    .literary-section {
+      margin-bottom: 70px;
+    }
+    
     .section-title {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--deep-teal);
     }
     .section-subtitle {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--accent-brown);
       max-width: 700px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
     }
 
     /* Section 1: Our Story */
     .story-grid {
       display: flex;
       align-items: center;
-      gap: 4rem;
+      gap: 3rem;
       flex-wrap: wrap;
     }
     .story-image {
       flex: 1 1 300px;
-      border-radius: 40px;
+      border-radius: 32px;
       overflow: hidden;
       border: 2px solid var(--warm-brown);
     }
@@ -610,139 +623,143 @@
       flex: 1 1 400px;
     }
     .story-text h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
       color: var(--deep-teal);
     }
     .story-text p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--deep-teal);
       opacity: 0.9;
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
     }
     .signature {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--warm-brown);
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
 
     /* Section 2: Our Values */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.8rem;
     }
     .value-card {
       background: var(--brown-light);
-      border-radius: 30px;
-      padding: 2.5rem 2rem;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
       border: 1px solid var(--soft-border);
       transition: 0.3s;
       text-align: center;
     }
     .dark-mode .value-card { background: #1a1a1a; }
     .value-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       border-color: var(--warm-brown);
     }
     .value-icon {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       color: var(--warm-brown);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .value-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
     }
     .value-card p {
       color: var(--deep-teal);
       opacity: 0.8;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* Section 3: Team */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.8rem;
     }
     .team-card {
       background: var(--light-bg);
-      border-radius: 40px;
-      padding: 2rem;
+      border-radius: 32px;
+      padding: 1.8rem;
       border: 1px solid var(--soft-border);
       text-align: center;
       transition: 0.3s;
     }
     .dark-mode .team-card { background: #1a1a1a; }
     .team-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       border-color: var(--warm-brown);
     }
     .team-img {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 1.5rem;
-      border: 4px solid var(--warm-brown);
+      margin: 0 auto 1.2rem;
+      border: 3px solid var(--warm-brown);
     }
     .team-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-bottom: 0.3rem;
     }
     .team-role {
       color: var(--warm-brown);
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
     }
     .team-bio {
       color: var(--deep-teal);
       opacity: 0.8;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     /* Section 4: Milestones */
     .milestones {
       background: var(--deep-teal);
       color: white;
-      border-radius: 80px;
-      padding: 4rem 3rem;
+      border-radius: 60px;
+      padding: 3rem 2rem;
     }
     .dark-mode .milestones { background: #0f1a20; }
     .milestones h2 {
       color: #f2e0cc;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
     }
     .timeline {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
     .milestone-item {
       text-align: center;
     }
     .milestone-year {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--warm-brown);
       margin-bottom: 0.5rem;
     }
     .milestone-desc {
-      font-size: 1rem;
+      font-size: 0.9rem;
       opacity: 0.9;
+      line-height: 1.4;
     }
 
     /* Literary Quote Section */
     .literary-section {
-      padding: 6rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
       background: linear-gradient(135deg, #f6f2e9, #ece5d8);
-      margin: 4rem 0;
-      border-radius: 40px;
+      border-radius: 60px;
     }
     .dark-mode .literary-section {
       background: #1a1a1a;
@@ -754,19 +771,19 @@
     .literary-small {
       letter-spacing: 3px;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       opacity: 0.7;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
     .literary-quote {
-      font-size: 2.3rem;
-      line-height: 1.6;
+      font-size: 1.8rem;
+      line-height: 1.5;
       font-weight: 500;
       font-style: italic;
     }
     .literary-author {
-      margin-top: 2rem;
-      font-size: 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
       opacity: 0.7;
     }
 
@@ -780,61 +797,100 @@
       .story-grid {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
       }
       .milestones {
         border-radius: 40px;
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 1.5rem;
+      }
+      .literary-section {
+        border-radius: 40px;
+        padding: 2.5rem 1.5rem;
+      }
+      .literary-quote {
+        font-size: 1.5rem;
       }
     }
-
-    /* ensure even spacing on smaller screens */
-    @media (max-width: 700px) {
-      :root {
-        --section-gap: 70px;
+    
+    @media (max-width: 768px) {
+      .about-section:first-of-type {
+        margin-top: 50px;
+      }
+      .story-grid,
+      .values-grid,
+      .team-grid,
+      .milestones,
+      .literary-section {
+        margin-bottom: 50px;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      .story-text h2 {
+        font-size: 1.8rem;
+      }
+      .milestones h2 {
+        font-size: 1.8rem;
+      }
+      .value-card {
+        padding: 1.5rem;
+      }
+      .team-card {
+        padding: 1.5rem;
+      }
+      .team-img {
+        width: 110px;
+        height: 110px;
       }
     }
-     .dark-mode .logo-text {
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .story-text p {
+        font-size: 0.9rem;
+      }
+      .literary-quote {
+        font-size: 1.2rem;
+      }
+    }
+    
+    .dark-mode .logo-text {
       background: #f5c9a6; 
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-     .dark-mode .logo{
-       background: #f5c9a6; 
+    .dark-mode .logo{
+      background: #f5c9a6; 
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-     }
-     /* Navbar color in dark mode */
-.dark-mode header{
-  background:#000000;
-}
-/* ===== Mobile active nav link ===== */
-.mobile-nav-menu .nav-links a.active{
-  background: var(--warm-brown) !important;
-  color: var(--light-bg) !important;
-  border-color: var(--warm-brown) !important;
-}
-.footer-logo-text{
-white-space: nowrap;
-}@media (max-width:1100px){
-
-.footer-logo-text{
-font-size:22px;
-}
-
-.logo-text{
-font-size:22px;
-}
-
-}
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;   /* IMPORTANT */
-  white-space: nowrap; /* prevents text break */
-}
+    }
+    .mobile-nav-menu .nav-links a.active{
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    .footer-logo-text{
+      white-space: nowrap;
+    }
+    @media (max-width:1100px){
+      .footer-logo-text{
+        font-size:22px;
+      }
+      .logo-text{
+        font-size:22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -847,22 +903,22 @@ font-size:22px;
       
       <ul class="nav-links">
         <li>
-          <a href="#" >Home <i class="fas fa-caret-down"></i></a>
+          <a href="#">Home <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
-            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+            <li><a href="index.html"> Home 1</a></li>
+            <li><a href="home2.html"> Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html"class="active">About</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="service.html">Service</a></li>
         <li><a href="rarefinds.html">Rare Finds</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html" >Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li>
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+            <li><a href="user.html"> user</a></li>
+            <li><a href="admin.html"> Admin</a></li>
           </ul>
         </li>
       </ul>
@@ -870,21 +926,19 @@ font-size:22px;
       <div class="nav-buttons">
         <a href="login.html" class="nav-btn">Login</a>
         <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
-        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button class="toggle-btn" id="themeToggle">Dark</button>
+        <button class="toggle-btn" id="rtlToggle">LTR</button>
       </div>
       
       <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
+  <!-- MOBILE MENU -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
-    <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
       <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
     </div>
-    
     <ul class="nav-links">
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
@@ -895,28 +949,28 @@ font-size:22px;
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
-      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-      <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+      <li><a href="user.html"> user</a></li>
+      <li><a href="admin.html"> Admin</a></li>
       <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
       <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
     </ul>
     <div class="mobile-controls">
-      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn" id="mobileThemeToggle">🌙 Dark Mode</button>
+      <button class="control-btn" id="mobileRtlToggle"> LTR</button>
     </div>
   </div>
 
   <!-- HERO -->
   <section class="hero">
-    <img src="images\pexels-suzyhazelwood-1122865.jpg" alt="Vintage books" class="hero-bg-image">
+    <img src="images/pexels-suzyhazelwood-1122865.jpg" alt="Vintage books" class="hero-bg-image">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
-      <h1>Rare <span>editions</span>  <br> forgotten <span>Grows</span></h1>
-      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
+      <h1>Rare <span>editions</span> <br> timeless <span>treasures</span></h1>
+      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye.</p>
       <div class="btn-group">
         <a href="#" class="btn btn-primary">Explore catalog</a>
-        <a href="#" class="btn btn-outline">Collector’s blog</a>
+        <a href="#" class="btn btn-outline">Collector's blog</a>
       </div>
     </div>
   </section>
@@ -929,14 +983,14 @@ font-size:22px;
       </div>
       <div class="story-text">
         <h2>Our story</h2>
-        <p>Founded in 2026, Vintage Volumes began as a passion project among a small circle of collectors who believed that the world’s rarest books deserved a more personal, discerning platform. What started as private gatherings around oak tables has grown into a trusted resource for collectors worldwide.</p>
+        <p>Founded in 2026, Vintage Volumes began as a passion project among a small circle of collectors who believed that the world's rarest books deserved a more personal, discerning platform. What started as private gatherings around oak tables has grown into a trusted resource for collectors worldwide.</p>
         <p>Today, we combine traditional expertise with modern access — sourcing first editions, illuminated manuscripts, and fine bindings from private estates and overlooked archives. Every volume we offer is authenticated, documented, and presented with its unique provenance.</p>
         <div class="signature">— The Vintage Volumes team</div>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 2: Our Values (now 1 column on tablet) -->
+  <!-- SECTION 2: Our Values -->
   <div class="about-section">
     <h2 class="section-title">Our values</h2>
     <div class="section-subtitle">The principles that guide every acquisition</div>
@@ -944,7 +998,7 @@ font-size:22px;
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-feather"></i></div>
         <h3>Provenance first</h3>
-        <p>Every book’s history is verified — we trace ownership, inscriptions, and exhibition records.</p>
+        <p>Every book's history is verified — we trace ownership, inscriptions, and exhibition records.</p>
       </div>
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-leaf"></i></div>
@@ -954,12 +1008,12 @@ font-size:22px;
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-handshake"></i></div>
         <h3>Collector community</h3>
-        <p>We build relationships, not transactions — offering first‑dibs access and private viewings.</p>
+        <p>We build relationships, not transactions — offering first-dibs access and private viewings.</p>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 3: Team (now 1 column on tablet) -->
+  <!-- SECTION 3: Team -->
   <div class="about-section">
     <h2 class="section-title">Meet the specialists</h2>
     <div class="section-subtitle">Decades of combined experience in rare books</div>
@@ -968,7 +1022,7 @@ font-size:22px;
         <img src="https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Eleanor" class="team-img">
         <h3>Eleanor Whitmore</h3>
         <div class="team-role">Senior Curator</div>
-        <div class="team-bio">Former head of rare books at Sotheby’s, with 25 years specializing in 19th-century literature.</div>
+        <div class="team-bio">Former head of rare books at Sotheby's, with 25 years specializing in 19th-century literature.</div>
       </div>
       <div class="team-card">
         <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Marcus" class="team-img">
@@ -985,7 +1039,7 @@ font-size:22px;
     </div>
   </div>
 
-  <!-- SECTION 4: Milestones (now 1 column on tablet) -->
+  <!-- SECTION 4: Milestones -->
   <div class="about-section">
     <div class="milestones">
       <h2>Our journey</h2>
@@ -1011,17 +1065,17 @@ font-size:22px;
   </div>
 
   <!-- LITERARY QUOTE SECTION -->
-  <section class="literary-section">
-    <div class="literary-container">
-      <p class="literary-small">A Love for Rare Literature</p>
-      <h2 class="literary-quote">
-        “Every rare book carries the voice of its time,
-        preserving stories, ideas, and imagination
-        across generations.”
-      </h2>
-      <p class="literary-author">— Vintage Volumes Archive</p>
+  <div class="about-section">
+    <div class="literary-section">
+      <div class="literary-container">
+        <p class="literary-small">A Love for Rare Literature</p>
+        <h2 class="literary-quote">
+          "Every rare book carries the voice of its time, preserving stories, ideas, and imagination across generations."
+        </h2>
+        <p class="literary-author">— Vintage Volumes Archive</p>
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -1037,7 +1091,7 @@ font-size:22px;
       <div class="footer-col">
         <h4>QuickLinks</h4>
         <a href="index.html">Home</a>
-        <a href="about.html"> About</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="service.html">Service</a>
       </div>
@@ -1053,7 +1107,7 @@ font-size:22px;
         <a href="#">instagram</a>
         <a href="#">pinterest</a>
         <a href="#">facebook</a>
-         <a href="#">whatsapp</a>
+        <a href="#">whatsapp</a>
       </div>
     </div>
     <div class="copyright">
@@ -1061,7 +1115,6 @@ font-size:22px;
     </div>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
     (function() {
       const hamburger = document.getElementById('hamburger');
@@ -1098,48 +1151,53 @@ font-size:22px;
         });
       }
 
+      // Theme toggle - text only
+      const themeBtn = document.getElementById('themeToggle');
+      const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+      
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        
+        if (themeBtn) themeBtn.textContent = isDark ? 'Light' : 'Dark';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
+
+      // RTL toggle - text only
+      const rtlBtn = document.getElementById('rtlToggle');
+      const mobileRtlBtn = document.getElementById('mobileRtlToggle');
       
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        
+        if (rtlBtn) rtlBtn.textContent = isRTL ? 'LTR' : 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = isRTL ? '🌐 LTR' : '🌐 RTL';
+        
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
       
-      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
-      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+      themeBtn?.addEventListener('click', toggleTheme);
+      mobileThemeBtn?.addEventListener('click', toggleTheme);
+      rtlBtn?.addEventListener('click', toggleRTL);
+      mobileRtlBtn?.addEventListener('click', toggleRTL);
 
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+        if (themeBtn) themeBtn.textContent = 'Light';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = '☀️ Light Mode';
       }
       
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = '🌐 RTL';
       }
     })();
     
-    /* ===== Active link for mobile menu ===== */
     const currentPage = window.location.pathname.split("/").pop();
     document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
       const linkPage = link.getAttribute("href");

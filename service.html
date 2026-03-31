@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vintage Volumes · core (header/hero/footer)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Vintage Volumes · Rare Collections Service</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,22 +22,20 @@
       --brown-light: #e7dacb;
       --brown-medium: #cbb59b;
       --brown-dark: #a88f76;
+      --outline-subtle: rgba(175, 110, 75, 0.2);
     }
     .dark-mode {
       --deep-teal: #ffffff;
-      --warm-brown: #ffffff;
+      --warm-brown: #f5c9a6;
       --light-bg: #000000;
       --soft-border: #333333;
-      --accent-brown: #cccccc;
-      --brown-light: #000000;
-      --brown-medium: #111111;
-      --brown-dark: #222222;
-      
-      /* Ensure body background is black */
+      --accent-brown: #ddb892;
+      --brown-light: #111111;
+      --brown-medium: #222222;
+      --brown-dark: #2a2a2a;
+      --outline-subtle: rgba(245, 201, 166, 0.25);
       background-color: #000000 !important;
     }
-    
-    /* Ensure all major containers have black background in dark mode */
     .dark-mode body,
     .dark-mode header,
     .dark-mode .cards-section,
@@ -45,46 +43,6 @@
     .dark-mode .dropdown-menu {
       background-color: #000000 !important;
     }
-    
-    .dark-mode .project-card .project-overlay {
-      background: rgba(0, 0, 0, 0.9) !important;
-      /* text inside overlay should be white in dark mode */
-      color: #ffffff !important;
-    }
-    /* ensure all overlay text becomes white */
-    .dark-mode .project-overlay,
-    .dark-mode .project-overlay h3,
-    .dark-mode .project-overlay p,
-    .dark-mode .project-overlay a {
-      color: #ffffff !important;
-    }
-    /* overlay link button style for dark mode */
-    .dark-mode .project-overlay a {
-      background: #ffffff;
-      color: #000000 !important;
-      border: 2px solid #ffffff;
-    }
-    .dark-mode .project-overlay a:hover {
-      background: transparent;
-      color: #ffffff !important;
-      border-color: #ffffff;
-    }
-    
-    .dark-mode .cards-header h2,
-    .dark-mode .cards-header p {
-      color: #ffffff;
-    }
-    
-    .dark-mode .btn-outline {
-      border-color: #ffffff;
-      color: #ffffff;
-    }
-    
-    .dark-mode .btn-outline:hover {
-      background: #ffffff;
-      color: #000000;
-    }
-    
     body {
       font-family: 'Inter', sans-serif;
       background: #ffffff;
@@ -99,14 +57,16 @@
       letter-spacing: -0.01em;
     }
 
-    /* ===== HEADER - border line removed ===== */
+    /* ===== HEADER ===== */
     header {
-      background: #ffffff; /* pure white */
-      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
+      background: #ffffff;
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 50;
+    }
+    .dark-mode header {
+      background: #000000;
     }
     .navbar {
       max-width: 1400px;
@@ -128,7 +88,7 @@
       color: var(--warm-brown);
     }
     .logo-text {
-     font-size: 25px;
+      font-size: 25px;
       font-weight: 500;
       background: #AF6E4B; 
       -webkit-background-clip: text;
@@ -172,7 +132,6 @@
       color: var(--deep-teal);
       font-weight: 600;
     }
-    /* dropdown menus (desktop) */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -208,7 +167,6 @@
       visibility: visible;
       transform: translateY(4px);
     }
-    /* desktop nav buttons & toggles */
     .nav-buttons {
       display: flex;
       gap: 12px;
@@ -238,30 +196,25 @@
       color: var(--light-bg) !important;
       border: 2px solid var(--deep-teal) !important;
     }
-    .signup-btn:hover {
-      background: var(--accent-brown) !important;
-      border-color: var(--accent-brown) !important;
-    }
+    /* Text-only toggle buttons */
     .toggle-btn {
       background: transparent;
       border: 2px solid var(--warm-brown);
       color: var(--deep-teal);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 40px;
       cursor: pointer;
       transition: 0.2s;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
     .toggle-btn:hover {
       background: var(--warm-brown);
       color: var(--light-bg);
     }
 
-    /* ===== MOBILE MENU (exact alignment as requested) ===== */
+    /* ===== MOBILE MENU ===== */
     .hamburger {
       display: none;
       background: none;
@@ -286,14 +239,11 @@
       overflow-y: auto;
     }
     .mobile-nav-menu.active { right: 0; }
-    
-    /* Close button inside mobile menu */
     .mobile-close-btn {
       display: flex;
       justify-content: flex-end;
       margin-bottom: 20px;
     }
-    
     .close-menu {
       background: transparent;
       border: 2px solid var(--warm-brown);
@@ -309,12 +259,10 @@
       font-size: 1.2rem;
       margin-left: auto;
     }
-    
     .close-menu:hover {
       background: var(--warm-brown);
       color: var(--light-bg);
     }
-    
     .mobile-nav-menu .nav-links {
       display: flex !important;
       flex-direction: column !important;
@@ -338,12 +286,6 @@
       width: 100% !important;
       margin-bottom: 5px;
     }
-    .mobile-nav-menu .nav-links > li > a:hover {
-      background: var(--warm-brown) !important;
-      color: var(--light-bg) !important;
-      border-color: var(--warm-brown) !important;
-    }
-    /* sub-items (indented) */
     .mobile-nav-menu .nav-links .home-sub-item,
     .mobile-nav-menu .nav-links .dashboard-sub-item {
       display: block !important;
@@ -359,13 +301,6 @@
       margin-bottom: 5px !important;
       font-size: 0.95rem !important;
     }
-    .mobile-nav-menu .nav-links .home-sub-item:hover,
-    .mobile-nav-menu .nav-links .dashboard-sub-item:hover {
-      background: var(--warm-brown) !important;
-      color: var(--light-bg) !important;
-      border-color: var(--warm-brown) !important;
-    }
-    /* mobile-specific login/signup */
     .mobile-nav-btn {
       display: block !important;
       padding: 15px 20px !important;
@@ -414,13 +349,12 @@
       font-size: 1rem;
       cursor: pointer;
       color: var(--deep-teal);
+      font-weight: 600;
     }
     .mobile-controls .control-btn:hover {
       background: var(--warm-brown);
       color: var(--light-bg);
     }
-
-    /* Desktop / Mobile visibility */
     @media (min-width: 1101px) {
       .nav-links { display: flex !important; }
       .nav-buttons { display: flex !important; }
@@ -430,10 +364,9 @@
       .nav-links { display: none !important; }
       .nav-buttons { display: none !important; }
       .hamburger { display: block !important; }
-      .toggle-btn { display: none !important; }
     }
 
-    /* ===== HERO ===== */
+    /* ===== HERO WITH BACKGROUND IMAGE ===== */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -442,110 +375,91 @@
       text-align: center;
       position: relative;
       isolation: isolate;
+      background: url('https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
     }
-    .hero-bg-image {
+    
+    /* Dark overlay for better text readability */
+    .hero::before {
+      content: '';
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.45) sepia(0.1);
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(26, 35, 40, 0.35);
+      background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.55));
       z-index: 1;
     }
+    
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 1000px;
-      padding: 0 20px;
+      max-width: 900px;
+      padding: 80px 20px;
       color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
+    
     .hero-tag {
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: #f0dbc4;
       margin-bottom: 1rem;
     }
+    
     .hero h1 {
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 700;
-      color: #faf3e9;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
+    
     .hero h1 span {
       font-style: italic;
       color: #d4b28c;
-      border-bottom: 2px solid var(--warm-brown);
-    }
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      color: #f2e2d2;
-      font-weight: 300;
-    }
-    .btn-group {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-block;
-      padding: 15px 42px;
-      border-radius: 60px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 1rem;
-      border: 2px solid transparent;
-    }
-    .btn-primary {
-      background: var(--warm-brown);
-      color: var(--light-bg);
-      border: 2px solid var(--warm-brown);
-    }
-  .btn-primary:hover {
-  background: linear-gradient(135deg, #cfa58a, #a28b7e);
-  transform: translateY(-3px);
-}
-    .btn-outline {
-      border: 2px solid #eed6be;
-      color: #eed6be;
-      background: transparent;
-    }
-    .btn-outline:hover {
-      background: #eed6be;
-      color: #1f2e36;
-    }
-
-    /* ===== PROJECT CARDS SECTION (6 cards in 2x2 grid) ===== */
-    .cards-section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
     }
     
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 70vh;
+        background-position: center 30%;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero-tag {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+      }
+    }
+
+    /* ===== CARDS SECTION - 3 IN A ROW, NO HOVER EFFECTS ===== */
+    .cards-section {
+      padding: 80px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .cards-header {
       text-align: center;
       margin-bottom: 50px;
     }
-    
     .cards-header h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--deep-teal);
       margin-bottom: 15px;
-      font-weight: 550;
     }
-    
     .cards-header p {
       font-size: 1.2rem;
       color: var(--deep-teal);
@@ -554,9 +468,10 @@
       margin: 0 auto;
     }
     
+    /* 3-column grid for desktop */
     .projects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-content: center;
     }
@@ -566,103 +481,110 @@
       width: 100%;
       border-radius: 20px;
       overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      background: var(--light-bg);
+      border: 2px solid var(--soft-border);
+      transition: transform 0.2s ease;
     }
     
+    /* NO HOVER EFFECTS on image or overlay - static display */
     .project-card img {
       width: 100%;
-      height: 420px;
+      height: 320px;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
     }
     
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* overlay hidden initially */
+    /* Static overlay - always visible, no hover needed */
     .project-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(238, 203, 184, 0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 25px 20px;
+      background: var(--light-bg);
+      color: var(--deep-teal);
       text-align: center;
-      padding: 30px;
-      color: rgb(5, 5, 5);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 0.4s ease;
-    }
-    
-    /* hover effect */
-    .project-card:hover .project-overlay {
-      opacity: 1;
-      transform: translateY(0);
+      border-top: 1px solid var(--soft-border);
     }
     
     .project-overlay h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
       font-family: 'Playfair Display', serif;
+      color: var(--warm-brown);
     }
     
     .project-overlay p {
-      font-size: 14px;
+      font-size: 0.95rem;
       margin-bottom: 20px;
-      line-height: 1.6;
+      line-height: 1.5;
+      color: var(--deep-teal);
+      opacity: 0.85;
     }
     
     .project-overlay a {
-      background: white;
-      color: var(--warm-brown);
-      padding: 10px 20px;
-      border-radius: 30px;
+      display: inline-block;
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      padding: 10px 28px;
+      border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      transition: var(--transition);
-      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      border: 2px solid var(--warm-brown);
     }
     
     .project-overlay a:hover {
       background: transparent;
-      color: rgb(8, 8, 8);
-      border-color: white;
-      transform: translateY(-3px);
+      color: var(--warm-brown);
+    }
+    
+    /* Subtle outline for visual consistency */
+    .project-card {
+      outline: 1px solid var(--outline-subtle);
+      outline-offset: 0;
+    }
+    
+    /* Responsive: 2 columns on tablet, 1 column on mobile */
+    @media (max-width: 1024px) {
+      .projects {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
     }
     
     @media (max-width: 768px) {
-      .projects {
-        grid-template-columns: 1fr;
+      .cards-section {
+        padding: 50px 20px;
       }
-      
       .cards-header h2 {
         font-size: 2rem;
       }
-      
+      .projects {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
       .project-card img {
-        height: 350px;
+        height: 280px;
+      }
+      .project-overlay {
+        padding: 20px;
+      }
+      .project-overlay h3 {
+        font-size: 1.3rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .project-card img {
+        height: 240px;
+      }
+      .project-overlay p {
+        font-size: 0.85rem;
       }
     }
 
-    /* ===== FOOTER - border line removed, only 2px gap above ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
-      margin-top: 2px; /* exactly 2px gap above footer */
-    }
-    .dark-mode footer {
-      background: #000000;
-      /* border-top-color: #ffffff;  ← REMOVED */
       margin-top: 2px;
     }
     .footer-grid {
@@ -695,6 +617,8 @@
       gap: 10px;
       text-decoration: none;
       margin-bottom: 20px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
     .footer-logo i {
       font-size: 30px;
@@ -708,101 +632,62 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
     }
-    .dark-mode .footer-logo i { color:#f5c9a6; }
-    .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .copyright {
       text-align: center;
       padding-top: 50px;
       color: #ffffff;
     }
-    .dark-mode .copyright { color: #ffffff; }
-
-    /* RTL support */
-    [dir="rtl"] .navbar { flex-direction: row-reverse; }
-    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
-    [dir="rtl"] .footer-col a:hover { transform: translateX(-8px); }
-    [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
-    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
-    [dir="rtl"] .home-sub-item, [dir="rtl"] .dashboard-sub-item { padding-left: 20px !important; padding-right: 50px !important; }
-    [dir="rtl"] .project-overlay { transform: translateY(40px); }
-    [dir="rtl"] .project-card:hover .project-overlay { transform: translateY(0); }
-    [dir="rtl"] .close-menu { margin-left: 0; margin-right: auto; }
-    [dir="rtl"] .logo { order: 3; }
-    [dir="rtl"] .nav-links { order: 2; }
-    [dir="rtl"] .nav-buttons { order: 1; }
-    [dir="rtl"] .hamburger { order: 1; }
-
-    /* responsive footer */
     @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 3rem; }
-      .hero p { font-size: 1.1rem; }
-      .btn-group { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
+      .footer-logo-text { font-size: 24px; }
     }
-     .dark-mode .logo-text {
-      background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    
+    /* RTL Support */
+    [dir="rtl"] .navbar { flex-direction: row-reverse; }
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--warm-brown); }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .close-menu { margin-left: 0; margin-right: auto; }
+    [dir="rtl"] .footer-col a:hover { transform: translateX(-8px); }
+    
+    .footer-logo-text {
+      white-space: nowrap;
     }
-     .dark-mode .logo{
-       background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-     }
-     /* Navbar color in dark mode */
-.dark-mode header{
-  background:#000000;
-}
-/* ===== Mobile active nav link ===== */
-.mobile-nav-menu .nav-links a.active{
-  background: var(--warm-brown) !important;
-  color: var(--light-bg) !important;
-  border-color: var(--warm-brown) !important;
-}
-.footer-logo-text{
-white-space: nowrap;
-}@media (max-width:1100px){
-
-.footer-logo-text{
-font-size:22px;
-}
-
-.logo-text{
-font-size:22px;
-}
-
-}
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;   /* IMPORTANT */
-  white-space: nowrap; /* prevents text break */
-}
+    @media (max-width:1100px) {
+      .footer-logo-text {
+        font-size: 22px;
+      }
+      .logo-text {
+        font-size: 22px;
+      }
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- HEADER (only logo + hamburger on mobile) -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo"><i class="fas fa-feather-alt"></i><span class="logo-text">Vintage Volumes</span></a>
       
-      <!-- desktop navigation (hidden on mobile) -->
       <ul class="nav-links">
         <li>
           <a href="#">Home <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
-            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+            <li><a href="index.html"> Home 1</a></li>
+            <li><a href="home2.html"> Home 2</a></li>
           </ul>
         </li>
         <li><a href="about.html">About</a></li>
@@ -813,121 +698,103 @@ font-size:22px;
         <li>
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+            <li><a href="user.html">user</a></li>
+            <li><a href="admin.html"> Admin</a></li>
           </ul>
         </li>
       </ul>
       
-      <!-- desktop buttons & toggles -->
       <div class="nav-buttons">
         <a href="login.html" class="nav-btn">Login</a>
         <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
-        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button class="toggle-btn" id="themeToggle">Dark</button>
+        <button class="toggle-btn" id="rtlToggle">LTR</button>
       </div>
       
-      <!-- hamburger (only visible on mobile) -->
       <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
+  <!-- MOBILE MENU -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
-    <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
       <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
     </div>
-    
     <ul class="nav-links">
-      <!-- Home with its sub-items -->
       <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
       <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
-      
-       <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="rarefinds.html">Rare Finds</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      
-      <!-- Dashboard with sub-items -->
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Service</a></li>
+      <li><a href="rarefinds.html">Rare Finds</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
-      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
-      
-      <!-- mobile login/signup buttons -->
+      <li><a href="user.html"> user</a></li>
+      <li><a href="admin.html"> Admin</a></li>
       <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
       <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
     </ul>
-    
     <div class="mobile-controls">
-      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn" id="mobileThemeToggle">🌙 Dark Mode</button>
+      <button class="control-btn" id="mobileRtlToggle">🌐 LTR</button>
     </div>
   </div>
 
-
-  <!-- HERO (unchanged) -->
+  <!-- HERO SECTION WITH BACKGROUND IMAGE -->
   <section class="hero">
-    <img src="images\pexels-valentin_21-808934417-32290329.jpg" alt="Vintage books" class="hero-bg-image">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-tag">EST. 2026 · FOR COLLECTORS</div>
-      <h1>Rare <span>books </span> <br> timeless literary  <span>treasures</span></h1>
-      <p>First editions, fine bindings, and manuscripts. Curated for the discerning eye. Join our dashboard for first-dibs access.</p>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary">Explore catalog</a>
-        <a href="#" class="btn btn-outline">Collector’s blog</a>
-      </div>
+      <div class="hero-tag">CURATED COLLECTIONS</div>
+      <h1>Rare <span>books</span> & <span>manuscripts</span></h1>
+      <p>Discover our exceptional collection of first editions, fine bindings, and historic manuscripts, carefully selected for discerning collectors worldwide.</p>
     </div>
   </section>
 
-  <!-- PROJECT CARDS SECTION - 6 cards in 2x2 grid with overlay hover effect -->
+  <!-- CARDS SECTION - 3 CARDS PER ROW, NO HOVER EFFECTS -->
   <section class="cards-section">
     <div class="cards-header">
-      <h2>RARE COLLECTIONS</h2>
-      <p>Discover our curated selection of first editions and manuscripts</p>
+      <h2>Rare Collections</h2>
+      <p>Explore our curated selection of first editions and manuscripts</p>
     </div>
     
     <div class="projects">
       <!-- Card 1 -->
       <div class="project-card">
-        <img src="images\Sapiens2.webp" alt="Rare Book">
+        <img src="images/Sapiens2.webp" alt="First Folio">
         <div class="project-overlay">
           <h3>First Folio</h3>
-          <p>Shakespeare's First Folio - 1623 edition. Complete and restored with original binding.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>Shakespeare's First Folio - 1623 edition. Complete and restored with original binding. One of the most sought-after literary treasures.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
       
       <!-- Card 2 -->
       <div class="project-card">
-        <img src="images\pexels-salih-sk-1755180460-28103669.jpg" alt="Medieval Manuscript">
+        <img src="images/pexels-salih-sk-1755180460-28103669.jpg" alt="Medieval Manuscript">
         <div class="project-overlay">
           <h3>Medieval Manuscript</h3>
-          <p>Illuminated Latin psalter, circa 1480. Original leather binding with gold leaf details.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>Illuminated Latin psalter, circa 1480. Original leather binding with intricate gold leaf details and hand-painted miniatures.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
       
       <!-- Card 3 -->
       <div class="project-card">
-        <img src="images\pexels-leticia-alvares-1805702-33359342.jpg" alt="Poems Collection">
+        <img src="images/pexels-leticia-alvares-1805702-33359342.jpg" alt="Poems Collection">
         <div class="project-overlay">
           <h3>Poems Collection</h3>
-          <p>William Wordsworth - Lyrical Ballads, first edition 1798. Includes handwritten notes.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>William Wordsworth - Lyrical Ballads, first edition 1798. Includes handwritten marginal notes by the original owner.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
       
       <!-- Card 4 -->
       <div class="project-card">
-        <img src="images\pexels-suzyhazelwood-1172018.jpg" alt="The Canterbury Tales">
+        <img src="images/pexels-suzyhazelwood-1172018.jpg" alt="The Canterbury Tales">
         <div class="project-overlay">
           <h3>The Canterbury Tales</h3>
-          <p>Geoffrey Chaucer - 15th century manuscript facsimile with original illustrations.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>Geoffrey Chaucer - 15th century manuscript facsimile with original illustrations. Exquisite craftsmanship.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
       
@@ -936,8 +803,8 @@ font-size:22px;
         <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Leather Bound Classics">
         <div class="project-overlay">
           <h3>Leather Bound Classics</h3>
-          <p>19th century leather binding collection, 12 volumes of literary masterpieces.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>19th century leather binding collection, 12 volumes of literary masterpieces. Morocco leather with gilt edges.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
       
@@ -946,14 +813,14 @@ font-size:22px;
         <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Author's Manuscript">
         <div class="project-overlay">
           <h3>Author's Manuscript</h3>
-          <p>Handwritten draft by Charles Dickens, signed and dated. Includes personal letters.</p>
-          <a href="serviceDetail.html">View Details</a>
+          <p>Handwritten draft by Charles Dickens, signed and dated 1858. Includes personal letters and original envelope.</p>
+          <a href="serviceDetail.html">View Details →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (now with only 2px gap above) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
@@ -964,26 +831,26 @@ font-size:22px;
         <p style="margin-top: 20px;">First editions · fine bindings · manuscripts. Est. 2026.</p>
         <p><i class="fas fa-map-pin"></i> 8½ Charles St, London</p>
       </div>
-     <div class="footer-col">
+      <div class="footer-col">
         <h4>QuickLinks</h4>
         <a href="index.html">Home</a>
-        <a href="about.html"> About</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="service.html">Service</a>
       </div>
       <div class="footer-col">
-        <h4>collector</h4>
-        <a href="#">wishlist</a>
-        <a href="#">first dibs</a>
-        <a href="#">order tracking</a>
-        <a href="#">newsletter</a>
+        <h4>Collector</h4>
+        <a href="#">Wishlist</a>
+        <a href="#">First Dibs</a>
+        <a href="#">Order Tracking</a>
+        <a href="#">Newsletter</a>
       </div>
       <div class="footer-col">
         <h4>Social Links</h4>
-        <a href="#">instagram</a>
-        <a href="#">pinterest</a>
-        <a href="#">facebook</a>
-         <a href="#">whatsapp</a>
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
       </div>
     </div>
     <div class="copyright">
@@ -991,10 +858,8 @@ font-size:22px;
     </div>
   </footer>
 
-  <!-- SCRIPT: only hamburger, theme, rtl functionality -->
   <script>
     (function() {
-      // Mobile menu elements
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
@@ -1009,86 +874,75 @@ font-size:22px;
           body.style.overflow = isActive ? '' : 'hidden';
           hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
         }
-
         hamburger.addEventListener('click', toggleMobileMenu);
         mobileCloseBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
-
-        // close menu when clicking a link that doesn't contain caret (i.e. not a dropdown header)
         document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
           link.addEventListener('click', function(e) {
-            if (!this.querySelector('.fa-caret-down')) {
-              toggleMobileMenu();
-            }
+            if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
           });
         });
-
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
-          }
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
-
         window.addEventListener('resize', () => {
-          if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
-          }
+          if (window.innerWidth > 1100 && mobileMenu.classList.contains('active')) toggleMobileMenu();
         });
       }
 
-      // Theme toggle
+      // Theme toggle - text only
+      const themeBtn = document.getElementById('themeToggle');
+      const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+      
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        
+        if (themeBtn) themeBtn.textContent = isDark ? 'Light' : 'Dark';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
 
-      // RTL toggle
+      // RTL toggle - text only
+      const rtlBtn = document.getElementById('rtlToggle');
+      const mobileRtlBtn = document.getElementById('mobileRtlToggle');
+      
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        
+        if (rtlBtn) rtlBtn.textContent = isRTL ? 'LTR' : 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = isRTL ? '🌐 LTR' : '🌐 RTL';
+        
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
 
-      // Attach listeners
-      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
-      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+      themeBtn?.addEventListener('click', toggleTheme);
+      mobileThemeBtn?.addEventListener('click', toggleTheme);
+      rtlBtn?.addEventListener('click', toggleRTL);
+      mobileRtlBtn?.addEventListener('click', toggleRTL);
 
-      // Load saved preferences
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+        if (themeBtn) themeBtn.textContent = 'Light';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = '☀️ Light Mode';
       }
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = '🌐 RTL';
       }
     })();
-    /* ===== Active link for mobile menu ===== */
-const currentPage = window.location.pathname.split("/").pop();
 
-document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if(linkPage === currentPage){
-    link.classList.add("active");
-  }
-});
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if(linkPage === currentPage){
+        link.classList.add("active");
+      }
+    });
   </script>
 </body>
 </html>

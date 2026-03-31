@@ -50,11 +50,13 @@
     /* ===== HEADER - border line removed ===== */
     header {
       background: #ffffff; /* pure white */
-      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 50;
+    }
+    .dark-mode header {
+      background: #000000;
     }
     .navbar {
       max-width: 1400px;
@@ -190,19 +192,18 @@
       background: var(--accent-brown) !important;
       border-color: var(--accent-brown) !important;
     }
+    /* Text-only toggle buttons */
     .toggle-btn {
       background: transparent;
       border: 2px solid var(--warm-brown);
       color: var(--deep-teal);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 40px;
       cursor: pointer;
       transition: 0.2s;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
     .toggle-btn:hover {
       background: var(--warm-brown);
@@ -362,6 +363,7 @@
       font-size: 1rem;
       cursor: pointer;
       color: var(--deep-teal);
+      font-weight: 600;
     }
     .mobile-controls .control-btn:hover {
       background: var(--warm-brown);
@@ -378,10 +380,9 @@
       .nav-links { display: none !important; }
       .nav-buttons { display: none !important; }
       .hamburger { display: block !important; }
-      .toggle-btn { display: none !important; }
     }
 
-    /* ===== HERO (EXACTLY FROM REFERENCE FILE - serviceDetail.html) ===== */
+    /* ===== HERO ===== */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -476,16 +477,14 @@
       color: #1f2e36;
     }
 
-    /* ===== FOOTER - border line removed ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
     }
     .dark-mode footer {
       background: #000000;
-      /* border-top-color: #ffffff;  ← REMOVED */
     }
     .footer-grid {
       max-width: 1300px;
@@ -517,6 +516,8 @@
       gap: 10px;
       text-decoration: none;
       margin-bottom: 20px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
     .footer-logo i {
       font-size: 30px;
@@ -530,6 +531,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
     }
     .dark-mode .footer-logo i { color: #f5c9a6; }
     .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -680,7 +682,7 @@
     }
     .dark-mode .map-container,
     .dark-mode .transport-card {
-      background: #1a1a1a !important;  /* dark card background */
+      background: #1a1a1a !important;
       border-color: #444444;
     }
     .map-image { width: 100%; height: 250px; border-radius: 20px; overflow: hidden; margin-bottom: 1.5rem; }
@@ -845,93 +847,26 @@
       }
     }
 
-    /* Keep existing responsive rules for other breakpoints */
-    @media (max-width: 1000px) and (min-width: 769px) {
-      .locations-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-grid { grid-template-columns: repeat(2, 1fr); }
-      .map-wrapper { grid-template-columns: 1fr; }
-    }
-    
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      :root { --section-gap: 3rem; }
-    }
-    
-    .dark-mode .logo-text {
-      background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .dark-mode .logo{
-      background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    /* Navbar color in dark mode */
-    .dark-mode header{
-      background:#000000;
-    }
-    /* ===== Mobile active nav link ===== */
-    .mobile-nav-menu .nav-links a.active{
-      background: var(--warm-brown) !important;
-      color: var(--light-bg) !important;
-      border-color: var(--warm-brown) !important;
-    }
-    
-    /* ===== Tablet footer 2x2 grid ===== */
-    @media (min-width: 600px) and (max-width: 1024px) {
-      .footer-grid{
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 40px;
-      }
-    }
-    @media (max-width: 820px){
-      .locations-grid{
-        grid-template-columns: 1fr !important;
-      }
-    }
-    /* 1024 screens - show location cards one by one */
     @media (max-width: 1024px){
       .locations-grid{
         grid-template-columns: 1fr !important;
       }
     }
-    .footer-logo-text{
-white-space: nowrap;
-}@media (max-width:1100px){
-
-.footer-logo-text{
-font-size:22px;
-}
-
-.logo-text{
-font-size:22px;
-}
-
-}
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;   /* IMPORTANT */
-  white-space: nowrap; /* prevents text break */
-}
-@media (min-width: 600px) and (max-width: 1024px) {
-  .footer-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-@media (max-width: 1024px){
-  .footer-grid{
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-}
+    @media (max-width:1100px){
+      .footer-logo-text{
+        font-size:22px;
+      }
+      .logo-text{
+        font-size:22px;
+      }
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -946,8 +881,8 @@ font-size:22px;
         <li>
           <a href="#" >Home <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
-            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+            <li><a href="index.html"> Home 1</a></li>
+            <li><a href="home2.html"> Home 2</a></li>
           </ul>
         </li>
         <li><a href="about.html">About</a></li>
@@ -958,8 +893,8 @@ font-size:22px;
         <li>
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+            <li><a href="user.html">user</a></li>
+            <li><a href="admin.html"> Admin</a></li>
           </ul>
         </li>
       </ul>
@@ -967,23 +902,22 @@ font-size:22px;
       <div class="nav-buttons">
         <a href="login.html" class="nav-btn">Login</a>
         <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
-        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button class="toggle-btn" id="themeToggle">Dark</button>
+        <button class="toggle-btn" id="rtlToggle">LTR</button>
       </div>
       
       <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
+  <!-- MOBILE MENU -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
-    <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
       <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
     </div>
     
     <ul class="nav-links">
-      <li><a href="#">Home <i class="fas fa-caret-down"></i></a></li>
+      <li><a href="#">Home </a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
       <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
       <li><a href="about.html">About</a></li>
@@ -992,14 +926,14 @@ font-size:22px;
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
-      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-      <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+      <li><a href="user.html"> user</a></li>
+      <li><a href="admin.html"> Admin</a></li>
       <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
       <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
     </ul>
     <div class="mobile-controls">
-      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn" id="mobileThemeToggle">🌙 Dark Mode</button>
+      <button class="control-btn" id="mobileRtlToggle"> LTR</button>
     </div>
   </div>
 
@@ -1183,7 +1117,6 @@ font-size:22px;
     </div>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
     (function() {
       const hamburger = document.getElementById('hamburger');
@@ -1220,44 +1153,50 @@ font-size:22px;
         });
       }
 
+      // Theme toggle - text only
+      const themeBtn = document.getElementById('themeToggle');
+      const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+      
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        
+        if (themeBtn) themeBtn.textContent = isDark ? 'Light' : 'Dark';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
+
+      // RTL toggle - text only
+      const rtlBtn = document.getElementById('rtlToggle');
+      const mobileRtlBtn = document.getElementById('mobileRtlToggle');
       
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        
+        if (rtlBtn) rtlBtn.textContent = isRTL ? 'LTR' : 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = isRTL ? '🌐 LTR' : '🌐 RTL';
+        
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
       
-      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
-      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+      themeBtn?.addEventListener('click', toggleTheme);
+      mobileThemeBtn?.addEventListener('click', toggleTheme);
+      rtlBtn?.addEventListener('click', toggleRTL);
+      mobileRtlBtn?.addEventListener('click', toggleRTL);
 
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+        if (themeBtn) themeBtn.textContent = 'Light';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = '☀️ Light Mode';
       }
       
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = '🌐 RTL';
       }
     })();
     

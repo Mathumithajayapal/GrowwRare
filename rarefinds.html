@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Vintage Volumes · rare finds</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,12 +49,14 @@
 
     /* ===== HEADER - border line removed ===== */
     header {
-      background: #ffffff; /* pure white */
-      /* border-bottom: 3px solid var(--warm-brown);  ← REMOVED */
+      background: #ffffff;
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 50;
+    }
+    .dark-mode header {
+      background: #000000;
     }
     .navbar {
       max-width: 1400px;
@@ -190,19 +192,18 @@
       background: var(--accent-brown) !important;
       border-color: var(--accent-brown) !important;
     }
+    /* Text-only toggle buttons */
     .toggle-btn {
       background: transparent;
       border: 2px solid var(--warm-brown);
       color: var(--deep-teal);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 40px;
       cursor: pointer;
       transition: 0.2s;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
     .toggle-btn:hover {
       background: var(--warm-brown);
@@ -362,6 +363,7 @@
       font-size: 1rem;
       cursor: pointer;
       color: var(--deep-teal);
+      font-weight: 600;
     }
     .mobile-controls .control-btn:hover {
       background: var(--warm-brown);
@@ -378,7 +380,6 @@
       .nav-links { display: none !important; }
       .nav-buttons { display: none !important; }
       .hamburger { display: block !important; }
-      .toggle-btn { display: none !important; }
     }
 
     /* ===== HERO ===== */
@@ -475,17 +476,15 @@
       color: #1f2e36;
     }
 
-    /* ===== FOOTER - border line removed, only 2px gap above ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: #000000;
       color: #ffffff;
       padding: 70px 5% 40px;
-      /* border-top: 5px solid var(--warm-brown);  ← REMOVED */
-      margin-top: 2px; /* exactly 2px gap above footer */
+      margin-top: 2px;
     }
     .dark-mode footer {
       background: #000000;
-      /* border-top-color: #ffffff;  ← REMOVED */
       margin-top: 2px;
     }
     .footer-grid {
@@ -518,6 +517,8 @@
       gap: 10px;
       text-decoration: none;
       margin-bottom: 20px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
     .footer-logo i {
       font-size: 30px;
@@ -531,6 +532,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
     }
     .dark-mode .footer-logo i { color: #f5c9a6; }
     .dark-mode .footer-logo-text { background: #f5c9a6; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -702,7 +704,7 @@
     .dark-mode .rare-showcase { background: #000000; }
     .rare-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px;
     }
     .rare-card {
@@ -729,7 +731,6 @@
     }
 
     /* ===== RESPONSIVE FIXES ===== */
-    /* For screens between 1024px and 1280px - make rare-grid 2x2 */
     @media (min-width: 1024px) and (max-width: 1280px) {
       .rare-grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -769,13 +770,11 @@
       }
     }
 
-    /* consistent spacing */
     .section-padding,
     .rare-showcase {
       margin-bottom: var(--section-gap);
     }
 
-    /* original responsive fallbacks */
     @media (max-width: 1000px) {
       .categories-grid, .discovered-grid { grid-template-columns: repeat(2, 1fr); }
       .featured-find { flex-direction: column; text-align: center; }
@@ -807,52 +806,44 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
      }
-     /* Navbar color in dark mode */
-.dark-mode header{
-  background:#000000;
-}
-/* ===== Mobile active nav link ===== */
-.mobile-nav-menu .nav-links a.active{
-  background: var(--warm-brown) !important;
-  color: var(--light-bg) !important;
-  border-color: var(--warm-brown) !important;
-}
-.discover-btn{
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  font-size: 14px;
-  text-decoration: none;
-  background: #8B5E3C;   /* vintage bookstore color */
-  color: #ffffff;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.discover-btn:hover{
-  background: #6e472d;
-  transform: translateY(-2px);
-}
-.footer-logo-text{
-white-space: nowrap;
-}@media (max-width:1100px){
-
-.footer-logo-text{
-font-size:22px;
-}
-
-.logo-text{
-font-size:22px;
-}
-
-}
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;   /* IMPORTANT */
-  white-space: nowrap; /* prevents text break */
-}
+    .mobile-nav-menu .nav-links a.active{
+      background: var(--warm-brown) !important;
+      color: var(--light-bg) !important;
+      border-color: var(--warm-brown) !important;
+    }
+    .discover-btn{
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      text-decoration: none;
+      background: #8B5E3C;
+      color: #ffffff;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .discover-btn:hover{
+      background: #6e472d;
+      transform: translateY(-2px);
+    }
+    .footer-logo-text{
+      white-space: nowrap;
+    }
+    @media (max-width:1100px){
+      .footer-logo-text{
+        font-size:22px;
+      }
+      .logo-text{
+        font-size:22px;
+      }
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -867,8 +858,8 @@ font-size:22px;
         <li>
           <a href="#" >Home <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home 1</a></li>
-            <li><a href="home2.html"><i class="fas fa-scroll"></i> Home 2</a></li>
+            <li><a href="index.html"> Home 1</a></li>
+            <li><a href="home2.html"> Home 2</a></li>
           </ul>
         </li>
         <li><a href="about.html">About</a></li>
@@ -879,8 +870,8 @@ font-size:22px;
         <li>
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-            <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+            <li><a href="user.html"> user</a></li>
+            <li><a href="admin.html"> Admin</a></li>
           </ul>
         </li>
       </ul>
@@ -888,17 +879,16 @@ font-size:22px;
       <div class="nav-buttons">
         <a href="login.html" class="nav-btn">Login</a>
         <a href="signIn.html" class="nav-btn signup-btn">Sign up</a>
-        <button class="toggle-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        <button class="toggle-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button class="toggle-btn" id="themeToggle">Dark</button>
+        <button class="toggle-btn" id="rtlToggle">LTR</button>
       </div>
       
       <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
     </nav>
   </header>
 
-  <!-- MOBILE MENU with CLOSE BUTTON (X) inside -->
+  <!-- MOBILE MENU -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
-    <!-- Close button (X) at the top of the mobile panel -->
     <div class="mobile-close-btn">
       <button class="close-menu" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
     </div>
@@ -913,14 +903,14 @@ font-size:22px;
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="#">Dashboard <i class="fas fa-caret-down"></i></a></li>
-      <li><a href="user.html"><i class="fas fa-heart"></i> user</a></li>
-      <li><a href="admin.html"><i class="fas fa-bell"></i> Admin</a></li>
+      <li><a href="user.html"> user</a></li>
+      <li><a href="admin.html"> Admin</a></li>
       <li><a href="login.html" class="mobile-nav-btn">Login</a></li>
       <li><a href="signIn.html" class="mobile-nav-btn signup-btn">Sign up</a></li>
     </ul>
     <div class="mobile-controls">
-      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn" id="mobileThemeToggle">🌙 Dark Mode</button>
+      <button class="control-btn" id="mobileRtlToggle">🌐 LTR</button>
     </div>
   </div>
 
@@ -934,7 +924,7 @@ font-size:22px;
       <p>Discover first editions, antique manuscripts, and rare literary treasures curated for passionate collectors and book lovers.</p>
       <div class="btn-group">
         <a href="#" class="btn btn-primary">Explore catalog</a>
-        <a href="#" class="btn btn-outline">Collector’s blog</a>
+        <a href="#" class="btn btn-outline">Collector's blog</a>
       </div>
     </div>
   </section>
@@ -1063,10 +1053,10 @@ font-size:22px;
     </div>
   </div>
 
-  <!-- Rare Book Showcase - now 2x2 at 1024-1280px -->
+  <!-- Rare Book Showcase -->
   <section class="rare-showcase">
     <h2 class="section-title">Rare Book Showcase</h2>
-    <p class="section-subtitle" style="margin-bottom: 20px;">Timeless editions curated for passionate collectors</p>
+    <p class="section-sub" style="margin-bottom: 20px;">Timeless editions curated for passionate collectors</p>
     <div class="rare-grid">
       <div class="rare-card">
         <img src="images/pexels-pixabay-159833.jpg" alt="Rare Book">
@@ -1085,21 +1075,21 @@ font-size:22px;
       <div class="rare-card">
         <img src="images/pexels-maryam-alruwaie-80197805-8940374.jpg" alt="Rare Book">
         <div class="rare-info">
-          <h3>Author’s First Print</h3>
+          <h3>Author's First Print</h3>
           <p>Original Signed Edition</p>
         </div>
       </div>
       <div class="rare-card">
         <img src="images/pexels-suzyhazelwood-1172018.jpg" alt="Rare Book">
         <div class="rare-info">
-          <h3>Author’s First Print</h3>
+          <h3>Author's First Print</h3>
           <p>Original Signed Edition</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (now with only 2px gap above) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
@@ -1171,53 +1161,60 @@ font-size:22px;
         });
       }
 
+      // Theme toggle - text only
+      const themeBtn = document.getElementById('themeToggle');
+      const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+      
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        
+        if (themeBtn) themeBtn.textContent = isDark ? 'Light' : 'Dark';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
+
+      // RTL toggle - text only
+      const rtlBtn = document.getElementById('rtlToggle');
+      const mobileRtlBtn = document.getElementById('mobileRtlToggle');
+      
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        
+        if (rtlBtn) rtlBtn.textContent = isRTL ? 'LTR' : 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = isRTL ? '🌐 LTR' : '🌐 RTL';
+        
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
-      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
-      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+
+      themeBtn?.addEventListener('click', toggleTheme);
+      mobileThemeBtn?.addEventListener('click', toggleTheme);
+      rtlBtn?.addEventListener('click', toggleRTL);
+      mobileRtlBtn?.addEventListener('click', toggleRTL);
 
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+        if (themeBtn) themeBtn.textContent = 'Light';
+        if (mobileThemeBtn) mobileThemeBtn.innerHTML = '☀️ Light Mode';
       }
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
+        if (mobileRtlBtn) mobileRtlBtn.innerHTML = '🌐 RTL';
       }
     })();
+    
     /* ===== Active link for mobile menu ===== */
-const currentPage = window.location.pathname.split("/").pop();
-
-document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if(linkPage === currentPage){
-    link.classList.add("active");
-  }
-});
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".mobile-nav-menu a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if(linkPage === currentPage){
+        link.classList.add("active");
+      }
+    });
   </script>
 </body>
 </html>

@@ -6,13 +6,11 @@
   <title>Vintage Volumes · Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- exactly the same fonts as about.html: Playfair + Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="icon" href="favicon.jpg" type="image/x-icon"> 
 
   <style>
-    /* === base & reset – identical to about.html === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --deep-teal: #1F3B4B;
@@ -30,21 +28,23 @@
       --text-primary: #1F3B4B;
       --text-secondary: #4a5f6b;
       --text-muted: #6b7b85;
+      --outline-subtle: rgba(175, 110, 75, 0.25);
     }
     .dark-mode {
       --deep-teal: #FDF6E9;
       --warm-brown: #B8916E;
-      --light-bg: #1a1a1a;
-      --soft-border: #444444;
+      --light-bg: #000000;
+      --soft-border: #333333;
       --accent-brown: #AF6E4B;
-      --brown-light: #2a2a2a;
-      --brown-medium: #333333;
-      --brown-dark: #3a3a3a;
+      --brown-light: #111111;
+      --brown-medium: #222222;
+      --brown-dark: #2a2a2a;
       --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
       --text-primary: #FDF6E9;
       --text-secondary: #d4c9bc;
       --text-muted: #a89f94;
+      --outline-subtle: rgba(184, 145, 110, 0.35);
     }
     body {
       font-family: 'Inter', sans-serif;
@@ -125,7 +125,13 @@
     .sidebar-header .logo .logo-text {
       font-size: 25px;
       font-weight: 500;
-      background: var(--warm-brown); 
+      background: #AF6E4B; 
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-mode .sidebar-header .logo .logo-text {
+      background: #f5c9a6;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -152,7 +158,7 @@
       font-weight: 600;
     }
     .dark-mode .user-avatar {
-      color: #1a1a1a;
+      color: #000000;
     }
     .user-details h4 { 
       font-size: 1rem; 
@@ -180,7 +186,7 @@
       margin-left: 5px;
     }
     .dark-mode .badge-admin {
-      color: #1a1a1a;
+      color: #000000;
     }
 
     .sidebar-nav { 
@@ -227,14 +233,13 @@
       font-weight: 600;
     }
     .dark-mode .nav-item .badge {
-      color: #1a1a1a;
+      color: #000000;
     }
     [dir="rtl"] .nav-item .badge { 
       margin-left: 0; 
       margin-right: auto; 
     }
 
-    /* Sidebar Footer */
     .sidebar-footer {
       padding: 20px;
       border-top: 1px solid var(--soft-border);
@@ -253,12 +258,10 @@
       background: rgba(175, 110, 75, 0.1);
       transition: var(--transition);
     }
-
     .logout-btn i {
       font-size: 18px;
       color: var(--warm-brown);
     }
-
     .logout-btn:hover {
       background: #ff4444;
       color: #ffffff;
@@ -297,9 +300,13 @@
       transition: var(--transition);
       align-items: center;
       justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1001;
     }
     .dark-mode .mobile-menu-toggle {
-      color: #1a1a1a;
+      color: #000000;
     }
     .mobile-menu-toggle:hover { 
       transform: scale(1.05); 
@@ -308,6 +315,8 @@
     }
     [dir="rtl"] .mobile-menu-toggle { 
       margin: 15px 15px 0 0; 
+      left: auto;
+      right: 0;
     }
 
     /* Sidebar Overlay */
@@ -328,7 +337,7 @@
       opacity: 1; 
     }
 
-    /* Top Header */
+    /* Top Header with Profile Icon */
     .top-header {
       height: 70px; 
       display: flex; 
@@ -365,7 +374,7 @@
       font-family: 'Inter', sans-serif;
     }
     .dark-mode .header-search input {
-      background: #2a2a2a;
+      background: #1a1a1a;
       border-color: #444444;
     }
     .header-search input::placeholder {
@@ -377,7 +386,7 @@
     .header-search input:focus { 
       border-color: var(--warm-brown); 
       outline: none; 
-      box-shadow: 0 0 0 2px rgba(175,110,75,0.2);
+      box-shadow: 0 0 0 2px var(--outline-subtle);
     }
     .header-search i {
       position: absolute; 
@@ -391,27 +400,62 @@
       right: auto; 
       left: 12px; 
     }
+    
+    /* Text-only toggle buttons */
     .header-btn {
-      width: 42px; 
-      height: 42px; 
-      border-radius: 50%; 
       background: transparent;
-      border: 2px solid var(--soft-border); 
-      color: var(--text-primary); 
+      border: 2px solid var(--warm-brown);
+      color: var(--deep-teal);
+      padding: 8px 18px;
+      border-radius: 40px;
       cursor: pointer;
-      transition: var(--transition); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 16px;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
-    .header-btn:hover { 
-      border-color: var(--warm-brown); 
-      color: var(--warm-brown); 
-      transform: scale(1.05); 
+    .header-btn:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+    }
+    
+    /* Profile Icon in Top Right */
+    .profile-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--light-bg);
+      border: 2px solid var(--warm-brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--warm-brown);
+      font-size: 18px;
+      box-shadow: var(--shadow);
+    }
+    .profile-icon:hover {
+      background: var(--warm-brown);
+      color: var(--light-bg);
+      transform: scale(1.05);
     }
 
-    /* Stats Cards */
+    /* Stats Cards with Subtle Outlines */
+    .stat-card, .recent-members, .recent-transactions, .action-card,
+    .members-stat-card, .category-card, .auction-card, .location-card,
+    .settings-card, .management-table {
+      outline: 1px solid var(--outline-subtle);
+      outline-offset: 0;
+      transition: outline 0.2s ease, transform 0.2s ease;
+    }
+    .stat-card:hover, .recent-members:hover, .recent-transactions:hover,
+    .action-card:hover, .members-stat-card:hover, .category-card:hover,
+    .auction-card:hover, .location-card:hover, .settings-card:hover {
+      outline: 2px solid var(--warm-brown);
+      transform: translateY(-2px);
+    }
+
     .stats-grid {
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -422,7 +466,6 @@
       background: var(--light-bg); 
       border-radius: 16px; 
       padding: 20px;
-      border: 2px solid var(--soft-border); 
       transition: var(--transition);
       position: relative; 
       overflow: hidden;
@@ -446,11 +489,6 @@
     }
     .stat-card:hover::before { 
       transform: translateX(0); 
-    }
-    .stat-card:hover { 
-      transform: translateY(-3px); 
-      box-shadow: var(--shadow-lg); 
-      border-color: var(--warm-brown);
     }
     .stat-icon {
       width: 45px; 
@@ -502,12 +540,10 @@
       margin-bottom: 35px;
     }
 
-    /* Recent Members Card */
-    .recent-members {
+    .recent-members, .recent-transactions {
       background: var(--light-bg); 
       border-radius: 16px; 
       padding: 20px;
-      border: 2px solid var(--soft-border);
       box-shadow: var(--shadow);
     }
     .section-header {
@@ -537,143 +573,54 @@
       transform: rotate(180deg); 
     }
     
-    .member-item {
+    .member-item, .transaction-item {
       display: flex; 
       align-items: center; 
       gap: 12px; 
       padding: 12px 0;
       border-bottom: 1px solid var(--soft-border);
     }
-    .member-item:last-child { 
+    .member-item:last-child, .transaction-item:last-child { 
       border-bottom: none; 
     }
-    .member-avatar-small {
+    .member-avatar-small, .transaction-icon {
       width: 40px; 
       height: 40px; 
+      background: rgba(175, 110, 75, 0.15);
       border-radius: 50%; 
-      background: rgba(175, 110, 75, 0.15);
       display: flex; 
       align-items: center; 
       justify-content: center;
-      color: var(--warm-brown); 
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
     }
-    .member-details-small { 
-      flex: 1; 
-    }
-    .member-details-small h4 { 
+    .member-avatar-small { font-weight: 600; color: var(--warm-brown); }
+    .transaction-icon i { font-size: 18px; color: var(--warm-brown); }
+    .member-details-small, .transaction-details { flex: 1; }
+    .member-details-small h4, .transaction-details h4 { 
       font-size: 0.95rem; 
       margin-bottom: 3px; 
       color: var(--text-primary); 
       font-family: 'Playfair Display', serif;
       font-weight: 600;
     }
-    .member-details-small p {
+    .member-details-small p, .transaction-details p {
       font-size: 0.75rem; 
       color: var(--text-secondary); 
       display: flex; 
       align-items: center; 
       gap: 8px;
-      font-family: 'Inter', sans-serif;
     }
-    .member-details-small p i { 
-      font-size: 10px; 
-      color: var(--warm-brown); 
-    }
-    .member-status {
+    .member-status, .transaction-status {
       padding: 3px 10px; 
       border-radius: 20px; 
       font-size: 0.65rem; 
       font-weight: 600;
-      font-family: 'Inter', sans-serif;
     }
-    .status-active { 
-      background: rgba(175, 110, 75, 0.15); 
-      color: var(--warm-brown); 
-    }
-    .status-pending { 
-      background: rgba(184, 145, 110, 0.15); 
-      color: var(--accent-brown); 
-    }
-    .status-blocked { 
-      background: rgba(255,68,68,0.15); 
-      color: #FF4444; 
-    }
-
-    /* Recent Transactions Card */
-    .recent-transactions {
-      background: var(--light-bg); 
-      border-radius: 16px; 
-      padding: 20px;
-      border: 2px solid var(--soft-border);
-      box-shadow: var(--shadow);
-    }
-    .transaction-item {
-      display: flex; 
-      align-items: center; 
-      gap: 12px; 
-      padding: 12px 0;
-      border-bottom: 1px solid var(--soft-border);
-    }
-    .transaction-item:last-child { 
-      border-bottom: none; 
-    }
-    .transaction-icon {
-      width: 40px; 
-      height: 40px; 
-      background: rgba(175, 110, 75, 0.15);
-      border-radius: 10px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-    }
-    .transaction-icon i { 
-      font-size: 18px; 
-      color: var(--warm-brown); 
-    }
-    .transaction-details { 
-      flex: 1; 
-    }
-    .transaction-details h4 { 
-      font-size: 0.95rem; 
-      margin-bottom: 3px; 
-      color: var(--text-primary); 
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-    }
-    .transaction-details p {
-      font-size: 0.75rem; 
-      color: var(--text-secondary); 
-      display: flex; 
-      align-items: center; 
-      gap: 8px;
-      font-family: 'Inter', sans-serif;
-    }
-    .transaction-details p i { 
-      font-size: 10px; 
-      color: var(--warm-brown); 
-    }
-    .transaction-status {
-      padding: 3px 10px; 
-      border-radius: 20px; 
-      font-size: 0.65rem; 
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-    }
-    .transaction-completed { 
-      background: rgba(175, 110, 75, 0.15); 
-      color: var(--warm-brown); 
-    }
-    .transaction-pending { 
-      background: rgba(184, 145, 110, 0.15); 
-      color: var(--accent-brown); 
-    }
+    .status-active, .transaction-completed { background: rgba(175, 110, 75, 0.15); color: var(--warm-brown); }
+    .status-pending, .transaction-pending { background: rgba(184, 145, 110, 0.15); color: var(--accent-brown); }
+    .status-blocked { background: rgba(255,68,68,0.15); color: #FF4444; }
 
     /* Quick Actions */
-    .quick-actions { 
-      margin-bottom: 35px; 
-    }
+    .quick-actions { margin-bottom: 35px; }
     .actions-grid {
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -684,38 +631,16 @@
       border-radius: 12px; 
       padding: 15px;
       text-align: center; 
-      border: 2px solid var(--soft-border);
       transition: var(--transition); 
       cursor: pointer;
       box-shadow: var(--shadow);
     }
-    .action-card:hover { 
-      transform: translateY(-3px); 
-      border-color: var(--warm-brown); 
-      box-shadow: var(--shadow-lg); 
-    }
-    .action-card i { 
-      font-size: 24px; 
-      color: var(--warm-brown); 
-      margin-bottom: 8px; 
-    }
-    .action-card h4 { 
-      font-size: 0.95rem; 
-      margin-bottom: 5px; 
-      color: var(--text-primary);
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-    }
-    .action-card p { 
-      font-size: 0.7rem; 
-      color: var(--text-secondary); 
-      font-family: 'Inter', sans-serif;
-    }
+    .action-card i { font-size: 24px; color: var(--warm-brown); margin-bottom: 8px; }
+    .action-card h4 { font-size: 0.95rem; margin-bottom: 5px; color: var(--text-primary); }
+    .action-card p { font-size: 0.7rem; color: var(--text-secondary); }
 
     /* Management Tables */
-    .management-section { 
-      margin-bottom: 35px; 
-    }
+    .management-section { margin-bottom: 35px; }
     .management-tabs {
       display: flex; 
       gap: 10px; 
@@ -731,22 +656,15 @@
       cursor: pointer;
       border-bottom: 3px solid transparent; 
       transition: var(--transition);
-      font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
     }
-    .tab-btn:hover { 
-      color: var(--warm-brown); 
-    }
-    .tab-btn.active {
-      color: var(--warm-brown); 
-      border-bottom-color: var(--warm-brown);
-    }
+    .tab-btn:hover { color: var(--warm-brown); }
+    .tab-btn.active { color: var(--warm-brown); border-bottom-color: var(--warm-brown); }
     
     .management-table {
       background: var(--light-bg); 
       border-radius: 16px; 
       padding: 20px;
-      border: 2px solid var(--soft-border); 
       overflow-x: auto;
       box-shadow: var(--shadow);
     }
@@ -762,73 +680,39 @@
       font-weight: 600; 
       font-size: 0.8rem; 
       border-bottom: 2px solid var(--soft-border);
-      font-family: 'Inter', sans-serif;
-    }
-    [dir="rtl"] .data-table th { 
-      text-align: right; 
     }
     .data-table td {
       padding: 12px; 
       border-bottom: 1px solid var(--soft-border);
       font-size: 0.85rem; 
       color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
     }
-    .data-table tr:last-child td { 
-      border-bottom: none; 
-    }
-    .data-table .user-cell { 
-      display: flex; 
-      align-items: center; 
-      gap: 8px; 
-      font-family: 'Inter', sans-serif;
-    }
-    .data-table .user-cell i { 
-      color: var(--warm-brown); 
-      font-size: 14px; 
-    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .user-cell { display: flex; align-items: center; gap: 8px; }
+    .data-table .user-cell i { color: var(--warm-brown); font-size: 14px; }
     .table-badge {
       padding: 3px 10px; 
       border-radius: 20px; 
       font-size: 0.65rem; 
       font-weight: 600;
       display: inline-block;
-      font-family: 'Inter', sans-serif;
     }
-    .table-badge.success { 
-      background: rgba(175, 110, 75, 0.15); 
-      color: var(--warm-brown); 
-    }
-    .table-badge.warning { 
-      background: rgba(184, 145, 110, 0.15); 
-      color: var(--accent-brown); 
-    }
-    .table-badge.danger { 
-      background: rgba(255,68,68,0.15); 
-      color: #FF4444; 
-    }
-    .table-actions { 
-      display: flex; 
-      gap: 8px; 
-    }
+    .table-badge.success { background: rgba(175, 110, 75, 0.15); color: var(--warm-brown); }
+    .table-badge.warning { background: rgba(184, 145, 110, 0.15); color: var(--accent-brown); }
+    .table-badge.danger { background: rgba(255,68,68,0.15); color: #FF4444; }
+    .table-actions { display: flex; gap: 8px; }
     .table-actions button {
       background: none; 
       border: none; 
       color: var(--text-muted); 
       cursor: pointer; 
-      transition: var(--transition); 
+      transition: var(--transition);
       font-size: 14px;
     }
-    .table-actions button:hover { 
-      color: var(--warm-brown); 
-    }
+    .table-actions button:hover { color: var(--warm-brown); }
 
-    /* ===== UNIQUE SECTION STYLES ===== */
-    .nav-section-container {
-      margin-top: 20px;
-      width: 100%;
-    }
-
+    /* Section Styles */
+    .nav-section-container { margin-top: 20px; width: 100%; }
     .section-title {
       font-size: 2rem;
       margin-bottom: 25px;
@@ -838,70 +722,28 @@
       padding-bottom: 10px;
       display: inline-block;
     }
-
-    /* Members Section */
-    .members-stats-grid {
+    .members-stats-grid, .inventory-categories {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-bottom: 30px;
     }
-    .members-stat-card {
+    .members-stat-card, .category-card {
       background: var(--light-bg);
       border-radius: 16px;
       padding: 20px;
       text-align: center;
-      border: 2px solid var(--soft-border);
+      box-shadow: var(--shadow);
     }
-    .members-stat-card i {
+    .members-stat-card i, .category-card i {
       font-size: 32px;
       color: var(--warm-brown);
       margin-bottom: 10px;
     }
-    .members-stat-card h3 {
+    .members-stat-card h3, .category-card h4 {
       font-size: 1.8rem;
       color: var(--text-primary);
     }
-    .members-stat-card p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .members-list {
-      background: var(--light-bg);
-      border-radius: 16px;
-      padding: 20px;
-      border: 2px solid var(--soft-border);
-    }
-
-    /* Inventory Section */
-    .inventory-categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-    .category-card {
-      background: var(--light-bg);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      border: 2px solid var(--soft-border);
-    }
-    .category-card i {
-      font-size: 28px;
-      color: var(--warm-brown);
-      margin-bottom: 8px;
-    }
-    .category-card h4 {
-      font-size: 1.5rem;
-      color: var(--text-primary);
-    }
-    .category-card p {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-
-    /* Auctions Section */
     .auctions-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -912,9 +754,9 @@
       background: var(--light-bg);
       border-radius: 16px;
       padding: 20px;
-      border: 2px solid var(--soft-border);
       display: flex;
       gap: 15px;
+      box-shadow: var(--shadow);
     }
     .auction-icon {
       width: 60px;
@@ -925,28 +767,7 @@
       align-items: center;
       justify-content: center;
     }
-    .auction-icon i {
-      font-size: 28px;
-      color: var(--warm-brown);
-    }
-    .auction-info h4 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-    .auction-info p {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    /* Locations Section - With Circular Progress */
-    .locations-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .auction-icon i { font-size: 28px; color: var(--warm-brown); }
     .circular-progress-container {
       display: flex;
       gap: 40px;
@@ -969,15 +790,8 @@
       stroke-width: 10;
       stroke-linecap: round;
     }
-    .circular-progress .bg-circle {
-      stroke: var(--soft-border);
-    }
-    .circular-progress .progress-circle {
-      stroke: var(--warm-brown);
-      stroke-dasharray: 377;
-      stroke-dashoffset: 94.25;
-      transition: stroke-dashoffset 0.5s;
-    }
+    .circular-progress .bg-circle { stroke: var(--soft-border); }
+    .circular-progress .progress-circle { stroke: var(--warm-brown); stroke-dasharray: 377; stroke-dashoffset: 94.25; }
     .progress-value {
       position: absolute;
       top: 50%;
@@ -986,11 +800,6 @@
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--warm-brown);
-    }
-    .progress-label {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
     }
     .locations-grid {
       display: grid;
@@ -1002,14 +811,10 @@
       background: var(--light-bg);
       border-radius: 16px;
       padding: 20px;
-      border: 2px solid var(--soft-border);
       display: flex;
       align-items: center;
       gap: 15px;
-    }
-    .location-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--warm-brown);
+      box-shadow: var(--shadow);
     }
     .location-icon {
       width: 60px;
@@ -1020,30 +825,7 @@
       align-items: center;
       justify-content: center;
     }
-    .location-icon i {
-      font-size: 24px;
-      color: var(--warm-brown);
-    }
-    .location-info h4 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-    .location-info p {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-    }
-    .location-stats {
-      display: flex;
-      gap: 15px;
-      font-size: 0.8rem;
-    }
-    .location-stats span i {
-      color: var(--warm-brown);
-      margin-right: 3px;
-    }
-
-    /* Settings Section */
+    .location-icon i { font-size: 24px; color: var(--warm-brown); }
     .settings-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1053,13 +835,7 @@
       background: var(--light-bg);
       border-radius: 16px;
       padding: 25px;
-      border: 2px solid var(--soft-border);
-    }
-    .settings-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--warm-brown);
+      box-shadow: var(--shadow);
     }
     .setting-item {
       display: flex;
@@ -1067,15 +843,6 @@
       align-items: center;
       padding: 12px 0;
       border-bottom: 1px solid var(--soft-border);
-    }
-    .setting-item:last-child {
-      border-bottom: none;
-    }
-    .setting-item span {
-      color: var(--text-secondary);
-    }
-    .setting-item strong {
-      color: var(--text-primary);
     }
     .toggle-switch {
       width: 50px;
@@ -1107,73 +874,31 @@
       .locations-grid { grid-template-columns: 1fr; }
       .settings-grid { grid-template-columns: 1fr; }
     }
-    
     @media (max-width: 900px) {
-      .mobile-menu-toggle { 
-        display: flex; 
-      }
-      
-      .main-content { 
-        margin-left: 0; 
-        padding: 20px 15px; 
-      }
+      .mobile-menu-toggle { display: flex; }
+      .main-content { margin-left: 0; padding: 70px 15px 20px; }
       [dir="rtl"] .main-content { margin-right: 0; }
-      
-      .top-header { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        height: auto; 
-        gap: 12px;
-        margin-top: 10px;
-      }
-      .header-title { width: 100%; }
+      .top-header { flex-direction: column; align-items: flex-start; height: auto; gap: 12px; margin-top: 0; }
       .header-title h1 { font-size: 1.5rem; }
       .header-controls { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
       .header-search { flex: 1; min-width: 180px; }
-      .header-search input { width: 100%; padding: 8px 32px 8px 12px; font-size: 0.85rem; }
-      .header-search i { right: 10px; font-size: 13px; }
-      [dir="rtl"] .header-search i { right: auto; left: 10px; }
-    }
-    
-    @media (max-width: 600px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .actions-grid { grid-template-columns: 1fr; }
-      .header-controls { flex-direction: column; align-items: stretch; }
-      .header-search { width: 100%; min-width: 100%; }
       .header-search input { width: 100%; }
-      .header-controls .header-btn { width: 100%; border-radius: 30px; margin-top: 5px; height: 42px; }
-      .header-controls { gap: 5px; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid, .actions-grid { grid-template-columns: 1fr; }
+      .header-controls { flex-direction: column; align-items: stretch; }
+      .header-search { width: 100%; }
+      .members-stats-grid, .inventory-categories { grid-template-columns: 1fr; }
+      .circular-progress-container { flex-direction: column; align-items: center; }
       .management-tabs { flex-wrap: wrap; }
       .tab-btn { flex: 1; text-align: center; padding: 8px; }
-      .members-stats-grid { grid-template-columns: 1fr; }
-      .inventory-categories { grid-template-columns: 1fr; }
-      .circular-progress-container { flex-direction: column; align-items: center; }
-      .locations-header { flex-direction: column; align-items: center; }
     }
-     .dark-mode .logo-text {
-      background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-     .dark-mode .logo{
-       background: #f5c9a6; 
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-     }
   </style>
 </head>
 <body>
-  <!-- Sidebar Overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
 
-  <!-- Mobile Menu Toggle -->
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
-  </div>
-
-  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <a href="index.html" class="logo">
@@ -1204,7 +929,6 @@
     </div>
   </aside>
 
-  <!-- Main Content -->
   <main class="main-content">
     <div class="top-header">
       <div class="header-title">
@@ -1216,336 +940,117 @@
           <input type="text" placeholder="Search members, books...">
           <i class="fas fa-search"></i>
         </div>
-        <button class="header-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
-        <button class="header-btn" id="rtlToggle"><i class="fas fa-exchange-alt"></i></button>
+        <button class="header-btn" id="themeToggle">Dark</button>
+        <button class="header-btn" id="rtlToggle">LTR</button>
+        <div class="profile-icon" id="profileIcon"><i class="fas fa-user-shield"></i></div>
       </div>
     </div>
 
-    <!-- Dashboard Section (Default) -->
+    <!-- Dashboard Section -->
     <div id="dashboardSection">
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-users"></i></div>
-          <h3>Total Members</h3>
-          <div class="stat-number">2,847</div>
-          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+12%</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-book"></i></div>
-          <h3>Total Volumes</h3>
-          <div class="stat-number">12,456</div>
-          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+8%</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-crown"></i></div>
-          <h3>First Editions</h3>
-          <div class="stat-number">342</div>
-          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+18%</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-credit-card"></i></div>
-          <h3>Revenue</h3>
-          <div class="stat-number">$124.5k</div>
-          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+25%</span></div>
-        </div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><h3>Total Members</h3><div class="stat-number">2,847</div><div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+12%</span></div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-book"></i></div><h3>Total Volumes</h3><div class="stat-number">12,456</div><div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+8%</span></div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-crown"></i></div><h3>First Editions</h3><div class="stat-number">342</div><div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+18%</span></div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-credit-card"></i></div><h3>Revenue</h3><div class="stat-number">$124.5k</div><div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+25%</span></div></div>
       </div>
 
       <div class="admin-grid">
-        <!-- Recent Members -->
         <div class="recent-members">
-          <div class="section-header">
-            <h2>Recent Members</h2>
-            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
-          </div>
-          <div class="member-item">
-            <div class="member-avatar-small">JD</div>
-            <div class="member-details-small">
-              <h4>John Davenport</h4>
-              <p><i class="fas fa-envelope"></i> john.d@example.com</p>
-            </div>
-            <div class="member-status status-active">Active</div>
-          </div>
-          <div class="member-item">
-            <div class="member-avatar-small">ES</div>
-            <div class="member-details-small">
-              <h4>Elizabeth Stone</h4>
-              <p><i class="fas fa-envelope"></i> elizabeth@example.com</p>
-            </div>
-            <div class="member-status status-active">Active</div>
-          </div>
-          <div class="member-item">
-            <div class="member-avatar-small">MW</div>
-            <div class="member-details-small">
-              <h4>Marcus Webb</h4>
-              <p><i class="fas fa-envelope"></i> marcus.w@example.com</p>
-            </div>
-            <div class="member-status status-pending">Pending</div>
-          </div>
-          <div class="member-item">
-            <div class="member-avatar-small">SB</div>
-            <div class="member-details-small">
-              <h4>Sarah Blackwood</h4>
-              <p><i class="fas fa-envelope"></i> sarah.b@example.com</p>
-            </div>
-            <div class="member-status status-blocked">Blocked</div>
-          </div>
+          <div class="section-header"><h2>Recent Members</h2><a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a></div>
+          <div class="member-item"><div class="member-avatar-small">JD</div><div class="member-details-small"><h4>John Davenport</h4><p><i class="fas fa-envelope"></i> john.d@example.com</p></div><div class="member-status status-active">Active</div></div>
+          <div class="member-item"><div class="member-avatar-small">ES</div><div class="member-details-small"><h4>Elizabeth Stone</h4><p><i class="fas fa-envelope"></i> elizabeth@example.com</p></div><div class="member-status status-active">Active</div></div>
+          <div class="member-item"><div class="member-avatar-small">MW</div><div class="member-details-small"><h4>Marcus Webb</h4><p><i class="fas fa-envelope"></i> marcus.w@example.com</p></div><div class="member-status status-pending">Pending</div></div>
         </div>
-
-        <!-- Recent Transactions -->
         <div class="recent-transactions">
-          <div class="section-header">
-            <h2>Recent Transactions</h2>
-            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
-          </div>
-          <div class="transaction-item">
-            <div class="transaction-icon"><i class="fas fa-book"></i></div>
-            <div class="transaction-details">
-              <h4>The Lost Folio</h4>
-              <p><i class="fas fa-user"></i> John D. · $12,500</p>
-            </div>
-            <div class="transaction-status transaction-completed">Completed</div>
-          </div>
-          <div class="transaction-item">
-            <div class="transaction-icon"><i class="fas fa-scroll"></i></div>
-            <div class="transaction-details">
-              <h4>Medieval Manuscript</h4>
-              <p><i class="fas fa-user"></i> Elizabeth S. · $8,750</p>
-            </div>
-            <div class="transaction-status transaction-completed">Completed</div>
-          </div>
-          <div class="transaction-item">
-            <div class="transaction-icon"><i class="fas fa-feather-alt"></i></div>
-            <div class="transaction-details">
-              <h4>Poems Collection</h4>
-              <p><i class="fas fa-user"></i> Marcus W. · $3,250</p>
-            </div>
-            <div class="transaction-status transaction-pending">Pending</div>
-          </div>
-          <div class="transaction-item">
-            <div class="transaction-icon"><i class="fas fa-crown"></i></div>
-            <div class="transaction-details">
-              <h4>First Folio</h4>
-              <p><i class="fas fa-user"></i> Sarah B. · $25,800</p>
-            </div>
-            <div class="transaction-status transaction-completed">Completed</div>
-          </div>
+          <div class="section-header"><h2>Recent Transactions</h2><a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a></div>
+          <div class="transaction-item"><div class="transaction-icon"><i class="fas fa-book"></i></div><div class="transaction-details"><h4>The Lost Folio</h4><p><i class="fas fa-user"></i> John D. · $12,500</p></div><div class="transaction-status transaction-completed">Completed</div></div>
+          <div class="transaction-item"><div class="transaction-icon"><i class="fas fa-scroll"></i></div><div class="transaction-details"><h4>Medieval Manuscript</h4><p><i class="fas fa-user"></i> Elizabeth S. · $8,750</p></div><div class="transaction-status transaction-completed">Completed</div></div>
+          <div class="transaction-item"><div class="transaction-icon"><i class="fas fa-feather-alt"></i></div><div class="transaction-details"><h4>Poems Collection</h4><p><i class="fas fa-user"></i> Marcus W. · $3,250</p></div><div class="transaction-status transaction-pending">Pending</div></div>
         </div>
       </div>
 
-      <!-- Quick Actions -->
-      <div class="quick-actions">
-        <div class="section-header"><h2>Quick Actions</h2></div>
-        <div class="actions-grid">
-          <div class="action-card"><i class="fas fa-user-plus"></i><h4>Add Member</h4><p>Register new collector</p></div>
-          <div class="action-card"><i class="fas fa-book"></i><h4>Add Book</h4><p>Add to inventory</p></div>
-          <div class="action-card"><i class="fas fa-gavel"></i><h4>New Auction</h4><p>Schedule auction</p></div>
-          <div class="action-card"><i class="fas fa-file-invoice"></i><h4>Generate Report</h4><p>Monthly summary</p></div>
-        </div>
-      </div>
+      <div class="quick-actions"><div class="section-header"><h2>Quick Actions</h2></div><div class="actions-grid">
+        <div class="action-card"><i class="fas fa-user-plus"></i><h4>Add Member</h4><p>Register new collector</p></div>
+        <div class="action-card"><i class="fas fa-book"></i><h4>Add Book</h4><p>Add to inventory</p></div>
+        <div class="action-card"><i class="fas fa-gavel"></i><h4>New Auction</h4><p>Schedule auction</p></div>
+        <div class="action-card"><i class="fas fa-file-invoice"></i><h4>Generate Report</h4><p>Monthly summary</p></div>
+      </div></div>
 
-      <!-- Management Tables -->
       <div class="management-section">
         <div class="management-tabs">
           <button class="tab-btn active" id="tabMembers">Members</button>
           <button class="tab-btn" id="tabInventory">Inventory</button>
           <button class="tab-btn" id="tabAuctions">Auctions</button>
         </div>
-
-        <!-- Members Table -->
         <div class="management-table" id="membersTable">
-          <table class="data-table">
-            <thead>
-              <tr><th>Member</th><th>Email</th><th>Status</th><th>Books</th><th>Joined</th><th>Actions</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="user-cell"><i class="fas fa-user-circle"></i> John Davenport</td><td>john.d@example.com</td><td><span class="table-badge success">Active</span></td><td>47</td><td>Jan 15, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-user-circle"></i> Elizabeth Stone</td><td>elizabeth@example.com</td><td><span class="table-badge success">Active</span></td><td>32</td><td>Feb 3, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-user-circle"></i> Marcus Webb</td><td>marcus.w@example.com</td><td><span class="table-badge warning">Pending</span></td><td>0</td><td>Mar 10, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-user-circle"></i> Sarah Blackwood</td><td>sarah.b@example.com</td><td><span class="table-badge danger">Blocked</span></td><td>12</td><td>Feb 28, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-            </tbody>
-          </table>
+          <table class="data-table"><thead><tr><th>Member</th><th>Email</th><th>Status</th><th>Books</th><th>Joined</th><th>Actions</th></tr></thead><tbody>
+            <tr><td class="user-cell"><i class="fas fa-user-circle"></i> John Davenport</td><td>john.d@example.com</td><td><span class="table-badge success">Active</span></td><td>47</td><td>Jan 15, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td class="user-cell"><i class="fas fa-user-circle"></i> Elizabeth Stone</td><td>elizabeth@example.com</td><td><span class="table-badge success">Active</span></td><td>32</td><td>Feb 3, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td class="user-cell"><i class="fas fa-user-circle"></i> Marcus Webb</td><td>marcus.w@example.com</td><td><span class="table-badge warning">Pending</span></td><td>0</td><td>Mar 10, 2026</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
+          </tbody></table>
         </div>
-
-        <!-- Inventory Table (hidden by default) -->
         <div class="management-table" id="inventoryTable" style="display: none;">
-          <table class="data-table">
-            <thead>
-              <tr><th>Title</th><th>Author</th><th>Status</th><th>Edition</th><th>Value</th><th>Actions</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="user-cell"><i class="fas fa-book"></i> The Lost Folio</td><td>W. Shakespeare</td><td><span class="table-badge success">Available</span></td><td>1st</td><td>$12,500</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-scroll"></i> Medieval Manuscript</td><td>Unknown</td><td><span class="table-badge success">Available</span></td><td>1485</td><td>$8,750</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-feather-alt"></i> Poems Collection</td><td>W. Wordsworth</td><td><span class="table-badge warning">On Hold</span></td><td>1807</td><td>$3,250</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-crown"></i> First Folio</td><td>W. Shakespeare</td><td><span class="table-badge success">Available</span></td><td>1623</td><td>$25,800</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
-            </tbody>
-          </table>
+          <table class="data-table"><thead><tr><th>Title</th><th>Author</th><th>Status</th><th>Edition</th><th>Value</th><th>Actions</th></tr></thead><tbody>
+            <tr><td class="user-cell"><i class="fas fa-book"></i> The Lost Folio</td><td>W. Shakespeare</td><td><span class="table-badge success">Available</span></td><td>1st</td><td>$12,500</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td class="user-cell"><i class="fas fa-scroll"></i> Medieval Manuscript</td><td>Unknown</td><td><span class="table-badge success">Available</span></td><td>1485</td><td>$8,750</td><td class="table-actions"><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td></tr>
+          </tbody></table>
         </div>
-
-        <!-- Auctions Table (hidden by default) -->
         <div class="management-table" id="auctionsTable" style="display: none;">
-          <table class="data-table">
-            <thead>
-              <tr><th>Item</th><th>Seller</th><th>Date</th><th>Current Bid</th><th>Status</th><th>Actions</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="user-cell"><i class="fas fa-book"></i> The Lost Folio</td><td>John D.</td><td>Mar 15, 2026</td><td>$12,500</td><td><span class="table-badge success">Active</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-scroll"></i> Medieval Manuscript</td><td>Elizabeth S.</td><td>Mar 18, 2026</td><td>$8,750</td><td><span class="table-badge success">Active</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-feather-alt"></i> Poems Collection</td><td>Marcus W.</td><td>Mar 20, 2026</td><td>$3,250</td><td><span class="table-badge warning">Pending</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
-              <tr><td class="user-cell"><i class="fas fa-crown"></i> First Folio</td><td>Sarah B.</td><td>Mar 22, 2026</td><td>$25,800</td><td><span class="table-badge success">Active</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
-            </tbody>
-          </table>
+          <table class="data-table"><thead><tr><th>Item</th><th>Seller</th><th>Date</th><th>Current Bid</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+            <tr><td class="user-cell"><i class="fas fa-book"></i> The Lost Folio</td><td>John D.</td><td>Mar 15, 2026</td><td>$12,500</td><td><span class="table-badge success">Active</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
+            <tr><td class="user-cell"><i class="fas fa-scroll"></i> Medieval Manuscript</td><td>Elizabeth S.</td><td>Mar 18, 2026</td><td>$8,750</td><td><span class="table-badge success">Active</span></td><td class="table-actions"><button><i class="fas fa-edit"></i></button></td></tr>
+          </tbody></table>
         </div>
       </div>
     </div>
 
-    <!-- Members Section -->
+    <!-- Other Sections -->
     <div id="membersSection" class="nav-section-container" style="display: none;">
       <h2 class="section-title">Member Management</h2>
       <div class="members-stats-grid">
-        <div class="members-stat-card">
-          <i class="fas fa-users"></i>
-          <h3>2,847</h3>
-          <p>Total Members</p>
-        </div>
-        <div class="members-stat-card">
-          <i class="fas fa-user-check"></i>
-          <h3>2,456</h3>
-          <p>Active Members</p>
-        </div>
-        <div class="members-stat-card">
-          <i class="fas fa-user-plus"></i>
-          <h3>391</h3>
-          <p>New This Month</p>
-        </div>
-      </div>
-      <div class="members-list">
-        <h3 style="margin-bottom: 15px;">Recent Member Activity</h3>
-        <p style="color: var(--text-secondary); text-align: center;">Complete member management with filters and bulk actions.</p>
+        <div class="members-stat-card"><i class="fas fa-users"></i><h3>2,847</h3><p>Total Members</p></div>
+        <div class="members-stat-card"><i class="fas fa-user-check"></i><h3>2,456</h3><p>Active Members</p></div>
+        <div class="members-stat-card"><i class="fas fa-user-plus"></i><h3>391</h3><p>New This Month</p></div>
       </div>
     </div>
-
-    <!-- Inventory Section -->
     <div id="inventorySection" class="nav-section-container" style="display: none;">
       <h2 class="section-title">Inventory Overview</h2>
       <div class="inventory-categories">
-        <div class="category-card">
-          <i class="fas fa-book"></i>
-          <h4>8,456</h4>
-          <p>Books</p>
-        </div>
-        <div class="category-card">
-          <i class="fas fa-scroll"></i>
-          <h4>2,340</h4>
-          <p>Manuscripts</p>
-        </div>
-        <div class="category-card">
-          <i class="fas fa-crown"></i>
-          <h4>342</h4>
-          <p>First Editions</p>
-        </div>
-        <div class="category-card">
-          <i class="fas fa-map-pin"></i>
-          <h4>1,318</h4>
-          <p>Maps/Prints</p>
-        </div>
-      </div>
-      <div class="members-list">
-        <h3 style="margin-bottom: 15px;">Inventory Distribution</h3>
-        <p style="color: var(--text-secondary); text-align: center;">Detailed inventory management with categories and values.</p>
+        <div class="category-card"><i class="fas fa-book"></i><h4>8,456</h4><p>Books</p></div>
+        <div class="category-card"><i class="fas fa-scroll"></i><h4>2,340</h4><p>Manuscripts</p></div>
+        <div class="category-card"><i class="fas fa-crown"></i><h4>342</h4><p>First Editions</p></div>
       </div>
     </div>
-
-    <!-- Auctions Section -->
     <div id="auctionsSection" class="nav-section-container" style="display: none;">
       <h2 class="section-title">Active Auctions</h2>
       <div class="auctions-grid">
-        <div class="auction-card">
-          <div class="auction-icon"><i class="fas fa-book"></i></div>
-          <div class="auction-info">
-            <h4>The Lost Folio</h4>
-            <p>Ends Mar 15 · 6 bids · $12,500</p>
-          </div>
-        </div>
-        <div class="auction-card">
-          <div class="auction-icon"><i class="fas fa-scroll"></i></div>
-          <div class="auction-info">
-            <h4>Medieval Manuscript</h4>
-            <p>Ends Mar 18 · 4 bids · $8,750</p>
-          </div>
-        </div>
+        <div class="auction-card"><div class="auction-icon"><i class="fas fa-book"></i></div><div class="auction-info"><h4>The Lost Folio</h4><p>Ends Mar 15 · 6 bids · $12,500</p></div></div>
+        <div class="auction-card"><div class="auction-icon"><i class="fas fa-scroll"></i></div><div class="auction-info"><h4>Medieval Manuscript</h4><p>Ends Mar 18 · 4 bids · $8,750</p></div></div>
       </div>
     </div>
-
-    <!-- Locations Section - With Circular Progress -->
     <div id="locationsSection" class="nav-section-container" style="display: none;">
       <h2 class="section-title">Collection Locations</h2>
-      <div class="locations-header">
-        <div class="circular-progress-container">
-          <div class="circular-progress">
-            <svg viewBox="0 0 160 160">
-              <circle class="bg-circle" cx="80" cy="80" r="60"></circle>
-              <circle class="progress-circle" cx="80" cy="80" r="60" style="stroke-dashoffset: 94.25;"></circle>
-            </svg>
-            <div class="progress-value">75%</div>
-            <div class="progress-label">Catalogued</div>
-          </div>
-          <div class="circular-progress">
-            <svg viewBox="0 0 160 160">
-              <circle class="bg-circle" cx="80" cy="80" r="60"></circle>
-              <circle class="progress-circle" cx="80" cy="80" r="60" style="stroke-dashoffset: 188.5;"></circle>
-            </svg>
-            <div class="progress-value">18</div>
-            <div class="progress-label">Locations</div>
-          </div>
-        </div>
+      <div class="circular-progress-container">
+        <div class="circular-progress"><svg viewBox="0 0 160 160"><circle class="bg-circle" cx="80" cy="80" r="60"></circle><circle class="progress-circle" cx="80" cy="80" r="60" style="stroke-dashoffset: 94.25;"></circle></svg><div class="progress-value">75%</div><div class="progress-label">Catalogued</div></div>
+        <div class="circular-progress"><svg viewBox="0 0 160 160"><circle class="bg-circle" cx="80" cy="80" r="60"></circle><circle class="progress-circle" cx="80" cy="80" r="60" style="stroke-dashoffset: 188.5;"></circle></svg><div class="progress-value">18</div><div class="progress-label">Locations</div></div>
       </div>
       <div class="locations-grid">
-        <div class="location-card">
-          <div class="location-icon"><i class="fas fa-map-pin"></i></div>
-          <div class="location-info">
-            <h4>Main Vault</h4>
-            <p><i class="fas fa-book"></i> 5,240 items · 42% of collection</p>
-            <div class="location-stats">
-              <span><i class="fas fa-crown"></i> 124 first eds</span>
-              <span><i class="fas fa-scroll"></i> 890 mss</span>
-            </div>
-          </div>
-        </div>
-        <div class="location-card">
-          <div class="location-icon"><i class="fas fa-map-pin"></i></div>
-          <div class="location-info">
-            <h4>Rare Book Room</h4>
-            <p><i class="fas fa-book"></i> 3,870 items · 31% of collection</p>
-            <div class="location-stats">
-              <span><i class="fas fa-crown"></i> 218 first eds</span>
-              <span><i class="fas fa-scroll"></i> 450 mss</span>
-            </div>
-          </div>
-        </div>
+        <div class="location-card"><div class="location-icon"><i class="fas fa-map-pin"></i></div><div class="location-info"><h4>Main Vault</h4><p>5,240 items · 42% of collection</p><div class="location-stats"><span><i class="fas fa-crown"></i> 124 first eds</span></div></div></div>
+        <div class="location-card"><div class="location-icon"><i class="fas fa-map-pin"></i></div><div class="location-info"><h4>Rare Book Room</h4><p>3,870 items · 31% of collection</p><div class="location-stats"><span><i class="fas fa-crown"></i> 218 first eds</span></div></div></div>
       </div>
     </div>
-
-    <!-- Settings Section -->
     <div id="settingsSection" class="nav-section-container" style="display: none;">
       <h2 class="section-title">System Settings</h2>
       <div class="settings-grid">
-        <div class="settings-card">
-          <h3>General</h3>
-          <div class="setting-item"><span>Site Name</span><strong>Vintage Volumes</strong></div>
-          <div class="setting-item"><span>Admin Email</span><strong>admin@vv.com</strong></div>
-        </div>
-        <div class="settings-card">
-          <h3>Notifications</h3>
-          <div class="setting-item"><span>Email Alerts</span><div class="toggle-switch"></div></div>
-          <div class="setting-item"><span>SMS Alerts</span><div class="toggle-switch"></div></div>
-        </div>
+        <div class="settings-card"><h3>General</h3><div class="setting-item"><span>Site Name</span><strong>Vintage Volumes</strong></div><div class="setting-item"><span>Admin Email</span><strong>admin@vv.com</strong></div></div>
+        <div class="settings-card"><h3>Notifications</h3><div class="setting-item"><span>Email Alerts</span><div class="toggle-switch"></div></div><div class="setting-item"><span>SMS Alerts</span><div class="toggle-switch"></div></div></div>
       </div>
     </div>
   </main>
 
   <script>
     (function() {
-      // Mobile menu toggle
       const mobileToggle = document.getElementById('mobileMenuToggle');
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
@@ -1555,99 +1060,69 @@
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
         body.classList.toggle('menu-open', sidebar.classList.contains('active'));
-        mobileToggle.innerHTML = sidebar.classList.contains('active') ? 
-          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        if (mobileToggle) mobileToggle.innerHTML = sidebar.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       }
-
       if (mobileToggle && sidebar && overlay) {
-        mobileToggle.addEventListener('click', (e) => { 
-          e.preventDefault(); 
-          e.stopPropagation(); 
-          toggleSidebar(); 
-        });
-        
+        mobileToggle.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); toggleSidebar(); });
         overlay.addEventListener('click', toggleSidebar);
-        
-        document.querySelectorAll('.sidebar-nav a').forEach(link => {
-          link.addEventListener('click', () => { 
-            if (window.innerWidth <= 900) toggleSidebar(); 
-          });
-        });
-
-        document.querySelector('.logout-btn')?.addEventListener('click', (e) => {
-          if (window.innerWidth <= 900) {
-            setTimeout(() => toggleSidebar(), 100);
-          }
+        document.querySelectorAll('.sidebar-nav a, .logout-btn').forEach(link => {
+          link.addEventListener('click', () => { if (window.innerWidth <= 900) setTimeout(() => toggleSidebar(), 100); });
         });
       }
+
+      // Profile icon click
+      document.getElementById('profileIcon')?.addEventListener('click', () => { alert('👑 Admin User · Collection Manager · System Admin'); });
 
       // Section Switching
       const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
       const sections = {
-        dashboard: 'dashboardSection',
-        members: 'membersSection',
-        inventory: 'inventorySection',
-        auctions: 'auctionsSection',
-        locations: 'locationsSection',
-        settings: 'settingsSection'
+        dashboard: 'dashboardSection', members: 'membersSection', inventory: 'inventorySection',
+        auctions: 'auctionsSection', locations: 'locationsSection', settings: 'settingsSection'
       };
-
-      function hideAllSections() {
-        Object.values(sections).forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.style.display = 'none';
-        });
-      }
-
-      function showSection(sectionId) {
-        hideAllSections();
-        const el = document.getElementById(sectionId);
-        if (el) el.style.display = 'block';
-      }
-
+      function hideAllSections() { Object.values(sections).forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; }); }
+      function showSection(sectionId) { hideAllSections(); const el = document.getElementById(sectionId); if (el) el.style.display = 'block'; }
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
           e.preventDefault();
           navItems.forEach(nav => nav.classList.remove('active'));
           item.classList.add('active');
           const section = item.dataset.section;
-          if (section && sections[section]) {
-            showSection(sections[section]);
-          }
+          if (section && sections[section]) showSection(sections[section]);
         });
       });
-
-      // Initially show dashboard
       showSection('dashboardSection');
 
-      // Theme Toggle
+      // Theme toggle - text only
+      const themeBtn = document.getElementById('themeToggle');
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelector('#themeToggle i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        if (themeBtn) themeBtn.textContent = isDark ? 'Light' : 'Dark';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
-
-      // RTL Toggle
+      
+      // RTL toggle - text only
+      const rtlBtn = document.getElementById('rtlToggle');
       function toggleRTL() {
         const html = document.documentElement;
-        html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        if (rtlBtn) rtlBtn.textContent = isRTL ? 'LTR' : 'RTL';
         localStorage.setItem('direction', html.getAttribute('dir'));
       }
-
-      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
-
-      // Load saved preferences
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('#themeToggle i').className = 'fas fa-sun';
+      
+      themeBtn?.addEventListener('click', toggleTheme);
+      rtlBtn?.addEventListener('click', toggleRTL);
+      
+      if (localStorage.getItem('theme') === 'dark') { 
+        document.body.classList.add('dark-mode'); 
+        if (themeBtn) themeBtn.textContent = 'Light';
       }
       if (localStorage.getItem('direction') === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
       }
 
-      // Window resize
       window.addEventListener('resize', () => {
         if (window.innerWidth > 900 && sidebar) {
           sidebar.classList.remove('active');
@@ -1657,47 +1132,22 @@
         }
       });
 
-      // Tab switching for dashboard tables
+      // Tab switching
       const tabMembers = document.getElementById('tabMembers');
       const tabInventory = document.getElementById('tabInventory');
       const tabAuctions = document.getElementById('tabAuctions');
       const membersTable = document.getElementById('membersTable');
       const inventoryTable = document.getElementById('inventoryTable');
       const auctionsTable = document.getElementById('auctionsTable');
-
       if (tabMembers && tabInventory && tabAuctions) {
-        function deactivateTabs() {
-          [tabMembers, tabInventory, tabAuctions].forEach(t => t.classList.remove('active'));
-        }
-        
-        tabMembers.addEventListener('click', () => {
-          deactivateTabs(); tabMembers.classList.add('active');
-          membersTable.style.display = 'block';
-          inventoryTable.style.display = 'none';
-          auctionsTable.style.display = 'none';
-        });
-        
-        tabInventory.addEventListener('click', () => {
-          deactivateTabs(); tabInventory.classList.add('active');
-          membersTable.style.display = 'none';
-          inventoryTable.style.display = 'block';
-          auctionsTable.style.display = 'none';
-        });
-        
-        tabAuctions.addEventListener('click', () => {
-          deactivateTabs(); tabAuctions.classList.add('active');
-          membersTable.style.display = 'none';
-          inventoryTable.style.display = 'none';
-          auctionsTable.style.display = 'block';
-        });
+        function deactivateTabs() { [tabMembers, tabInventory, tabAuctions].forEach(t => t.classList.remove('active')); }
+        tabMembers.addEventListener('click', () => { deactivateTabs(); tabMembers.classList.add('active'); membersTable.style.display = 'block'; inventoryTable.style.display = 'none'; auctionsTable.style.display = 'none'; });
+        tabInventory.addEventListener('click', () => { deactivateTabs(); tabInventory.classList.add('active'); membersTable.style.display = 'none'; inventoryTable.style.display = 'block'; auctionsTable.style.display = 'none'; });
+        tabAuctions.addEventListener('click', () => { deactivateTabs(); tabAuctions.classList.add('active'); membersTable.style.display = 'none'; inventoryTable.style.display = 'none'; auctionsTable.style.display = 'block'; });
       }
 
-      // Demo alerts
       document.querySelectorAll('.action-card, .view-all, .table-actions button, .toggle-switch').forEach(el => {
-        el.addEventListener('click', (e) => { 
-          e.preventDefault(); 
-          alert('📚 Admin action - Demo version'); 
-        });
+        el.addEventListener('click', (e) => { e.preventDefault(); alert('📚 Admin action - Demo version'); });
       });
     })();
   </script>
