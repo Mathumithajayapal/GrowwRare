@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Vintage Volumes · About</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -385,6 +385,7 @@
       text-align: center;
       position: relative;
       isolation: isolate;
+      margin-bottom: 0;
     }
     .hero-bg-image {
       position: absolute;
@@ -553,10 +554,6 @@
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
       .footer-logo-text { font-size: 24px; }
-      .hero h1 { font-size: 2.8rem; }
-      .hero p { font-size: 1rem; }
-      .btn-group { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 280px; padding: 12px 24px; }
     }
 
     /* ===== ABOUT PAGE SECTIONS - BALANCED SPACING ===== */
@@ -566,9 +563,9 @@
       margin: 0 auto;
     }
     
-    /* Consistent spacing between sections */
+    /* Consistent spacing between sections - FIXED: proper margin-top to prevent merging with hero */
     .about-section:first-of-type {
-      margin-top: 70px;
+      margin-top: 80px;
     }
     
     .about-section:last-of-type {
@@ -812,6 +809,13 @@
       }
     }
     
+    /* Hero to About section gap fix - PREVENTS MERGING */
+    @media (max-width: 1024px) {
+      .about-section:first-of-type {
+        margin-top: 60px;
+      }
+    }
+    
     @media (max-width: 768px) {
       .about-section:first-of-type {
         margin-top: 50px;
@@ -848,18 +852,96 @@
       }
     }
     
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 24px;
+      }
+      .about-section:first-of-type {
+        margin-top: 40px;
+      }
+    }
+    
     @media (max-width: 480px) {
+      .hero {
+        min-height: 70vh;
+      }
       .hero h1 {
         font-size: 2.2rem;
       }
       .hero p {
         font-size: 0.9rem;
       }
+      .hero-tag {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+      }
       .story-text p {
         font-size: 0.9rem;
       }
       .literary-quote {
         font-size: 1.2rem;
+      }
+      .about-section:first-of-type {
+        margin-top: 35px;
+      }
+    }
+    
+    /* Specific fix for 360x800 screens - PREVENTS MERGING */
+    @media (max-width: 360px) {
+      .hero {
+        min-height: 60vh;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero-tag {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+      .about-section:first-of-type {
+        margin-top: 30px;
+      }
+      .story-text h2 {
+        font-size: 1.5rem;
+      }
+      .story-text p {
+        font-size: 0.85rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .value-card {
+        padding: 1.2rem;
+      }
+      .value-card h3 {
+        font-size: 1.3rem;
+      }
+      .team-card {
+        padding: 1.2rem;
+      }
+      .team-img {
+        width: 90px;
+        height: 90px;
       }
     }
     
@@ -891,6 +973,20 @@
         font-size:22px;
       }
     }
+    .hero {
+  margin-bottom: 80px; /* creates clear gap below hero */
+}
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-bottom: 40px;
+  }
+}
   </style>
 </head>
 <body>
@@ -975,7 +1071,7 @@
     </div>
   </section>
 
-  <!-- SECTION 1: Our Story -->
+  <!-- SECTION 1: Our Story - Now with proper spacing from hero -->
   <div class="about-section">
     <div class="story-grid">
       <div class="story-image">
